@@ -1,0 +1,21 @@
+body{
+  background-color: rgb(255, 255, 255);
+  
+}
+.error{
+  color: #c9b37e;
+  text-align: center;
+  text-decoration: none;
+}
+.gotomain{
+  background-color: rgb(217, 0, 0);
+  color: #ffffff;
+  border-radius: 10px;
+  border: #ff0000 solid 1.5px;
+  padding: 5px;
+}
+
+.gotomain:hover{
+  background-color: #8e0101;
+  color: rgb(0, 0, 0);
+}

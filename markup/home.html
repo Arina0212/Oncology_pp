@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Главная</title>
+</head>
+<body>
+<header class="header">
+    <p class="header__title">Le Ha Im</p>
+
+    <div class="header__links">
+        <a href="" class="header__links-link">Область применения</a>
+        <a href="" class="header__links-link">Авторские права</a>
+    </div>
+
+    <button class="header__enter">Войти</button>
+</header>
+
+<dialog class="modal modal_auth">
+    <form class="modal__content" method="dialog">
+        <button class="modal__content-close" id="closeAuthBtn">
+            <img src="../media/crossRed.svg" alt="закрыть"/>
+        </button>
+
+        <h2 class="modal__content-title">Авторизация</h2>
+
+        <div class="modal__content-input-box">
+            <input type="text" placeholder="Логин" required>
+        </div>
+
+        <div class="modal__content-input-box">
+            <input type="password" id="authPassword" class="modal__content-input-box-input" placeholder="Пароль"
+                   required>
+
+            <img class="modal__content-input-box-show" id="showPass" src="../media/showPass.svg" alt=""/>
+            <img class="modal__content-input-box-hide" id="hidePass" src="../media/hidePass.svg" alt=""/>
+        </div>
+
+        <button class="modal__content-frgt-pass">Забыли пароль?</button>
+
+        <button type="submit" class="modal__content-submit">Войти</button>
+
+        <p class="modal__content-text">Нет аккаунта? <span id="openRegisBtn">Зарегистрироваться</span></p>
+    </form>
+</dialog>
+
+<dialog class="modal modal_regis">
+    <form class="modal__content" method="dialog">
+        <button class="modal__content-close" id="closeRegisBtn">
+            <img src="../media/crossRed.svg" alt="закрыть"/>
+        </button>
+
+        <h2 class="modal__content-title">Регистрация</h2>
+
+
+        <div class="modal_regis__inputs">
+            <div class="modal__content-input-box">
+                <input type="text" placeholder="Фамилия Имя Отчество" required>
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="password" class="modal__content-input-box-input" id="newPassword" placeholder="Пароль"
+                       required>
+
+                <img class="modal__content-input-box-show" src="../media/showPass.svg" alt=""/>
+                <img class="modal__content-input-box-hide" src="../media/hidePass.svg" alt=""/>
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="date" placeholder="Дата Рождения" required>
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="password" class="modal__content-input-box-input" id="confirmNewPassword"
+                       placeholder="Повторите пароль" required>
+
+                <img class="modal__content-input-box-show" src="../media/showPass.svg" alt=""/>
+                <img class="modal__content-input-box-hide" src="../media/hidePass.svg" alt=""/>
+
+                <img class="modal__content-input-box-tick" src="../media/tickGreen.svg" alt="совпадают">
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="email" placeholder="Почта" required>
+            </div>
+        </div>
+
+        <button type="submit" class="modal__content-submit">Войти</button>
+
+        <p class="modal__content-text">Нет аккаунта? <span id="openAuthBtn">Войдите</span>
+        </p>
+    </form>
+</dialog>
+
+<script>
+    const openAuthBtn = document.querySelector('.header__enter')
+    const closeAuthBtn = document.getElementById('closeAuthBtn')
+    const openAuthBtn1 = document.getElementById('openAuthBtn')
+    const openRegisBtn = document.getElementById('openRegisBtn')
+    const closeRegisBtn = document.getElementById('closeRegisBtn')
+    const authModal = document.querySelector('.modal_auth')
+    const regisModal = document.querySelector('.modal_regis')
+
+    openAuthBtn.addEventListener("click", () => {
+        authModal.showModal()
+    })
+
+    closeAuthBtn.addEventListener("click", () => {
+        authModal.close()
+    })
+
+    openAuthBtn1.addEventListener("click", () => {
+        regisModal.close()
+        authModal.showModal()
+    })
+
+    authModal.addEventListener("click", e => {
+        const dialogDimensions = authModal.getBoundingClientRect()
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            authModal.close()
+        }
+    })
+
+    openRegisBtn.addEventListener("click", () => {
+        authModal.close()
+        regisModal.showModal()
+    })
+
+    closeRegisBtn.addEventListener("click", () => {
+        regisModal.close()
+    })
+
+    regisModal.addEventListener("click", e => {
+        const dialogDimensions = regisModal.getBoundingClientRect()
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            regisModal.close()
+        }
+    })
+
+    let showBtn = document.querySelectorAll(".modal__content-input-box-show");
+    let hideBtn = document.querySelectorAll(".modal__content-input-box-hide");
+
+    let authPass = document.querySelectorAll(".modal__content-input-box-input");
+
+    for (let i = 0; i < showBtn.length; i++) {
+        showBtn[i].addEventListener('click', () => {
+            if (authPass[i].type === "password") {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "text";
+            } else {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "password";
+            }
+        })
+
+        hideBtn[i].addEventListener('click', () => {
+            if (authPass[i].type === "password") {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "text";
+            } else {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "password";
+            }
+        })
+    }
+</script>
+</body>
+</html>
