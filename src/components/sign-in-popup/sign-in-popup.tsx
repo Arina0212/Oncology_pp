@@ -1,7 +1,14 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import RegistrationPopup from "../registration-popup/registration-popup";
 
 const SignInPopup: React.FC = () => {
+    const [showPassword, setShowPassword] = useState(false)
+    const passwordRef = useRef<HTMLInputElement>(null);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
     const modalRefSign = useRef<HTMLDialogElement>(null)
     function openModalSign() {
         modalRefSign.current?.showModal()
@@ -30,8 +37,12 @@ const SignInPopup: React.FC = () => {
                     </div>
 
                     <div className="modal__content-input-box">
-                        <input type="password" id="authPassword" className="modal__content-input-box-input" placeholder="Пароль"
-                        required/>
+                        <input type={showPassword ? "text" : "password"} 
+                            name="password" 
+                            id="authPassword"   
+                            className="modal__content-input-box-input" 
+                            placeholder="Пароль"
+                            required/>
 
                         <div className="modal__content-input-box-show" id="showPass">
                             <svg width="21" height="13" viewBox="0 0 21 13" fill="none" xmlns="http://www.w3.org/2000/svg">
