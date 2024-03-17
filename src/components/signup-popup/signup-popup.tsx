@@ -61,7 +61,7 @@ const SignUpPopup: React.FC =() => {
     return(
         <>
             <div className="modal modal_regis">
-                <form className="modal__content" method="dialog">
+                <form className="modal__content" onSubmit={handleSubmit}  action="#">
                     <Link to={AppRoute.Main} className="modal__content-close" id="closeRegisBtn">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 2L17 17" stroke="#FF0000" strokeWidth="3" strokeLinecap="round"/>
@@ -113,11 +113,14 @@ const SignUpPopup: React.FC =() => {
                         </div>
 
                         <div className="modal__content-input-box">
-                            <input className="modal__content-input-box-input" id="confirmNewPassword"
-                                ref={passwordRef} onChange={handleInput2}
+                            <input className="modal__content-input-box-input" 
+                                id="confirmNewPassword"
+                                ref={passwordRef} 
+                                onChange={handleInput2}
                                 type={inputType2}
                                 value={valueConfirmNewPass}
-                                placeholder="Повторите пароль" required/>
+                                placeholder="Повторите пароль" 
+                                required/>
 
                             { (inputType2 === 'password') &&
                                 <div onClick={toggleInput2} className="modal__content-input-box-show" id="showPass">
@@ -155,14 +158,18 @@ const SignUpPopup: React.FC =() => {
                         </div>
 
                         <div className="modal__content-input-box">
-                            <input type="email" placeholder="Почта"
+                            <input type="email" 
+                                placeholder="Почта"
                                 ref={emailRef}
-                                 required/>
+                                required/>
                         </div>
                     </div>
-
-                    <button type="submit" className="modal__content-submit">Войти</button>
-
+                    {((valueConfirmNewPass === valueNewPass) && (valueConfirmNewPass != '') ) &&
+                        <button type="submit" className="modal__content-submit">Войти</button>
+                    }
+                    {((valueConfirmNewPass != valueNewPass) || (valueConfirmNewPass === '')) &&
+                        <button disabled className="modal__content-submit_disable">Войти</button>
+                    }
                     <p className="modal__content-text">Нет аккаунта?<Link to={AppRoute.Login}><span id="openAuthBtn"> Войдите</span></Link></p>
                 </form>
             </div>
@@ -171,5 +178,3 @@ const SignUpPopup: React.FC =() => {
 }
 
 export default SignUpPopup;
-
-

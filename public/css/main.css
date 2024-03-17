@@ -249,6 +249,19 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 .modal__content-submit:hover {
   background-color: #C80000;
 }
+.modal__content-submit_disable {
+  width: 16.8421052632vw;
+  height: 3.0526315789vw;
+  margin-top: 2.6315789474vw;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  color: #FFFFFF;
+  background-color: #9e0000;
+  outline: none;
+  border: none;
+  border-radius: 0.7894736842vw;
+  transition: background-color ease-in-out 250ms;
+}
 .modal__content-text {
   font-weight: 600;
   font-size: 0.8421052632vw;
