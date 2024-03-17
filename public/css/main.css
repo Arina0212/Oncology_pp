@@ -44,6 +44,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   color: black;
   font-weight: 700;
   font-size: 1.2631578947vw;
+  text-decoration: none;
 }
 
 .visually-hidden {
@@ -85,6 +86,11 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 }
 .header__enter {
   width: 5vw;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
   height: 2.2105263158vw;
   font-weight: 600;
   font-size: 0.8421052632vw;
@@ -101,6 +107,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 }
 
 .modal {
+  position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
@@ -109,6 +116,13 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   border: none;
   border-radius: 1.0526315789vw;
 }
+
+.login__message p{
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  text-align: center;
+}
+
 .modal::backdrop {
   background: none;
 }
@@ -179,9 +193,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 .modal__content-input-box-show_active {
   opacity: 0;
 }
-.modal__content-input-box-hide {
-  opacity: 0;
-}
+
 .modal__content-input-box-hide_active {
   opacity: 1;
 }
@@ -193,10 +205,18 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   width: 0.9473684211vw;
   height: 0.7368421053vw;
   transition: opacity 250ms ease-in-out;
-  opacity: 0;
 }
 .modal__content-input-box-tick_show {
   opacity: 1;
+  position: absolute;
+  right: -1.6842105263vw;
+  top: 50%;
+  translate: 0 -50%;
+  width: 0.9473684211vw;
+  height: 0.7368421053vw;
+  transition: opacity 250ms ease-in-out;
+  display: flex;
+  align-items: center;
 }
 .modal__content-frgt-pass {
   font-weight: 600;
@@ -236,6 +256,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   margin-bottom: auto;
 }
 .modal__content-text span {
+  text-decoration: none;
   font-weight: 600;
   font-size: 0.8421052632vw;
   color: #FF0000;

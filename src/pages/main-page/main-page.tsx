@@ -1,16 +1,19 @@
-import SignInPopup from "../../components/sign-in-popup/sign-in-popup"
+import { Link } from "react-router-dom"
+import { AppRoute } from "../../const"
+
 
 export default function MainPage(){
+
     return(
         <>
             <header className="header">
                 <p className="header__title">Le Ha Im</p>
 
                 <div className="header__links">
-                    <a href="" className="header__links-link">Область применения</a>
-                    <a href="" className="header__links-link">Авторские права</a>
+                    <Link to="" className="header__links-link">Область применения</Link>
+                    <Link to="" className="header__links-link">Авторские права</Link>
                 </div>
-                <SignInPopup/>
+                <Link className="header__enter" to={AppRoute.Login}>Войти</Link>
         </header>
         </>
     )
