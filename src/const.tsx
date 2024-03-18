@@ -17,10 +17,10 @@ export const SingInErrorMessage = {
 };
   
 export enum APIRoute {
-  SignUp = 'api/v1/signup/',
-  Login = 'api/v1/login/',
-  Logout = 'api/v1/logout/',
-  Profile = 'api/v1/profile/'
+  SignUp = 'signup/',
+  Login = 'login/',
+  Logout = 'logout/',
+  Profile = 'profile/'
 }
 
 export enum NameSpace {

@@ -4,6 +4,7 @@ import { AppRoute, SingInErrorMessage } from "../../const";
 import { loginAction } from "../../store/api-actions";
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import type {State, AppDispatch} from '../../types/state';
+import Header from "../header/header";
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
@@ -48,6 +49,7 @@ const LoginPopup: React.FC = () => {
 
     return(
         <>
+            <Header/>
             <div className="modal modal_auth">
                 <form className="modal__content" onSubmit={handleSubmit} action="#">
                     <Link to={AppRoute.Main} className="modal__content-close" id="closeAuthBtn">
