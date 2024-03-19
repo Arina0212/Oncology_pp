@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { AppRoute } from "../../const"
+import UserBlock from "../user-block/user-block"
 
 
 export default function Header(){
@@ -12,7 +12,7 @@ export default function Header(){
                     <Link to="" className="header__links-link">Область применения</Link>
                     <Link to="" className="header__links-link">Авторские права</Link>
                 </div>
-                <Link className="header__enter" to={AppRoute.Login}>Войти</Link>
+                <UserBlock/>
             </header>
         </>
     )
