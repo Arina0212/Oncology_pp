@@ -4,12 +4,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import LoginPopup from '../login-popup/login-popup';
 import SignUpPopup from '../signup-popup/signup-popup';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 export default function App() {
 
   return (
-    <BrowserRouter>
+    <HelmetProvider>
       <Routes>
         <Route
           path={AppRoute.Main}
@@ -28,6 +29,6 @@ export default function App() {
           element={<Error />}
         />
       </Routes>
-    </BrowserRouter>
+    </HelmetProvider>
   );
 }

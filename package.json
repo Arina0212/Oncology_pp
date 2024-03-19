@@ -1,7 +1,8 @@
 {
-  "name": "LE_HA_IM",
+  "name": "le_ha_im",
   "version": "13.0.0",
   "type": "module",
+  "proxy": "http://localhost:5173/",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",

@@ -33,8 +33,8 @@ const LoginPopup: React.FC = () => {
             setIsErrorPassword(true);
         } else {
             dispatch(loginAction({
-            email: emailRef.current.value,
-            password: passwordRef.current.type
+                email: emailRef.current.value,
+                password: passwordRef.current.type
             }));
         }
         }
