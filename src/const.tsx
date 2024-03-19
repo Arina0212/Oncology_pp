@@ -4,6 +4,8 @@ export enum AppRoute {
   Login = '/login',
   Logout = '/logout',
   Profile = '/profile',
+  Usage = '/usage',
+  Copyright = '/Copyright'
 }
   
 export enum AuthorizationStatus {
@@ -20,7 +22,9 @@ export enum APIRoute {
   SignUp = 'signup/',
   Login = 'login/',
   Logout = 'logout/',
-  Profile = 'profile/'
+  Profile = 'profile/',
+  Usage = '/usage',
+  Copyright ='copyright'
 }
 
 export enum NameSpace {

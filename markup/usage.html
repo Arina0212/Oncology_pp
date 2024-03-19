@@ -6,24 +6,91 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/main.css">
-    <title>Главная</title>
+    <title>Авторские права</title>
 </head>
 <body>
 <header class="header">
     <a href="home.html" class="header__title">Le Ha Im</a>
 
     <div class="header__links">
-        <a href="usage.html" class="header__links-link">Область применения</a>
+        <a href="usage.html" class="header__links-link header__links-link_active">Область применения</a>
         <a href="copyright.html" class="header__links-link">Авторские права</a>
     </div>
 
     <button class="header__enter">Войти</button>
 </header>
 
-<section class="main">
-        <h1 class="main__title">Le Ha Im</h1>
+<section class="usage">
 
-        <a href="" class="main__btn">Калькулятор иммунодефицита и регенерации</a>
+
+    <input class="visually-hidden" type="radio" name="usage" value="oncology" id="oncology-input" checked>
+    <label class="usage__btn" for="oncology-input" id="oncology-label">
+        Онкология
+    </label>
+
+    <input class="visually-hidden" type="radio" name="usage" value="hematology" id="hematology-input">
+    <label class="usage__btn" for="hematology-input" id="hematology-label">
+        Гематология
+    </label>
+
+    <input class="visually-hidden" type="radio" name="usage" value="surgery" id="surgery-input">
+    <label class="usage__btn" for="surgery-input" id="surgery-label">
+        Хирургия
+    </label>
+
+    <input class="visually-hidden" type="radio" name="usage" value="therapy" id="therapy-input">
+    <label class="usage__btn" for="therapy-input" id="therapy-label">
+        Терапия
+    </label>
+
+
+    <div class="usage__content" id="oncology-content">
+        <h3 class="usage__content-title">Онкология</h3>
+        <p class="usage__content-text">
+            Целесообразность применения для наблюдения за пациентами с раком легкого
+            С50, С64, С43, Саркома Капоша, С18-20.
+            <br><br>
+            Документация иммунокомпрометации пациента
+            <br><br>
+            Фиксация глубины и вида нарушения для реабилитации
+        </p>
+    </div>
+
+    <div class="usage__content" id="hematology-content">
+        <h3 class="usage__content-title">Гематология</h3>
+        <p class="usage__content-text">
+            Целесообразность применения для наблюдения за пациентами с раком легкого
+            С50, С64, С43, Саркома Капоша, С18-20.
+            <br><br>
+            Документация иммунокомпрометации пациента
+            <br><br>
+            Фиксация глубины и вида нарушения для реабилитации
+        </p>
+    </div>
+
+    <div class="usage__content" id="surgery-content">
+        <h3 class="usage__content-title">Хирургия</h3>
+        <p class="usage__content-text">
+            Целесообразность применения для наблюдения за пациентами с раком легкого
+            С50, С64, С43, Саркома Капоша, С18-20.
+            <br><br>
+            Документация иммунокомпрометации пациента
+            <br><br>
+            Фиксация глубины и вида нарушения для реабилитации
+        </p>
+    </div>
+
+    <div class="usage__content" id="therapy-content">
+        <h3 class="usage__content-title">Терапия</h3>
+        <p class="usage__content-text">
+            Целесообразность применения для наблюдения за пациентами с раком легкого
+            С50, С64, С43, Саркома Капоша, С18-20.
+            <br><br>
+            Документация иммунокомпрометации пациента
+            <br><br>
+            Фиксация глубины и вида нарушения для реабилитации
+        </p>
+    </div>
 </section>
 
 <dialog class="modal modal_auth">
@@ -110,6 +177,7 @@
     const closeRegisBtn = document.getElementById('closeRegisBtn')
     const authModal = document.querySelector('.modal_auth')
     const regisModal = document.querySelector('.modal_regis')
+
 
     openAuthBtn.addEventListener("click", () => {
         authModal.showModal()

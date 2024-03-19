@@ -105,6 +105,115 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 .header__enter:hover {
   background-color: #D70000;
 }
+.header__links-link_active {
+  color: #FF0000;
+}
+.main {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5789473684vw;
+}
+.main__title {
+  font-weight: 700;
+  font-size: 6.3157894737vw;
+}
+.main__btn {
+  width: 29.0526315789vw;
+  height: 3.0526315789vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  text-decoration: none;
+  color: #FFFFFF;
+  background-color: #FF0000;
+  border-radius: 0.7894736842vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color ease-in-out 250ms;
+}
+.main__btn:hover {
+  background-color: #D70000;
+}
+
+.copyright {
+  padding: 3.1578947368vw 18.9473684211vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5789473684vw;
+}
+.copyright__warning {
+  font-size: 1.0526315789vw;
+}
+.copyright__text {
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+}
+
+.usage {
+  display: grid;
+  grid-template-columns: 10.4210526316vw 37.1052631579vw;
+  grid-template-rows: repeat(4, 1fr);
+  grid-auto-flow: column;
+  gap: 1.5789473684vw 3.1578947368vw;
+  padding: 3.1578947368vw 18.9473684211vw;
+}
+.usage__btn {
+  width: 100%;
+  height: 3.0526315789vw;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  color: rgba(0, 0, 0, 0.5019607843);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.1052631579vw solid rgba(0, 0, 0, 0.2509803922);
+  border-radius: 0.7894736842vw;
+  cursor: pointer;
+  transition: color ease-in-out 250ms, border ease-in-out 250ms;
+  user-select: none;
+}
+.usage__btn:hover {
+  color: #000000;
+  border: 0.1052631579vw solid #000000;
+}
+.usage__content {
+  display: none;
+}
+.usage__content-title {
+  font-size: 1.0526315789vw;
+  margin-bottom: 1.5789473684vw;
+}
+.usage__content-text {
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+}
+.usage #oncology-input:checked ~ #oncology-label,
+.usage #hematology-input:checked ~ #hematology-label,
+.usage #surgery-input:checked ~ #surgery-label,
+.usage #therapy-input:checked ~ #therapy-label {
+  color: #000000;
+  border: 0.1052631579vw solid #000000;
+}
+.usage #oncology-input:checked ~ #oncology-content,
+.usage #hematology-input:checked ~ #hematology-content,
+.usage #surgery-input:checked ~ #surgery-content,
+.usage #therapy-input:checked ~ #therapy-content {
+  grid-row: span 4;
+  display: block;
+}
+
+
+
+
+
 
 .modal {
   position: absolute;

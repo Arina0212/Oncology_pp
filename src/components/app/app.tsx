@@ -1,10 +1,12 @@
 import MainPage from '../../pages/main-page/main-page';
-import Error from '../../pages/error/error';
+import Error from '../../pages/error-page/error-page';
 import { Route, Routes } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import LoginPopup from '../login-popup/login-popup';
 import SignUpPopup from '../signup-popup/signup-popup';
 import { HelmetProvider } from 'react-helmet-async';
+import UsagePage from '../../pages/usage-page/usage-page';
+import CopyrightPage from '../../pages/copyright-page/copyright-page';
 
 
 export default function App() {
@@ -23,6 +25,14 @@ export default function App() {
         <Route
           path={AppRoute.SignUp}
           element={<SignUpPopup />}
+        />
+        <Route
+          path={AppRoute.Usage}
+          element={<UsagePage />}
+        />
+        <Route
+          path={AppRoute.Copyright}
+          element={<CopyrightPage />}
         />
         <Route
           path="*"
