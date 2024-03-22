@@ -12,12 +12,12 @@ export default function SignOutButton() {
   const dispatch = useAppDispatch();
   return(
     <Link
-      className="header__enter"
       to={AppRoute.Main}
       onClick={(evt) => {
         evt.preventDefault();
         dispatch(logoutAction());
       }}
-    >Выйти    </Link>
+      className="header__enter"
+    >Выйти</Link>
   );
 }

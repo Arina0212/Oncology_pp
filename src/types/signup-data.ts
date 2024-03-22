@@ -1,8 +1,9 @@
 export type SignUpData = {
-    user: string;
-    birthday: string;
-    email: string;
-    password: string;
-    token: string;
+  first_name: string,
+  last_name: string,
+  patronymic: string,
+  password: string,
+  login: string,
+  birth_day: string
   };
   

@@ -6,13 +6,18 @@ import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import type {State, AppDispatch} from '../../types/state';
 import Header from "../header/header";
 
+
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
 
-const LoginPopup: React.FC = () => {
+  
+export default function LoginPopup(){
     const emailRef = useRef<HTMLInputElement | null>(null);
     const passwordRef = useRef<HTMLInputElement | null>(null);
     const [error, setError] = useState('');
+    const [password, setPassword] = useState<string | null>(null);
+
+    const [error_api, setError_api] = useState('');
     const [isErrorEmail, setIsErrorEmail] = useState(false);
     const [isErrorPassword, setIsErrorPassword] = useState(false);
 
@@ -25,23 +30,22 @@ const LoginPopup: React.FC = () => {
     const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
         if (emailRef.current && passwordRef.current) {
-        if(!isValidEmail(emailRef.current.value)) {
-            setError(SingInErrorMessage.Email);
-            setIsErrorEmail(true);
-        } else if (!containsAnyLetters(passwordRef.current.value) || !containsAnyNumbers(passwordRef.current.value)) {
-            setError(SingInErrorMessage.Password);
-            setIsErrorPassword(true);
-        } else {
-            dispatch(loginAction({
-                email: emailRef.current.value,
-                password: passwordRef.current.type
-            }));
-        }
+            if(!isValidEmail(emailRef.current.value)) {
+                setError(SingInErrorMessage.Email);
+                setIsErrorEmail(true);
+            } else if (!containsAnyLetters(passwordRef.current.value) || !containsAnyNumbers(passwordRef.current.value)) {
+                setError(SingInErrorMessage.Password);
+                setIsErrorPassword(true);
+            } else {
+                dispatch(loginAction({
+                    login: emailRef.current.value,
+                    password: passwordRef.current.value
+                }));
+            }
         }
     };
 
     const [inputType, setInputType] = useState('password');
-    const handleInput =()=>{}
   
     const toggleInput = ()=>{
         setInputType(inputType === 'password' ? 'text': 'password')
@@ -51,13 +55,16 @@ const LoginPopup: React.FC = () => {
         <>
             <Header/>
             <div className="modal modal_auth">
-                <form className="modal__content" onSubmit={handleSubmit} action="#">
-                    <Link to={AppRoute.Main} className="modal__content-close" id="closeAuthBtn">
-                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 2L17 17" stroke="#FF0000" strokeWidth="3" strokeLinecap="round"/>
-                            <path d="M17 2L2 17" stroke="#FF0000" strokeWidth="3" strokeLinecap="round"/>
-                        </svg>
-                    </Link>
+                <form className="modal__content" onSubmit={handleSubmit} action="#" noValidate>
+                    <div className="modal__content-close">
+                        <Link to={AppRoute.Main} className="modal__content-close" id="closeAuthBtn">
+                            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 2L17 17" stroke="#FF0000" strokeWidth="3" strokeLinecap="round"/>
+                                <path d="M17 2L2 17" stroke="#FF0000" strokeWidth="3" strokeLinecap="round"/>
+                            </svg>
+                        </Link>
+                    </div>
+                    
 
                     <h2 className="modal__content-title">Авторизация</h2>
 
@@ -74,9 +81,10 @@ const LoginPopup: React.FC = () => {
 
                     <div className="modal__content-input-box">
                         <input
-                            onChange={handleInput}
+                            value={password ?? ''}
+                            onChange={(evt) => setPassword(evt.target.value)}
                             type={inputType}
-                            name="password" 
+                            name="Password" 
                             id="authPassword"   
                             className="modal__content-input-box-input" 
                             placeholder="Пароль"
@@ -110,5 +118,3 @@ const LoginPopup: React.FC = () => {
         </>
     )
 };
-
-export default LoginPopup

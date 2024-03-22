@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { AppRoute, SingInErrorMessage } from "../../const";
-import { loginAction } from "../../store/api-actions";
+import { SignUpAction } from "../../store/api-actions";
 import { FormEvent, SetStateAction, useRef, useState } from "react";
 import type {State, AppDispatch} from '../../types/state';
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,7 @@ const SignUpPopup: React.FC =() => {
     const emailRef = useRef<HTMLInputElement | null>(null);
     const passwordRef = useRef<HTMLInputElement | null>(null);
     const [error, setError] = useState('');
+    const [FIO, setFIO] = useState('');
     const [isErrorEmail, setIsErrorEmail] = useState(false);
     const [isErrorPassword, setIsErrorPassword] = useState(false);
 
@@ -32,10 +33,16 @@ const SignUpPopup: React.FC =() => {
             setError(SingInErrorMessage.Password);
             setIsErrorPassword(true);
         } else {
-            dispatch(loginAction({
-            email: emailRef.current.value,
-            password: passwordRef.current.value
+            dispatch(SignUpAction({
+                first_name: first_name,
+                last_name: last_name,
+                patronymic: patronymic,
+                password: passwordRef.current.value,
+                login: emailRef.current.value,
+                birth_day: ""
+                
             }));
+            
         }
         }
     };
@@ -58,6 +65,12 @@ const SignUpPopup: React.FC =() => {
     function handleInput2(event: { target: { value: SetStateAction<string>; }; }){
         setValueConfirmNewPass(event.target.value);
     }
+    const FIO_sep = FIO.split(' ', 3);
+
+    const first_name: string = FIO_sep[1];
+    const last_name: string = FIO_sep[0];
+    const patronymic: string = FIO_sep[2];
+    
 
     return(
         <>
@@ -79,7 +92,7 @@ const SignUpPopup: React.FC =() => {
 
                     <div className="modal_regis__inputs">
                         <div className="modal__content-input-box">
-                            <input type="text" placeholder="Фамилия Имя Отчество" required/>
+                            <input type="text" value={FIO} onChange={(evt) => setFIO(evt.target.value)} placeholder="Фамилия Имя Отчество" required/>
                         </div>
 
                         <div className="modal__content-input-box">

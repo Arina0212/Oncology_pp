@@ -1,5 +1,4 @@
 export type UserData = {
-  id: number;
-  email: string;
+  login: string;
   token: string;
 };

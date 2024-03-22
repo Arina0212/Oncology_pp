@@ -2,20 +2,21 @@
 
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
+import UserBlock from "../../components/user-block/user-block";
 
 export default function UsagePage(){
     return(
         <>
             {/* <Header/> */}
             <header className="header">
-                <a href="home.html" className="header__title">Le Ha Im</a>
+                <Link to={AppRoute.Main} className="header__title">Le Ha Im</Link>
 
                 <div className="header__links">
                     <Link to={AppRoute.Usage} className="header__links-link header__links-link_active">Область применения</Link>
                     <Link to={AppRoute.Copyright} className="header__links-link">Авторские права</Link>
                 </div>
 
-                <button className="header__enter">Войти</button>
+                <UserBlock/>
             </header>
             <section className="usage">
                 <input  className="visually-hidden" type="radio" name="usage" value="oncology" id="oncology-input" checked/>
