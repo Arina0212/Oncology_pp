@@ -3,8 +3,17 @@
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
 import UserBlock from "../../components/user-block/user-block";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { AppDispatch, State } from "../../types/state";
+import { getCopyright } from "../../store/copyright-process/selectors";
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
 
 export default function CopyrightPage(){
+    const copyright__text = useAppSelector(getCopyright);
+    const dispatch = useAppDispatch();
+
+
     return(
         <>
             {/* <Header/> */}
@@ -22,10 +31,7 @@ export default function CopyrightPage(){
                 <h3 className="copyright__warning">Внимание!</h3>
 
                 <p className="copyright__text">
-                    Данный сервис является объектом интеллектуальной собственности и охраняется законом.
-                    <br>
-                    </br>
-                    Любое использование содержимого третьими лицами возможно только с письменного разрешения владельца.
+                    {copyright__text}
                 </p>
             </section>
         </>

@@ -5,6 +5,8 @@ import { loginAction } from "../../store/api-actions";
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import type {State, AppDispatch} from '../../types/state';
 import Header from "../header/header";
+import { store } from "../../store";
+import { getError } from "../../store/user-process/selectors";
 
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
@@ -12,12 +14,14 @@ export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
 
   
 export default function LoginPopup(){
+    const error_api = useAppSelector(getError);
+
+
     const emailRef = useRef<HTMLInputElement | null>(null);
     const passwordRef = useRef<HTMLInputElement | null>(null);
     const [error, setError] = useState('');
     const [password, setPassword] = useState<string | null>(null);
 
-    const [error_api, setError_api] = useState('');
     const [isErrorEmail, setIsErrorEmail] = useState(false);
     const [isErrorPassword, setIsErrorPassword] = useState(false);
 
@@ -40,7 +44,8 @@ export default function LoginPopup(){
                 dispatch(loginAction({
                     login: emailRef.current.value,
                     password: passwordRef.current.value
-                }));
+                })
+                );
             }
         }
     };
@@ -70,6 +75,7 @@ export default function LoginPopup(){
 
                     <div className="login__message">
                         <p>{error}</p>
+                        <p>{error_api}</p>
                     </div>
 
                     <div className="modal__content-input-box ">

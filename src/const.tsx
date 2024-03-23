@@ -5,7 +5,7 @@ export enum AppRoute {
   Logout = '/logout',
   Profile = '/profile',
   Usage = '/usage',
-  Copyright = '/Copyright'
+  Copyright = '/copyright-info'
 }
   
 export enum AuthorizationStatus {
@@ -23,10 +23,11 @@ export enum APIRoute {
   Login = 'login/',
   Logout = 'logout/',
   Profile = 'profile/',
-  Usage = '/usage',
-  Copyright ='copyright'
+  Usage = 'usage/',
+  Copyright ='copyright-info/'
 }
 
 export enum NameSpace {
   User = 'USER',
+  Copyright = 'COPYRIGHT',
 }
