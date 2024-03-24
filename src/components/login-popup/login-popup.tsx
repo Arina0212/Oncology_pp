@@ -5,13 +5,11 @@ import { loginAction } from "../../store/api-actions";
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import type {State, AppDispatch} from '../../types/state';
 import Header from "../header/header";
-import { store } from "../../store";
 import { getError } from "../../store/user-process/selectors";
 
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
-
   
 export default function LoginPopup(){
     const error_api = useAppSelector(getError);
@@ -42,7 +40,7 @@ export default function LoginPopup(){
                 setIsErrorPassword(true);
             } else {
                 dispatch(loginAction({
-                    login: emailRef.current.value,
+                    email: emailRef.current.value,
                     password: passwordRef.current.value
                 })
                 );

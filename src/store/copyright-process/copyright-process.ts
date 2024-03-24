@@ -15,7 +15,6 @@ export const copyrightProcess = createSlice({
     builder
       .addCase(fetchCopyrightAction.fulfilled, (state, action) => {
         state.copyright_text = action.payload.copyright_text;
-        console.log('ggg');
       })
   }
 });

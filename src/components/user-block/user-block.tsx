@@ -15,13 +15,13 @@ const getUserBlock = (authorizationStatus: AuthorizationStatus) => {
       return (
           <Link className="header__enter" to={AppRoute.Login}>Войти</Link>
       );
-    }else if(authorizationStatus === AuthorizationStatus.Unknown){
-        return (
-            //   <div className="header__enter">
-            //   </div>
-              <Link className="header__enter" to={AppRoute.Login}>Войти</Link>
-            );
     }
+        return (
+              <div className="header__enter">
+              </div>
+              // <Link className="header__enter" to={AppRoute.Login}>Войти</Link>
+            );
+    
     
   };
   

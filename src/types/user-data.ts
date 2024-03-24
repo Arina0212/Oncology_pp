@@ -1,5 +1,5 @@
 export type UserData = {
-  login: string;
+  email: string;
   token: string;
   error: string;
 };

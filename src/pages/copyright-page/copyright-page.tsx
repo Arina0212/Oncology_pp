@@ -9,10 +9,11 @@ import { getCopyright } from "../../store/copyright-process/selectors";
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
 
-export default function CopyrightPage(){
-    const copyright__text = useAppSelector(getCopyright);
-    const dispatch = useAppDispatch();
 
+export default function CopyrightPage(){
+    const copyright = useAppSelector(getCopyright);
+    let text_warm = copyright.slice(0,copyright.indexOf(' '))
+    let text_con = copyright.slice(copyright.indexOf(' ')+1)
 
     return(
         <>
@@ -28,10 +29,10 @@ export default function CopyrightPage(){
                 <UserBlock/>
             </header>
             <section className="copyright">
-                <h3 className="copyright__warning">Внимание!</h3>
+                <h3 className="copyright__warning">{text_warm}</h3>
 
                 <p className="copyright__text">
-                    {copyright__text}
+                    {text_con}
                 </p>
             </section>
         </>

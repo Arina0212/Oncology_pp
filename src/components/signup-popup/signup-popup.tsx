@@ -5,11 +5,14 @@ import { FormEvent, SetStateAction, useRef, useState } from "react";
 import type {State, AppDispatch} from '../../types/state';
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import Header from "../header/header";
+import { getEmailError } from "../../store/user-process/selectors";
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
 
 const SignUpPopup: React.FC =() => {
+    const error_api = useAppSelector(getEmailError);
+
     const emailRef = useRef<HTMLInputElement | null>(null);
     const passwordRef = useRef<HTMLInputElement | null>(null);
     const [error, setError] = useState('');
@@ -38,9 +41,7 @@ const SignUpPopup: React.FC =() => {
                 last_name: last_name,
                 patronymic: patronymic,
                 password: passwordRef.current.value,
-                login: emailRef.current.value,
-                birth_day: ""
-                
+                email: emailRef.current.value,               
             }));
             
         }
@@ -88,6 +89,7 @@ const SignUpPopup: React.FC =() => {
 
                     <div className="login__message">
                         <p>{error}</p>
+                        <p>{error_api}</p>
                     </div>
 
                     <div className="modal_regis__inputs">

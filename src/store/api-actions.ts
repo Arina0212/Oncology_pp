@@ -10,16 +10,16 @@ import { SignUpData } from '../types/signup-data';
 import { DoctorData } from '../types/doctor-data';
 import { CopyrightData } from '../types/copyrigthing-data';
 
-export const checkAuthAction = createAsyncThunk<void, undefined, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
-  'user/checkAuth',
-  async (_arg, {extra: api}) => {
-    await api.get(APIRoute.Login);
-  },
-);
+// export const checkAuthAction = createAsyncThunk<void, undefined, {
+//   dispatch: AppDispatch;
+//   state: State;
+//   extra: AxiosInstance;
+// }>(
+//   'user/checkAuth',
+//   async (_arg, {extra: api}) => {
+//     await api.get(APIRoute.Login);
+//   },
+// );
 
 export const loginAction = createAsyncThunk<UserData, AuthData, {
   dispatch: AppDispatch;
@@ -27,11 +27,11 @@ export const loginAction = createAsyncThunk<UserData, AuthData, {
   extra: AxiosInstance;
 }>(
   'user/login',
-  async ({ login, password}, {dispatch, extra: api}) => {
-    const {data} = await api.post<UserData>(APIRoute.Login, {login, password});
+  async ({ email, password}, {dispatch, extra: api}) => {
+    const {data} = await api.post<UserData>(APIRoute.Login, {email, password});
     saveToken(data.token);
     console.log(data.error);
-    if(data.error === ' '){
+    if(data.error === undefined){
       dispatch(redirectToRoute(AppRoute.Main));
     }else{
       
@@ -53,15 +53,22 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   },
 );
 
-export const SignUpAction = createAsyncThunk<void, SignUpData, {
+export const SignUpAction = createAsyncThunk<DoctorData, SignUpData, {
   dispatch: AppDispatch;
+  state: State;
   extra: AxiosInstance;
 }>(
   'user/signup',
-  async ({ first_name, last_name, patronymic, password, login}, {dispatch, extra: api}) => {
-    const {data: {token}} = await api.post<DoctorData>(APIRoute.SignUp, {first_name, last_name, patronymic, password, login});
-    saveToken(token);
-    dispatch(redirectToRoute(AppRoute.Main));
+  async ({ first_name, last_name, patronymic, password, email}, {dispatch, extra: api}) => {
+    const {data} = await api.post<DoctorData>(APIRoute.SignUp, {first_name, last_name, patronymic, password, email});
+    saveToken(data.token);
+    console.log(data.email)
+    if(data.email === undefined){
+      dispatch(redirectToRoute(AppRoute.Main));
+    }else{
+      
+    }
+    return data;
   },
 );
 
@@ -73,11 +80,20 @@ export const fetchCopyrightAction = createAsyncThunk<CopyrightData, undefined, {
   'data/fetchCopyright',
   async (_arg, {extra: api}) => {
     const {data} = await api.get<CopyrightData>(APIRoute.Copyright);
-    console.log(data.copyright_text);
     return data;
   },
 );
 
-
+export const fetchUsageAction = createAsyncThunk<CopyrightData, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchCopyright',
+  async (_arg, {extra: api}) => {
+    const {data} = await api.get<CopyrightData>(APIRoute.Copyright);
+    return data;
+  },
+);
 
 

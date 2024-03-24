@@ -3,7 +3,6 @@ export type SignUpData = {
   last_name: string,
   patronymic: string,
   password: string,
-  login: string,
-  birth_day: string
+  email: string,
   };
   

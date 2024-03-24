@@ -4,6 +4,7 @@ import { store } from '../store';
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
   error: string;
+  email: string;
 };
 
 export type CopyrightProcess = {
