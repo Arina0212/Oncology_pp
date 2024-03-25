@@ -2,14 +2,10 @@ import { FormEvent, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { AppRoute, SingInErrorMessage } from "../../const";
 import { loginAction } from "../../store/api-actions";
-import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
-import type {State, AppDispatch} from '../../types/state';
 import Header from "../header/header";
 import { getError } from "../../store/user-process/selectors";
+import { useAppDispatch, useAppSelector } from "../hooks";
 
-
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
   
 export default function LoginPopup(){
     const error_api = useAppSelector(getError);

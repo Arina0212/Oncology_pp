@@ -1,10 +1,19 @@
-// import Header from "../../components/header/header";
+import Header from "../../components/header/header";
 
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
 import UserBlock from "../../components/user-block/user-block";
+import { getSubjectsName } from "../../store/subjects-process/selectors";
+import SubjectCard from "../../components/subject-card/subject-card";
+import { SubjectData } from "../../types/subject-data";
+import { fetchSubjectsAction } from "../../store/api-actions";
+import { store } from "../../store";
+import { useAppSelector } from "../../components/hooks";
 
+
+//store.dispatch(fetchSubjectsAction());
 export default function UsagePage(){
+    const subjects = useAppSelector(getSubjectsName);
     return(
         <>
             {/* <Header/> */}
@@ -19,7 +28,11 @@ export default function UsagePage(){
                 <UserBlock/>
             </header>
             <section className="usage">
-                <input  className="visually-hidden" type="radio" name="usage" value="oncology" id="oncology-input" checked/>
+                {subjects.map((subject:SubjectData) => (
+                        <SubjectCard key={subject.subject_name} subject_name={subject.subject_name}/>
+                    ))
+                }
+                {/* <input  className="visually-hidden" type="radio" name="usage" value="oncology" id="oncology-input"/>
                 <label className="usage__btn" htmlFor="oncology-input" id="oncology-label">
                     Онкология
                 </label>
@@ -37,7 +50,7 @@ export default function UsagePage(){
                 <input className="visually-hidden" type="radio" name="usage" value="therapy" id="therapy-input"/>
                 <label className="usage__btn" htmlFor="therapy-input" id="therapy-label">
                     Терапия
-                </label>
+                </label> */}
 
 
                 <div className="usage__content" id="oncology-content">

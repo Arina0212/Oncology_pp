@@ -2,13 +2,9 @@ import { Link } from "react-router-dom";
 import { AppRoute, SingInErrorMessage } from "../../const";
 import { SignUpAction } from "../../store/api-actions";
 import { FormEvent, SetStateAction, useRef, useState } from "react";
-import type {State, AppDispatch} from '../../types/state';
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import Header from "../header/header";
 import { getEmailError } from "../../store/user-process/selectors";
-
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
+import { useAppDispatch, useAppSelector } from "../hooks";
 
 const SignUpPopup: React.FC =() => {
     const error_api = useAppSelector(getEmailError);
@@ -16,6 +12,7 @@ const SignUpPopup: React.FC =() => {
     const emailRef = useRef<HTMLInputElement | null>(null);
     const passwordRef = useRef<HTMLInputElement | null>(null);
     const [error, setError] = useState('');
+    const [error_FIO, setFIO_e] = useState('');
     const [FIO, setFIO] = useState('');
     const [isErrorEmail, setIsErrorEmail] = useState(false);
     const [isErrorPassword, setIsErrorPassword] = useState(false);
@@ -35,6 +32,8 @@ const SignUpPopup: React.FC =() => {
         } else if (!containsAnyLetters(passwordRef.current.value) || !containsAnyNumbers(passwordRef.current.value)) {
             setError(SingInErrorMessage.Password);
             setIsErrorPassword(true);
+        }else if(FIO_sep.length!=3){
+            setError("Вы ввели неполные данные");
         } else {
             dispatch(SignUpAction({
                 first_name: first_name,
@@ -68,11 +67,9 @@ const SignUpPopup: React.FC =() => {
     }
     const FIO_sep = FIO.split(' ', 3);
 
-    const first_name: string = FIO_sep[1];
-    const last_name: string = FIO_sep[0];
-    const patronymic: string = FIO_sep[2];
-    
-
+    let first_name: string = FIO_sep[1];
+    let last_name: string = FIO_sep[0];
+    let patronymic: string = FIO_sep[2];
     return(
         <>
             <Header/>
@@ -90,6 +87,7 @@ const SignUpPopup: React.FC =() => {
                     <div className="login__message">
                         <p>{error}</p>
                         <p>{error_api}</p>
+                        <p>{error_FIO}</p>
                     </div>
 
                     <div className="modal_regis__inputs">

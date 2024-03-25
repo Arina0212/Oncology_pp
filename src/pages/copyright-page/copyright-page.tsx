@@ -3,11 +3,9 @@
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
 import UserBlock from "../../components/user-block/user-block";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { AppDispatch, State } from "../../types/state";
 import { getCopyright } from "../../store/copyright-process/selectors";
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<State> = useSelector;
+import { useAppSelector } from "../../components/hooks";
+
 
 
 export default function CopyrightPage(){

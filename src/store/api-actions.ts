@@ -9,6 +9,7 @@ import { UserData } from '../types/user-data';
 import { SignUpData } from '../types/signup-data';
 import { DoctorData } from '../types/doctor-data';
 import { CopyrightData } from '../types/copyrigthing-data';
+import { SubjectData } from '../types/subject-data';
 
 // export const checkAuthAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -84,16 +85,17 @@ export const fetchCopyrightAction = createAsyncThunk<CopyrightData, undefined, {
   },
 );
 
-export const fetchUsageAction = createAsyncThunk<CopyrightData, undefined, {
+export const fetchSubjectsAction = createAsyncThunk<SubjectData[], undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
-  'data/fetchCopyright',
+  'data/fetchSubjects',
   async (_arg, {extra: api}) => {
-    const {data} = await api.get<CopyrightData>(APIRoute.Copyright);
+    const {data} = await api.get<SubjectData[]>(APIRoute.Usage);
     return data;
   },
 );
+
 
 

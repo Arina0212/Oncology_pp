@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { AppRoute, AuthorizationStatus } from "../../const";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
-import { useAppSelector } from "../login-popup/login-popup";
 import SignOutButton from "../sign-out-button/sign-out-button";
+import { useAppSelector } from "../hooks";
 
 const getUserBlock = (authorizationStatus: AuthorizationStatus) => {
     if(authorizationStatus === AuthorizationStatus.Auth) {

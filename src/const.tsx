@@ -4,7 +4,7 @@ export enum AppRoute {
   Login = '/login',
   Logout = '/logout',
   Profile = '/profile',
-  Usage = '/usage',
+  Usage = '/subject-info',
   Copyright = '/copyright-info'
 }
   
@@ -23,11 +23,12 @@ export enum APIRoute {
   Login = 'login/',
   Logout = 'logout/',
   Profile = 'profile/',
-  Usage = 'usage/',
+  Usage = 'subject-info/',
   Copyright ='copyright-info/'
 }
 
 export enum NameSpace {
   User = 'USER',
   Copyright = 'COPYRIGHT',
+  Subjects = 'SUBJECTS'
 }

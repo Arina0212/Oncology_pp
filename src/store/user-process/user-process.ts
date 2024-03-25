@@ -28,7 +28,6 @@ export const userProcess = createSlice({
         }else{
           state.authorizationStatus = AuthorizationStatus.NoAuth;
         }
-
       })
       .addCase(SignUpAction.rejected, (state) => {
         state.authorizationStatus = AuthorizationStatus.NoAuth;
