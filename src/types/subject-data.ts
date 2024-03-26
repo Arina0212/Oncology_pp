@@ -1,5 +1,6 @@
 export type SubjectData = {
-    subject_name: string;
-    // subject_text: string;
+    id: number | undefined;
+    subject_name: string | undefined;
+    subject_text: string | undefined;
   };
   

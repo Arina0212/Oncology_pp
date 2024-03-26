@@ -4,7 +4,8 @@ export enum AppRoute {
   Login = '/login',
   Logout = '/logout',
   Profile = '/profile',
-  Usage = '/subject-info',
+  Subjects = '/subject-info',
+  Subject = ':id',
   Copyright = '/copyright-info'
 }
   
@@ -21,9 +22,9 @@ export const SingInErrorMessage = {
 export enum APIRoute {
   SignUp = 'signup/',
   Login = 'login/',
-  Logout = 'logout/',
+  Logout = '/logout',
   Profile = 'profile/',
-  Usage = 'subject-info/',
+  Subjects = 'subject-info',
   Copyright ='copyright-info/'
 }
 

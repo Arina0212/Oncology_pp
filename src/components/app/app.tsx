@@ -7,6 +7,7 @@ import SignUpPopup from '../signup-popup/signup-popup';
 import { HelmetProvider } from 'react-helmet-async';
 import UsagePage from '../../pages/usage-page/usage-page';
 import CopyrightPage from '../../pages/copyright-page/copyright-page';
+import SubjectText from '../subject-text/subject-text';
 
 
 export default function App() {
@@ -26,10 +27,9 @@ export default function App() {
           path={AppRoute.SignUp}
           element={<SignUpPopup />}
         />
-        <Route
-          path={AppRoute.Usage}
-          element={<UsagePage />}
-        />
+        <Route path={AppRoute.Subjects} element={<UsagePage/>}>
+          <Route path=":id" element={<MainPage />} />
+        </Route>
         <Route
           path={AppRoute.Copyright}
           element={<CopyrightPage />}

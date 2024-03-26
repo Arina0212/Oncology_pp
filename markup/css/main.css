@@ -158,14 +158,17 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 }
 
 .usage {
-  display: grid;
-  grid-template-columns: 10.4210526316vw 37.1052631579vw;
-  grid-template-rows: repeat(4, 1fr);
-  grid-auto-flow: column;
-  gap: 1.5789473684vw 3.1578947368vw;
+  display: flex;
+  gap: 3.1578947368vw;
   padding: 3.1578947368vw 18.9473684211vw;
 }
-.usage__btn {
+.usage__btns {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5789473684vw;
+  width: 10.4210526316vw;
+}
+.usage__btns-btn {
   width: 100%;
   height: 3.0526315789vw;
   font-weight: 600;
@@ -177,39 +180,29 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   border: 0.1052631579vw solid rgba(0, 0, 0, 0.2509803922);
   border-radius: 0.7894736842vw;
   cursor: pointer;
-  transition: color ease-in-out 250ms, border ease-in-out 250ms;
+  transition: 250ms, border ease-in-out 250ms;
   user-select: none;
 }
-.usage__btn:hover {
+.usage__btns-btn:hover {
   color: #000000;
   border: 0.1052631579vw solid #000000;
 }
-.usage__content {
+.usage__contents-content {
   display: none;
+  grid-column: 2/3;
 }
-.usage__content-title {
+.usage__contents-content-title {
   font-size: 1.0526315789vw;
   margin-bottom: 1.5789473684vw;
 }
-.usage__content-text {
+.usage__contents-content-text {
   font-weight: 600;
   font-size: 0.8421052632vw;
 }
-.usage #oncology-input:checked ~ #oncology-label,
-.usage #hematology-input:checked ~ #hematology-label,
-.usage #surgery-input:checked ~ #surgery-label,
-.usage #therapy-input:checked ~ #therapy-label {
-  color: #000000;
-  border: 0.1052631579vw solid #000000;
-}
-.usage #oncology-input:checked ~ #oncology-content,
-.usage #hematology-input:checked ~ #hematology-content,
-.usage #surgery-input:checked ~ #surgery-content,
-.usage #therapy-input:checked ~ #therapy-content {
-  grid-row: span 4;
+.usage__contents-content_active {
+  grid-row: span 10;
   display: block;
 }
-
 
 
 

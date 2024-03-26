@@ -1,6 +1,7 @@
 import { AuthorizationStatus } from '../const';
 import { store } from '../store';
 import { SubjectData } from './subject-data';
+import { SubjectsData } from './subjects-data';
 
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
@@ -13,8 +14,8 @@ export type CopyrightProcess = {
 };
 
 export type SubjectsProcess = {
-  subject_name: SubjectData[];
-  subject_text: string;
+  subject_name: SubjectsData[];
+  current_subject?: SubjectData;
 };
 
 export type State = ReturnType<typeof store.getState>;

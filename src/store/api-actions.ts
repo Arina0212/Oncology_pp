@@ -10,6 +10,7 @@ import { SignUpData } from '../types/signup-data';
 import { DoctorData } from '../types/doctor-data';
 import { CopyrightData } from '../types/copyrigthing-data';
 import { SubjectData } from '../types/subject-data';
+import { SubjectsData } from '../types/subjects-data';
 
 // export const checkAuthAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -31,7 +32,6 @@ export const loginAction = createAsyncThunk<UserData, AuthData, {
   async ({ email, password}, {dispatch, extra: api}) => {
     const {data} = await api.post<UserData>(APIRoute.Login, {email, password});
     saveToken(data.token);
-    console.log(data.error);
     if(data.error === undefined){
       dispatch(redirectToRoute(AppRoute.Main));
     }else{
@@ -63,7 +63,6 @@ export const SignUpAction = createAsyncThunk<DoctorData, SignUpData, {
   async ({ first_name, last_name, patronymic, password, email}, {dispatch, extra: api}) => {
     const {data} = await api.post<DoctorData>(APIRoute.SignUp, {first_name, last_name, patronymic, password, email});
     saveToken(data.token);
-    console.log(data.email)
     if(data.email === undefined){
       dispatch(redirectToRoute(AppRoute.Main));
     }else{
@@ -85,17 +84,29 @@ export const fetchCopyrightAction = createAsyncThunk<CopyrightData, undefined, {
   },
 );
 
-export const fetchSubjectsAction = createAsyncThunk<SubjectData[], undefined, {
+export const fetchSubjectsAction = createAsyncThunk<SubjectsData[], undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'data/fetchSubjects',
   async (_arg, {extra: api}) => {
-    const {data} = await api.get<SubjectData[]>(APIRoute.Usage);
+    const {data} = await api.get<SubjectsData[]>(APIRoute.Subjects);
     return data;
   },
 );
 
+export const fetchSubjectTextAction = createAsyncThunk<SubjectData, {id: number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchSubjectText',
+  async ({id}, {extra: api}) => {
+    const {data} = await api.get<SubjectData>(`${APIRoute.Subjects}/${id}/`);
+    console.log(data)
+    return data;
+  },
+);
 
 

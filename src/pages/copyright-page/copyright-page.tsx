@@ -20,7 +20,7 @@ export default function CopyrightPage(){
                 <Link to={AppRoute.Main} className="header__title">Le Ha Im</Link>
 
                 <div className="header__links">
-                    <Link to={AppRoute.Usage} className="header__links-link">Область применения</Link>
+                    <Link to={AppRoute.Subjects} className="header__links-link">Область применения</Link>
                     <Link to={AppRoute.Copyright} className="header__links-link header__links-link_active">Авторские права</Link>
                 </div>
 
