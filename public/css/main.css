@@ -197,12 +197,16 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 .usage__contents-content-text {
   font-weight: 600;
   font-size: 0.8421052632vw;
+  padding-bottom: 1.01vw;
 }
 .usage__contents-content_active {
   grid-row: span 10;
   display: block;
 }
-
+.usage input[type=radio]:checked + label {
+  color: #000000;
+  border: 0.1052631579vw solid #000000;
+}
 
 
 

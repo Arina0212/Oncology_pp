@@ -2,18 +2,19 @@ import useSubjectById from "../hooks/get-subject-by-id";
 
 
 export default function SubjectText(){
-    const film = useSubjectById();
-
-    console.log('страница c текстом по областям ')
-
+    const subject_data = useSubjectById();
+    console.log(subject_data?.subject_text?.split('\\n'))
     return(
         <>
         <div className="usage__contents">
             <div className="usage__contents-content usage__contents-content_active" id="usage-content">
-            <h3 className="usage__contents-content-title">{film?.subject_name}</h3>
-                <p className="usage__contents-content-text">
-                    {film?.subject_text}
-                </p>
+            <h3 className="usage__contents-content-title">{subject_data?.subject_name}</h3>
+                <div >
+                    {subject_data?.subject_text?.split('\\n')?.map((subject) => (
+                        <p className="usage__contents-content-text">{subject}</p>
+                    ))
+                    }
+                </div>
         </div>
         </div>
         </>

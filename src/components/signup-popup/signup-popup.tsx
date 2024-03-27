@@ -185,7 +185,7 @@ const SignUpPopup: React.FC =() => {
                     {((valueConfirmNewPass != valueNewPass) || (valueConfirmNewPass === '')) &&
                         <button disabled className="modal__content-submit_disable">Войти</button>
                     }
-                    <p className="modal__content-text">Нет аккаунта?<Link to={AppRoute.Login}><span id="openAuthBtn"> Войдите</span></Link></p>
+                    <p className="modal__content-text">Уже зарегистрированы?<Link to={AppRoute.Login}><span id="openAuthBtn"> Войдите</span></Link></p>
                 </form>
             </div>
         </>

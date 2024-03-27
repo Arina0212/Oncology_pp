@@ -28,7 +28,7 @@ export default function UsagePage(){
             </header>
             <section className="usage">
             <div className="usage__btns">
-                {subjects.map((subject:SubjectsData) => (
+                {subjects.map((subject: SubjectsData) => (
                         <SubjectCard key={subject.id} id={subject.id} subject_name={subject.subject_name}/>
                     ))
                 }

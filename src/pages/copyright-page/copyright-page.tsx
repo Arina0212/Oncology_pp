@@ -28,10 +28,10 @@ export default function CopyrightPage(){
             </header>
             <section className="copyright">
                 <h3 className="copyright__warning">{text_warm}</h3>
-
-                <p className="copyright__text">
-                    {text_con}
-                </p>
+                {text_con.split('\\n').map((phrase) => (
+                        <p className="copyright__text">{phrase}</p>
+                    ))
+                    }
             </section>
         </>
     )
