@@ -13,6 +13,10 @@ export type CopyrightProcess = {
   copyright_text: string;
 };
 
+export type ActiveSubjectProcess = {
+  activeSubject: string;
+}
+
 export type SubjectsProcess = {
   subject_name: SubjectsData[];
   current_subject?: SubjectData;

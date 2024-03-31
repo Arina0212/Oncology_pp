@@ -25,7 +25,8 @@ export enum APIRoute {
   Logout = '/logout',
   Profile = 'profile/',
   Subjects = 'subject-info',
-  Copyright ='copyright-info/'
+  Copyright ='copyright-info/',
+  Patiens = 'create-patients/'
 }
 
 export enum NameSpace {

@@ -209,6 +209,186 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 }
 
 
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6315789474vw;
+  padding: 3.1578947368vw 18.9473684211vw;
+}
+.search__header {
+  display: flex;
+  gap: 3.1578947368vw;
+}
+.search__header-regis {
+  outline: none;
+  border: none;
+  background: none;
+  color: #FF0000;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color ease-in-out 250ms;
+}
+.search__header-regis:hover {
+  color: #C80000;
+}
+.search__inputs {
+  display: flex;
+  gap: 2.1052631579vw;
+  align-items: center;
+  justify-content: center;
+  height: 3.0526315789vw;
+}
+.search__inputs-input {
+  width: 11.8947368421vw;
+  height: 100%;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  outline: none;
+  border: none;
+  border-bottom: 0.1052631579vw solid rgba(0, 0, 0, 0.3137254902);
+  padding: 0 1.5789473684vw;
+}
+.search__inputs-input::placeholder {
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+}
+.search__inputs-btn {
+  outline: none;
+  border: none;
+  border-radius: 0.7894736842vw;
+  width: 7.1578947368vw;
+  height: 100%;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  color: #FFFFFF;
+  background: #FF0000;
+  cursor: pointer;
+  transition: background ease-in-out 250ms;
+}
+.search__inputs-btn:hover {
+  background: #C80000;
+}
+.search__table {
+  display: flex;
+  flex-direction: column;
+}
+.search__table-titles {
+  display: grid;
+  grid-template-columns: 12.6842105263vw 10.0526315789vw 12.6315789474vw 12.3157894737vw 1fr;
+  border-width: 0.0526315789vw 0 0.0526315789vw 0;
+  border-style: solid;
+  border-color: rgba(208, 208, 208, 0.5019607843);
+  padding: 1vw 5.2631578947vw;
+}
+.search__table-titles-title {
+  font-weight: 600;
+  font-size: 0.9473684211vw;
+  color: rgba(0, 0, 0, 0.5019607843);
+}
+.search__table-item {
+  display: grid;
+  grid-template-columns: 12.6842105263vw 10.0526315789vw 13.9473684211vw 11.4210526316vw 3.0526315789vw 1.4736842105vw;
+  align-items: center;
+  border-bottom: 0.0526315789vw solid rgba(208, 208, 208, 0.5019607843);
+  padding: 1vw 5.2631578947vw;
+}
+.search__table-item-content {
+  font-weight: 600;
+  font-size: 0.9473684211vw;
+}
+.search__table-item-edit {
+  width: 0.9473684211vw;
+  height: 0.9473684211vw;
+  cursor: pointer;
+}
+.search__table-item-btn {
+  width: 1.4736842105vw;
+  height: 1.4736842105vw;
+  cursor: pointer;
+}
+
+.patient {
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+  padding: 3.1578947368vw 18.9473684211vw;
+}
+.patient__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.patient__header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.patient__header-info-text {
+  font-size: 1.2631578947vw;
+}
+.patient__header-info-name {
+  display: flex;
+  gap: 1.0526315789vw;
+  align-items: center;
+  margin-top: 1.5789473684vw;
+}
+.patient__header-info-name p {
+  font-size: 1.2631578947vw;
+}
+.patient__header-info-name-img {
+  cursor: pointer;
+  width: 0.9473684211vw;
+  height: 0.9473684211vw;
+}
+.patient__header-info-date {
+  font-size: 0.8421052632vw;
+  margin-top: 0.6842105263vw;
+}
+.patient__header-btn {
+  width: 12.1052631579vw;
+  height: 3.0526315789vw;
+  color: #FFFFFF;
+  background: #FF0000;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  outline: none;
+  border: none;
+  border-radius: 0.7894736842vw;
+  cursor: pointer;
+  transition: background ease-in-out 250ms;
+}
+.patient__header-btn:hover {
+  background: #C80000;
+}
+.patient__table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5789473684vw;
+}
+.patient__table-item {
+  display: flex;
+  gap: 6.3157894737vw;
+  align-items: center;
+  justify-content: center;
+  padding: 1vw 5.2631578947vw;
+  border-width: 0.0526315789vw 0 0.0526315789vw 0;
+  border-style: solid;
+  border-color: rgba(208, 208, 208, 0.5019607843);
+}
+.patient__table-item-links {
+  font-weight: 600;
+  font-size: 0.9473684211vw;
+  color: #FF0000;
+  transition: color ease-in-out 250ms;
+}
+.patient__table-item-links:hover {
+  color: #C80000;
+}
+.patient__table-item-date {
+  font-weight: 600;
+  font-size: 0.9473684211vw;
+  white-space: nowrap;
+}
 
 
 

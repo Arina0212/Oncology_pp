@@ -1,6 +1,5 @@
-import Header from "../../components/header/header";
-
 import { Link } from "react-router-dom";
+import cn from 'classnames'
 import { AppRoute } from "../../const";
 import UserBlock from "../../components/user-block/user-block";
 import { getSubjectsName } from "../../store/subjects-process/selectors";
@@ -12,10 +11,11 @@ import SubjectText from "../../components/subject-text/subject-text";
 
 //store.dispatch(fetchSubjectsAction());
 export default function UsagePage(){
+    // const activeGenre = useAppSelector(getActiveSubjectsName);
     const subjects = useAppSelector(getSubjectsName);
+
     return(
         <>
-            {/* <Header/> */}
             <header className="header">
                 <Link to={AppRoute.Main} className="header__title">Le Ha Im</Link>
 
@@ -29,6 +29,11 @@ export default function UsagePage(){
             <section className="usage">
             <div className="usage__btns">
                 {subjects.map((subject: SubjectsData) => (
+                        // // <div className={cn('catalog__genres-item', {'catalog__genres-item--active': activeGenre === subject.subject_name})}>
+                        //     {/* <Link to="#" onClick={() => {onGenreClick(); dispatch(changeActiveSubjects(activeSubject));}} className="catalog__genres-link"> */}
+                                
+                        //     {/* </Link> */}
+                        // // </div>
                         <SubjectCard key={subject.id} id={subject.id} subject_name={subject.subject_name}/>
                     ))
                 }

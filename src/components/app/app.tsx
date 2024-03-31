@@ -8,9 +8,15 @@ import { HelmetProvider } from 'react-helmet-async';
 import UsagePage from '../../pages/usage-page/usage-page';
 import CopyrightPage from '../../pages/copyright-page/copyright-page';
 import SubjectText from '../subject-text/subject-text';
+import { useAppSelector } from '../hooks';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
+// import PrivateRoute from '../private-route/private-route';
+import PatPage from '../../pages/patients-page/patients-page';
+import PatientsPage from '../../pages/patients-page/patients-page';
 
 
 export default function App() {
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return (
     <HelmetProvider>
@@ -30,6 +36,14 @@ export default function App() {
         <Route path={AppRoute.Subjects} element={<UsagePage/>}>
           <Route path=":id" element={<MainPage />} />
         </Route>
+        <Route
+          path={AppRoute.Profile}
+          element={
+            // <PrivateRoute authorizationStatus={authorizationStatus}>
+              <PatientsPage />
+            // </PrivateRoute>
+          }
+        />
         <Route
           path={AppRoute.Copyright}
           element={<CopyrightPage />}

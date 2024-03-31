@@ -109,4 +109,17 @@ export const fetchSubjectTextAction = createAsyncThunk<SubjectData, {id: number}
   },
 );
 
+export const fetchPatientsInfoAction = createAsyncThunk<SubjectData, {id: number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchPatientsInfo',
+  async ({id}, {extra: api}) => {
+    const {data} = await api.get<SubjectData>(`${APIRoute.Subjects}/${id}/`);
+    console.log(data)
+    return data;
+  },
+);
+
 

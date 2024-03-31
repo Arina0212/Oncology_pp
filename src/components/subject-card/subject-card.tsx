@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
-import { useState } from "react";
 
 type SubjectCardProps ={
     id: number;
