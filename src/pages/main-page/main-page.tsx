@@ -11,7 +11,7 @@ export default function MainPage(){
             <section className="main">
                 <h1 className="main__title">Le Ha Im</h1>
 
-                <Link to={AppRoute.Profile} className="main__btn">Калькулятор иммунодефицита и регенерации</Link>
+                <Link to={AppRoute.Search} className="main__btn">Калькулятор иммунодефицита и регенерации</Link>
             </section>
         </>
     )

@@ -11,6 +11,7 @@ import { DoctorData } from '../types/doctor-data';
 import { CopyrightData } from '../types/copyrigthing-data';
 import { SubjectData } from '../types/subject-data';
 import { SubjectsData } from '../types/subjects-data';
+import { PatienSData } from '../types/patients-data';
 
 // export const checkAuthAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -104,22 +105,31 @@ export const fetchSubjectTextAction = createAsyncThunk<SubjectData, {id: number}
   'data/fetchSubjectText',
   async ({id}, {extra: api}) => {
     const {data} = await api.get<SubjectData>(`${APIRoute.Subjects}/${id}/`);
-    console.log(data)
     return data;
   },
 );
 
-export const fetchPatientsInfoAction = createAsyncThunk<SubjectData, {id: number}, {
+export const CreatePatientsAction = createAsyncThunk<PatienSData, PatienSData, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
-  'data/fetchPatientsInfo',
-  async ({id}, {extra: api}) => {
-    const {data} = await api.get<SubjectData>(`${APIRoute.Subjects}/${id}/`);
+  'patient/CreatePatients',
+  async ({first_name, last_name, patronymic, birth_date, region, diagnosis}, {extra: api}) => {
+    const {data} = await api.post<PatienSData>(APIRoute.Patiens, {first_name, last_name, patronymic, birth_date, region, diagnosis});
     console.log(data)
     return data;
   },
 );
 
-
+export const fetchPatientsInfoAction = createAsyncThunk<PatienSData[], undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchPatiensInfo',
+  async (_arg, {extra: api}) => {
+    const {data} = await api.get<PatienSData[]>(APIRoute.Subjects);
+    return data;
+  },
+);

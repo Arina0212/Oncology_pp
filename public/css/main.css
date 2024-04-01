@@ -390,7 +390,9 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   white-space: nowrap;
 }
 
-
+.modal__content::backdrop{
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
 .modal {
   position: absolute;
@@ -410,9 +412,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   text-align: center;
 }
 
-.modal::backdrop {
-  background: none;
-}
+
 .modal__content {
   width: 100%;
   height: 100%;
@@ -582,4 +582,16 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   column-gap: 1.5789473684vw;
 }
 
+.modal_patient-regis {
+  width: 24.7368421053vw;
+  height: 36.4736842105vw;
+  border-radius: 1vw;
+  box-shadow: 0 0 4.2105263158vw 0 rgba(0, 0, 0, 0.0784313725);
+}
+.MuiPaper-root{
+  border-radius: 1vw !important;
+}
+.MuiBackdrop-root{
+  background-color: rgba(0, 0, 0, 0) !important;
+}
 /*# sourceMappingURL=main.css.map */

@@ -9,6 +9,18 @@ export type UserProcess = {
   email: string;
 };
 
+export type PatiensProcess = {
+  first_name: string;
+  last_name: string;
+  patronymic: string;
+  birth_date: string;
+  diagnosis: string;
+  region: string;
+  diagnosis_comment: string;
+  operation_comment: string;
+  chemoterapy_comment: string;
+};
+
 export type CopyrightProcess = {
   copyright_text: string;
 };

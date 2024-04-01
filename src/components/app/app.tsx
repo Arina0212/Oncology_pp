@@ -7,12 +7,12 @@ import SignUpPopup from '../signup-popup/signup-popup';
 import { HelmetProvider } from 'react-helmet-async';
 import UsagePage from '../../pages/usage-page/usage-page';
 import CopyrightPage from '../../pages/copyright-page/copyright-page';
-import SubjectText from '../subject-text/subject-text';
 import { useAppSelector } from '../hooks';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 // import PrivateRoute from '../private-route/private-route';
-import PatPage from '../../pages/patients-page/patients-page';
 import PatientsPage from '../../pages/patients-page/patients-page';
+import SearchPage from '../../pages/search-page/search-page';
+import PatiensCreatePopup from '../patiens';
 
 
 export default function App() {
@@ -37,10 +37,18 @@ export default function App() {
           <Route path=":id" element={<MainPage />} />
         </Route>
         <Route
+          path={AppRoute.Search}
+          element={
+            // <PrivateRoute authorizationStatus={authorizationStatus}>
+              <SearchPage />
+            // </PrivateRoute>
+          }
+        />
+        <Route
           path={AppRoute.Profile}
           element={
             // <PrivateRoute authorizationStatus={authorizationStatus}>
-              <PatientsPage />
+              <PatiensCreatePopup />
             // </PrivateRoute>
           }
         />

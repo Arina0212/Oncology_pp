@@ -6,7 +6,8 @@ export enum AppRoute {
   Profile = '/profile',
   Subjects = '/subject-info',
   Subject = ':id',
-  Copyright = '/copyright-info'
+  Copyright = '/copyright-info',
+  Search = '/search'
 }
   
 export enum AuthorizationStatus {
@@ -26,11 +27,12 @@ export enum APIRoute {
   Profile = 'profile/',
   Subjects = 'subject-info',
   Copyright ='copyright-info/',
-  Patiens = 'create-patients/'
+  Patiens = 'create-patient/'
 }
 
 export enum NameSpace {
   User = 'USER',
   Copyright = 'COPYRIGHT',
-  Subjects = 'SUBJECTS'
+  Subjects = 'SUBJECTS',
+  Patiens = 'PATIENTS'
 }
