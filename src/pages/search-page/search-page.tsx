@@ -19,6 +19,8 @@ const style = {
 
 export default function SearchPage(){
     const [open, setOpen] = useState(false);
+    const [error, setError] = useState('');
+
     const [FIO, setFIO] = useState('');
     const [birth_date, setDate] = useState('');
     const [region, setRegion] = useState('');
@@ -29,6 +31,10 @@ export default function SearchPage(){
 
     const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
+        if(FIO_sep.length!=3){
+            setError("Вы ввели неполные данные");
+        } else {
+            setError("")
         dispatch(CreatePatientsAction({
             first_name: first_name,
             last_name: last_name,
@@ -40,6 +46,9 @@ export default function SearchPage(){
             operation_comment: "",
             chemoterapy_comment: ""
         }));
+        handleClose();
+    }
+        
     };
 
     const FIO_sep = FIO.split(' ', 3);
@@ -70,7 +79,9 @@ export default function SearchPage(){
                     </button>
 
                     <h2 className="modal__content-title">Регистрация</h2>
-
+                    <div className="login__message">
+                        <p>{error}</p>
+                    </div>
                     <div className="modal__content-input-box">
                         <input type="text" value={FIO} onChange={(evt) => setFIO(evt.target.value)} placeholder="ФИО пациента" required/>
                     </div>

@@ -6,11 +6,11 @@ import HistoryRouter from './components/history-route/history-route';
 import browserHistory from './browser-history';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { fetchCopyrightAction, fetchSubjectsAction } from './store/api-actions';
+import { fetchCopyrightAction, fetchPatientsInfoAction, fetchSubjectsAction } from './store/api-actions';
 
 store.dispatch(fetchSubjectsAction());
 store.dispatch(fetchCopyrightAction());
-
+store.dispatch(fetchPatientsInfoAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

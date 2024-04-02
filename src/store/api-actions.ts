@@ -115,21 +115,27 @@ export const CreatePatientsAction = createAsyncThunk<PatienSData, PatienSData, {
   extra: AxiosInstance;
 }>(
   'patient/CreatePatients',
-  async ({first_name, last_name, patronymic, birth_date, region, diagnosis}, {extra: api}) => {
-    const {data} = await api.post<PatienSData>(APIRoute.Patiens, {first_name, last_name, patronymic, birth_date, region, diagnosis});
+  async ({first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment}, {dispatch, extra: api}) => {
+    const {data} = await api.post<PatienSData>(APIRoute.Patiens, {first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment});
     console.log(data)
+    dispatch(redirectToRoute(AppRoute.Search))
+
     return data;
   },
 );
 
-export const fetchPatientsInfoAction = createAsyncThunk<PatienSData[], undefined, {
+export const fetchPatientsInfoAction = createAsyncThunk<UserData, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
-  'data/fetchPatiensInfo',
-  async (_arg, {extra: api}) => {
-    const {data} = await api.get<PatienSData[]>(APIRoute.Subjects);
+  'data/fetchDoctorInfo',
+  async (_arg, {dispatch,extra: api}) => {
+    const {data} = await api.get<UserData>(APIRoute.Profile);
+    dispatch(redirectToRoute(AppRoute.Search))
+
     return data;
   },
 );
+
+
