@@ -20,7 +20,7 @@ export default function UsagePage(){
                 <Link to={AppRoute.Main} className="header__title">Le Ha Im</Link>
 
                 <div className="header__links">
-                    <Link to={AppRoute.Subjects} className="header__links-link header__links-link_active">Область применения</Link>
+                    <Link to={`${AppRoute.Subjects}/${1}`} className="header__links-link header__links-link_active">Область применения</Link>
                     <Link to={AppRoute.Copyright} className="header__links-link">Авторские права</Link>
                 </div>
 
@@ -29,13 +29,7 @@ export default function UsagePage(){
             <section className="usage">
             <div className="usage__btns">
                 {subjects.map((subject: SubjectsData) => (
-                        // // <div className={cn('catalog__genres-item', {'catalog__genres-item--active': activeGenre === subject.subject_name})}>
-                        //     {/* <Link to="#" onClick={() => {onGenreClick(); dispatch(changeActiveSubjects(activeSubject));}} className="catalog__genres-link"> */}
-                                
-                        //     {/* </Link> */}
-                        // // </div>
-                        <SubjectCard key={subject.id} id={subject.id} subject_name={subject.subject_name}/>
-                    ))
+                    <SubjectCard key={subject.id} id={subject.id} subject_name={subject.subject_name}/>))
                 }
                 </div>
                 <SubjectText/>

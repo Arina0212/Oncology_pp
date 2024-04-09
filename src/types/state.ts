@@ -1,5 +1,6 @@
 import { AuthorizationStatus } from '../const';
 import { store } from '../store';
+import { PatienInfoData } from './patient-info';
 import { SubjectData } from './subject-data';
 import { SubjectsData } from './subjects-data';
 
@@ -10,15 +11,9 @@ export type UserProcess = {
 };
 
 export type PatiensProcess = {
-  first_name: string;
-  last_name: string;
-  patronymic: string;
-  birth_date: string;
-  diagnosis: string;
-  region: string;
-  diagnosis_comment: string;
-  operation_comment: string;
-  chemoterapy_comment: string;
+  patients: PatienInfoData[];
+  patient?: PatienInfoData;
+  isPatientLoading: boolean;
 };
 
 export type CopyrightProcess = {

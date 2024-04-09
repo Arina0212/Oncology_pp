@@ -12,6 +12,7 @@ import { CopyrightData } from '../types/copyrigthing-data';
 import { SubjectData } from '../types/subject-data';
 import { SubjectsData } from '../types/subjects-data';
 import { PatienSData } from '../types/patients-data';
+import { PatienInfoData } from '../types/patient-info';
 
 // export const checkAuthAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -124,18 +125,63 @@ export const CreatePatientsAction = createAsyncThunk<PatienSData, PatienSData, {
   },
 );
 
-export const fetchPatientsInfoAction = createAsyncThunk<UserData, undefined, {
+
+export const fetchPatiensInfoAction = createAsyncThunk<PatienInfoData[], undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
-  'data/fetchDoctorInfo',
-  async (_arg, {dispatch,extra: api}) => {
-    const {data} = await api.get<UserData>(APIRoute.Profile);
+  'data/fetchPatiensInfo',
+  async (_arg, {extra: api}) => {
+    const {data} = await api.get<PatienInfoData[]>(APIRoute.PatiensInfo);
+    console.log(data)
+    return data;
+  },
+);
+
+//редактирование данных о пациенте по id
+    //нужно создать новый тип patient-data с id 
+    ///*///
+export const UpdatePatientsAction = createAsyncThunk<PatienInfoData, PatienInfoData,{
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'patient/CreatePatients',
+  async ({id, first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment}, {dispatch, extra: api}) => {
+    const {data} = await api.put<PatienInfoData>(`${APIRoute.Patient}${id}/`, {id, first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment});
+    console.log(data)
     dispatch(redirectToRoute(AppRoute.Search))
 
     return data;
   },
 );
+
+export const fetchFullPatientInfoAction = createAsyncThunk<PatienInfoData, {id: number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchSubjectText',
+  async ({id}, {extra: api}) => {
+    const {data} = await api.get<PatienInfoData>(`${APIRoute.Patient}${id}/`);
+    console.log("полная инфа по id",data)
+    return data;
+  },
+);
+
+// export const fetchPatientsInfoAction = createAsyncThunk<UserData, undefined, {
+//   dispatch: AppDispatch;
+//   state: State;
+//   extra: AxiosInstance;
+// }>(
+//   'data/fetchDoctorInfo',
+//   async (_arg, {dispatch,extra: api}) => {
+//     const {data} = await api.get<UserData>(APIRoute.Profile);
+//     dispatch(redirectToRoute(AppRoute.Search))
+
+//     return data;
+//   },
+// );
 
 

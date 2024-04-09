@@ -44,14 +44,11 @@ export default function App() {
             // </PrivateRoute>
           }
         />
-        <Route
-          path={AppRoute.Profile}
-          element={
-            // <PrivateRoute authorizationStatus={authorizationStatus}>
-              <PatiensCreatePopup />
-            // </PrivateRoute>
-          }
-        />
+         <Route path={AppRoute.Patients}>
+          <Route path=':id'>
+            <Route index element={<PatientsPage />} />
+          </Route>
+        </Route>
         <Route
           path={AppRoute.Copyright}
           element={<CopyrightPage />}

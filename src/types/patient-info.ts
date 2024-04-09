@@ -1,4 +1,5 @@
-export type PatienSData = {
+export type PatienInfoData = {
+    id: number;
     first_name: string;
     last_name: string;
     patronymic: string;
@@ -9,4 +10,3 @@ export type PatienSData = {
     operation_comment: string;
     chemoterapy_comment: string;
   };
-  

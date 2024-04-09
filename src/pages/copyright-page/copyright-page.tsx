@@ -20,7 +20,7 @@ export default function CopyrightPage(){
                 <Link to={AppRoute.Main} className="header__title">Le Ha Im</Link>
 
                 <div className="header__links">
-                    <Link to={AppRoute.Subjects} className="header__links-link">Область применения</Link>
+                    <Link to={`${AppRoute.Subjects}/${1}`} className="header__links-link">Область применения</Link>
                     <Link to={AppRoute.Copyright} className="header__links-link header__links-link_active">Авторские права</Link>
                 </div>
 
@@ -31,7 +31,7 @@ export default function CopyrightPage(){
                 {text_con.split('\\n').map((phrase) => (
                         <p className="copyright__text">{phrase}</p>
                     ))
-                    }
+                }
             </section>
         </>
     )

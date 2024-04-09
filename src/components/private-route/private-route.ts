@@ -1,4 +1,4 @@
-// import { Navigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import { AppRoute, AuthorizationStatus } from '../../const';
 
 // type PrivateRouteProps = {
@@ -6,12 +6,15 @@
 //   children: JSX.Element;
 // }
 
-// export default function PrivateRoute(props: PrivateRouteProps) {
-//    const {authorizationStatus, children} = props;
-
-//   return (
-//     authorizationStatus === AuthorizationStatus.Auth 
-//         ? (children) 
-//         : (Navigate(AppRoute.Login))
-//   );
+// export default function PrivateRoute (props: PrivateRouteProps){
+//     const {authorizationStatus, children} = props;
+//     const navigate = useNavigate()
+//     if(authorizationStatus === AuthorizationStatus.Auth){
+//         return (
+//             children
+//         )
+//     }else{
+//         navigate(AppRoute.Login)
+//     }
+   
 // }

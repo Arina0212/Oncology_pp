@@ -3,7 +3,8 @@ export enum AppRoute {
   SignUp = '/signup',
   Login = '/login',
   Logout = '/logout',
-  Profile = '/profile',
+  Patients = '/patients',
+  PatientInfo =':id',
   Subjects = '/subject-info',
   Subject = ':id',
   Copyright = '/copyright-info',
@@ -27,7 +28,11 @@ export enum APIRoute {
   Profile = 'profile/',
   Subjects = 'subject-info',
   Copyright ='copyright-info/',
-  Patiens = 'create-patient/'
+  Patiens = 'create-patient/',
+  Patient = 'edit-patient/',
+
+  PatiensInfo = 'patients-info'
+
 }
 
 export enum NameSpace {
