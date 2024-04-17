@@ -38,14 +38,16 @@ export default function PatientStroke({id, first_name_pat, last_name_pat, patron
     let [isUpdatePatient, setIsUpdatePatient] = useState(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
-
-    
+    let dateTime = new Date().toLocaleDateString()
+    console.log(dateTime)
     const handleSubmitUpdate = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
         if(authorizationStatus != AuthorizationStatus.Auth){
             navigate(`${AppRoute.Login}`);
-        } else if(FIO_sep.length!=3){
+        }else if(FIO_sep.length!=3){
             setError("Вы ввели неполные данные");
+        }else if(humanizeDate(birth_date) > dateTime){
+            setError("Дата рождения не может быть больше текущей даты");
         }else{
             setError("")
             dispatch(UpdatePatientsAction({
@@ -66,17 +68,19 @@ export default function PatientStroke({id, first_name_pat, last_name_pat, patron
             console.log(id)
         }
     };
-
-    console.log(isUpdatePatient)
+    if(humanizeDate(birth_date) > dateTime){
+        console.log("Дата рождения не может быть больше текущей даты");}
+        else{
+            console.log("Дата рождения ")
+        }
+    console.log(humanizeDate(birth_date))
     useEffect(() => {
         if(isUpdatePatient === true){
             dispatch(fetchFullPatientInfoAction({id: id}));
             console.log(id)
         }
       }, [dispatch, id]);
-      const update_patient = useAppSelector(getCurrentPatient);
-      console.log("Обновленный пациент: ",update_patient)
-      
+      const update_patient = useAppSelector(getCurrentPatient);      
     const FIO_sep = FIO.split(' ', 3);
 
     let first_name: string = FIO_sep[1];
@@ -102,6 +106,7 @@ export default function PatientStroke({id, first_name_pat, last_name_pat, patron
             <Dialog className="modal update" sx={style} 
                 open={openUp}
                 onClose={handleCloseUpdate}>
+                    
 
                 <form className="modal_patient-regis modal__content" onSubmit={handleSubmitUpdate} action="#">
                     <button className="modal__content-close" id="closePatientRegisBtn" onClick={handleCloseUpdate}>
@@ -111,8 +116,11 @@ export default function PatientStroke({id, first_name_pat, last_name_pat, patron
                         </svg>
                     </button>
                     <h2 className="modal__content-title">Пациент</h2>
+                    <div className="login__message">
+                            <p>{error}</p>
+                    </div>
                     <div className="modal__content-input-box">
-                        <input type="text" value={FIO} onChange={(evt) => setFIO(evt.target.value)} placeholder="ФИО пациента" required/>
+                        <input type="text" value={FIO} onChange={(evt) => setFIO(evt.target.value)} placeholder={last_name_pat + " " + first_name_pat + " " + patronomic_pat} required/>
                     </div>
                     <div className="modal__content-input-box">
                         <input type="date" value={birth_date} onChange={(evt) => setDate(evt.target.value)} placeholder="Дата рождения" required/>

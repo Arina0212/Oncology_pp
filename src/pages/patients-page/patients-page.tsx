@@ -3,7 +3,7 @@ import Header from "../../components/header/header";
 import { FormEvent, useState } from "react";
 import Dialog from '@mui/material/Dialog';
 import { useAppDispatch, useAppSelector } from "../../components/hooks";
-import { UpdatePatientsAction } from "../../store/api-actions";
+import { UpdatePatientsAction, fetchFullPatientInfoAction } from "../../store/api-actions";
 import { AppRoute, AuthorizationStatus } from "../../const";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
 import usePatientById from "../../components/hooks/get-patient-by-id";
@@ -34,6 +34,7 @@ export default function PatientPage(){
     const [diagnoses, setDiagnoses] = useState('');
     const authorizationStatus = useAppSelector(getAuthorizationStatus);
     const isPatientLoading = useAppSelector(getPatientDataLoading);
+    let dateTime = new Date().toLocaleDateString()
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
@@ -44,6 +45,8 @@ export default function PatientPage(){
             navigate(`${AppRoute.Login}`);
         } else if(FIO_sep.length!=3){
             setError("Вы ввели неполные данные");
+        }else if(humanizeDate(birth_date) > dateTime){
+            setError("Дата рождения не может быть больше текущей даты");
         }else{
         dispatch(UpdatePatientsAction({
             id: Number(urlParams.id),
@@ -57,6 +60,9 @@ export default function PatientPage(){
             operation_comment: "",
             chemoterapy_comment: ""
         }));}
+        handleClose();
+        dispatch(fetchFullPatientInfoAction({id: Number(urlParams.id)}));
+        console.log(Number(urlParams.id))
     };
 
     const FIO_sep = FIO.split(' ', 3);
@@ -78,51 +84,69 @@ export default function PatientPage(){
             <>
                 <Header/>
                 <section className="patient">
-                    <div className="patient__header">
-                        <div className="patient__header-info">
-                            <h3 className="patient__header-info-text">Информациая о пациенте:</h3>
-                            <div className="patient__header-info-name">
-                                <p>{patient_data.last_name} {patient_data.first_name} {patient_data.patronymic}</p>
-                                <div className="patient__header-info-name-img" onClick={handleClickOpen}>
-                                    <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3 13.4952L1 19L6.50476 17L19 4.50476L15.4952 1L3 13.4952Z" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M12.7998 4L15.9998 7.2" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M3.7998 13L6.9998 16.2" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                    </svg>
-                                </div>
+                    <div className="patient__left">
+                        <h3 className="patient__left-info">Информациая о пациенте:</h3>
+
+                        <div className="patient__left-name">
+                            <p>{patient_data.last_name} {patient_data.first_name} {patient_data.patronymic}</p>
+                            <div className="patient__left-name-img"  onClick={handleClickOpen}>
+                                <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 13.4952L1 19L6.50476 17L19 4.50476L15.4952 1L3 13.4952Z" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                    <path d="M12.7998 4L15.9998 7.2" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                    <path d="M3.7998 13L6.9998 16.2" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
                             </div>
-                            <p className="patient__header-info-date">Дата Рождения: {humanizeDate(patient_data.birth_date)}</p>
                         </div>
-                        <button className="patient__header-btn">Добавить анализ</button>
+                        <div className="patient__left-date">
+                            <p>Дата Рождения: {humanizeDate(patient_data.birth_date)}</p>
+                            <p>Регион: {patient_data.region}</p>
+                        </div>
+
+                        <div className="patient__left-add">
+                            <h3 className="patient__left-add-text">Результаты анализов</h3>
+                            <button className="patient__left-add-btn">Добавить анализ</button>
+                        </div>
+
+                        <div className="patient__left-table">
+                            <div className="patient__left-table-item">
+                                <a href="analysis.html" className="patient__left-table-item-links">ОАК</a>
+                                <a href="analysis.html" className="patient__left-table-item-links">имуннодефицит</a>
+                                <a href="analysis.html" className="patient__left-table-item-links">цитокоины</a>
+                                <p className="patient__left-table-item-date">Дата: 19.11.2023</p>
+                            </div>
+                            <div className="patient__left-table-item">
+                                <a href="analysis.html" className="patient__left-table-item-links">ОАК</a>
+                                <a href="analysis.html" className="patient__left-table-item-links">имуннодефицит</a>
+                                <a href="analysis.html" className="patient__left-table-item-links">цитокоины</a>
+                                <p className="patient__left-table-item-date">Дата: 19.11.2023</p>
+                            </div>
+                            <div className="patient__left-table-item">
+                                <a href="analysis.html" className="patient__left-table-item-links">ОАК</a>
+                                <a href="analysis.html" className="patient__left-table-item-links">имуннодефицит</a>
+                                <a href="analysis.html" className="patient__left-table-item-links">цитокоины</a>
+                                <p className="patient__left-table-item-date">Дата: 19.11.2023</p>
+                            </div>
+                            <div className="patient__left-table-item">
+                                <a href="analysis.html" className="patient__left-table-item-links">ОАК</a>
+                                <a href="analysis.html" className="patient__left-table-item-links">имуннодефицит</a>
+                                <a href="analysis.html" className="patient__left-table-item-links">цитокоины</a>
+                                <p className="patient__left-table-item-date">Дата: 19.11.2023</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="patient__table">
-                        <div className="patient__table-item">
-                            <Link to="" className="patient__table-item-links">ОАК</Link>
-                            <Link to="" className="patient__table-item-links">имуннодефицит</Link>
-                            <Link to="" className="patient__table-item-links">цитокоины</Link>
-                            <p className="patient__table-item-date">Дата исследования: 19.11.2023</p>
-                        </div>
-                        <div className="patient__table-item">
-                            <Link to="" className="patient__table-item-links">ОАК</Link>
-                            <Link to="" className="patient__table-item-links">имуннодефицит</Link>
-                            <Link to="" className="patient__table-item-links">цитокоины</Link>
-                            <p className="patient__table-item-date">Дата исследования: 19.11.2023</p>
-                        </div>
-                        <div className="patient__table-item">
-                            <Link to="" className="patient__table-item-links">ОАК</Link>
-                            <Link to="" className="patient__table-item-links">имуннодефицит</Link>
-                            <Link to="" className="patient__table-item-links">цитокоины</Link>
-                            <p className="patient__table-item-date">Дата исследования: 19.11.2023</p>
-                        </div>
-                        <div className="patient__table-item">
-                            <Link to="" className="patient__table-item-links">ОАК</Link>
-                            <Link to="" className="patient__table-item-links">имуннодефицит</Link>
-                            <Link to="" className="patient__table-item-links">цитокоины</Link>
-                            <p className="patient__table-item-date">Дата исследования: 19.11.2023</p>
-                        </div>
-                    </div>
+                    <div className="patient__right">
+                        <h3 className="patient__right-header">Диагноз: {patient_data.diagnosis}</h3>
+                        <p className="patient__right-text">Комментарий о диагнозе: {patient_data.diagnosis_comment}</p>
 
+                        <h3 className="patient__right-header">Дата операции: 12.12.2023</h3>
+                        <p className="patient__right-text">Комментарий об операции: {patient_data.operation_comment}</p>
+
+                        <h3 className="patient__right-header">Химиотерапия: Да</h3>
+                        <p className="patient__right-text">Комментарий о курсах химиотерапии: {patient_data.chemoterapy_comment}</p>
+
+                        <button className="patient__right-btn">Редактировать данные</button>
+                    </div>
                 </section>
                 <Dialog className="modal update" sx={style} 
                     open={open}

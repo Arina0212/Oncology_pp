@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Поиск пациентов</title>
+</head>
+<body>
+<header class="header">
+    <a href="home.html" class="header__title">Le Ha Im</a>
+
+    <div class="header__links">
+        <a href="usage.html" class="header__links-link">Область применения</a>
+        <a href="copyright.html" class="header__links-link">Авторские права</a>
+    </div>
+
+    <button class="header__enter">Войти</button>
+</header>
+
+<section class="search">
+    <div class="search__header">
+        <h3 class="search__header-title">Поиск пациента</h3>
+        <button class="search__header-regis">Регистрация пациента</button>
+    </div>
+
+    <div class="search__inputs">
+        <input type="text" class="search__inputs-input" placeholder="Фамилия">
+        <input type="text" class="search__inputs-input" placeholder="Имя">
+        <input type="text" class="search__inputs-input" placeholder="Отчество">
+        <input type="text" class="search__inputs-input" placeholder="Дата Рождения">
+
+        <button class="search__inputs-btn">Найти</button>
+    </div>
+
+    <div class="search__table">
+        <div class="search__table-titles">
+            <p class="search__table-titles-title">Фамилия</p>
+            <p class="search__table-titles-title">Имя</p>
+            <p class="search__table-titles-title">Отчество</p>
+            <p class="search__table-titles-title">Дата Рождения</p>
+            <p class="search__table-titles-title">Действия</p>
+        </div>
+
+        <div class="search__table-item">
+            <p class="search__table-item-content">Зубенко</p>
+            <p class="search__table-item-content">Михаил</p>
+            <p class="search__table-item-content">Петрович</p>
+            <p class="search__table-item-content">13.08.1991</p>
+
+            <a href="patient.html" class="search__table-item-edit">
+                <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 13.4952L1 19L6.50476 17L19 4.50476L15.4952 1L3 13.4952Z" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.7998 4L15.9998 7.2" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3.7998 13L6.9998 16.2" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+
+            <div class="search__table-item-btn">
+                <svg width="100%" height="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="28" height="28" rx="8" fill="#FF0000"/>
+                    <path d="M12.5355 10.4645L16.0711 14L12.5355 17.5355" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </div>
+        </div>
+
+        <div class="search__table-item">
+            <p class="search__table-item-content">Макаравенченко</p>
+            <p class="search__table-item-content">Константин</p>
+            <p class="search__table-item-content">Константинович</p>
+            <p class="search__table-item-content">22.22.2222</p>
+
+            <a href="patient.html" class="search__table-item-edit">
+                <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 13.4952L1 19L6.50476 17L19 4.50476L15.4952 1L3 13.4952Z" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.7998 4L15.9998 7.2" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3.7998 13L6.9998 16.2" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+
+            <div class="search__table-item-btn">
+                <svg width="100%" height="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="28" height="28" rx="8" fill="#FF0000"/>
+                    <path d="M12.5355 10.4645L16.0711 14L12.5355 17.5355" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </div>
+        </div>
+
+        <div class="search__table-item">
+            <p class="search__table-item-content">Утенков</p>
+            <p class="search__table-item-content">Руслан</p>
+            <p class="search__table-item-content">Мехманович</p>
+            <p class="search__table-item-content">05.08.2003</p>
+
+            <a href="patient.html" class="search__table-item-edit">
+                <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 13.4952L1 19L6.50476 17L19 4.50476L15.4952 1L3 13.4952Z" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.7998 4L15.9998 7.2" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3.7998 13L6.9998 16.2" stroke="#FF0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+
+            <div class="search__table-item-btn">
+                <svg width="100%" height="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="28" height="28" rx="8" fill="#FF0000"/>
+                    <path d="M12.5355 10.4645L16.0711 14L12.5355 17.5355" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<dialog class="modal modal_patient-regis">
+    <form class="modal__content">
+        <button class="modal__content-close" id="closePatientRegisBtn" formmethod="dialog">
+            <img src="../media/crossRed.svg" alt="закрыть"/>
+        </button>
+
+        <h2 class="modal__content-title">Пациент</h2>
+
+        <div class="modal__content-input-box">
+            <input type="text" placeholder="ФИО пациента" required>
+        </div>
+
+        <div class="modal__content-input-box">
+            <input type="date" placeholder="Дата рождения" required>
+        </div>
+
+
+        <button type="submit" class="modal__content-submit">Изменить</button>
+    </form>
+</dialog>
+
+<dialog class="modal modal_auth">
+    <form class="modal__content">
+        <button class="modal__content-close" id="closeAuthBtn" formmethod="dialog">
+            <img src="../media/crossRed.svg" alt="закрыть"/>
+        </button>
+
+        <h2 class="modal__content-title">Авторизация</h2>
+
+        <div class="modal__content-input-box">
+            <input type="text" placeholder="Логин" required>
+        </div>
+
+        <div class="modal__content-input-box">
+            <input type="password" id="authPassword" class="modal__content-input-box-input" placeholder="Пароль"
+                   required>
+
+            <img class="modal__content-input-box-show" id="showPass" src="../media/showPass.svg" alt=""/>
+            <img class="modal__content-input-box-hide" id="hidePass" src="../media/hidePass.svg" alt=""/>
+        </div>
+
+        <button class="modal__content-frgt-pass">Забыли пароль?</button>
+
+        <button type="submit" class="modal__content-submit">Войти</button>
+
+        <p class="modal__content-text">Нет аккаунта? <span id="openRegisBtn">Зарегистрироваться</span></p>
+    </form>
+</dialog>
+
+<dialog class="modal modal_regis">
+    <form class="modal__content">
+        <button class="modal__content-close" id="closeRegisBtn" formmethod="dialog">
+            <img src="../media/crossRed.svg" alt="закрыть"/>
+        </button>
+
+        <h2 class="modal__content-title">Регистрация</h2>
+
+
+        <div class="modal_regis__inputs">
+            <div class="modal__content-input-box">
+                <input type="text" placeholder="Фамилия Имя Отчество" required>
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="password" class="modal__content-input-box-input" id="newPassword" placeholder="Пароль"
+                       required>
+
+                <img class="modal__content-input-box-show" src="../media/showPass.svg" alt=""/>
+                <img class="modal__content-input-box-hide" src="../media/hidePass.svg" alt=""/>
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="date" placeholder="Дата Рождения" required>
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="password" class="modal__content-input-box-input" id="confirmNewPassword"
+                       placeholder="Повторите пароль" required>
+
+                <img class="modal__content-input-box-show" src="../media/showPass.svg" alt=""/>
+                <img class="modal__content-input-box-hide" src="../media/hidePass.svg" alt=""/>
+
+                <img class="modal__content-input-box-tick" src="../media/tickGreen.svg" alt="совпадают">
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="email" placeholder="Почта" required>
+            </div>
+        </div>
+
+        <button type="submit" class="modal__content-submit">Зарегистрироваться</button>
+
+        <p class="modal__content-text">Уже зарегистрированы? <span id="openAuthBtn">Войдите</span>
+        </p>
+    </form>
+</dialog>
+
+<script>
+    const openPatientRegisBtn = document.querySelector('.search__header-regis')
+    const closePatientRegisBtn = document.getElementById('closePatientRegisBtn')
+    const openAuthBtn = document.querySelector('.header__enter')
+    const closeAuthBtn = document.getElementById('closeAuthBtn')
+    const openAuthBtn1 = document.getElementById('openAuthBtn')
+    const openRegisBtn = document.getElementById('openRegisBtn')
+    const closeRegisBtn = document.getElementById('closeRegisBtn')
+
+    const authModal = document.querySelector('.modal_auth')
+    const regisModal = document.querySelector('.modal_regis')
+    const patientRegisModal = document.querySelector('.modal_patient-regis')
+
+    openPatientRegisBtn.addEventListener("click", () => {
+        patientRegisModal.showModal()
+    })
+
+    closePatientRegisBtn.addEventListener("click", () => {
+        patientRegisModal.close()
+    })
+
+    patientRegisModal.addEventListener("mousedown", e => {
+        const dialogDimensions = patientRegisModal.getBoundingClientRect()
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            patientRegisModal.close()
+        }
+    })
+
+    openAuthBtn.addEventListener("click", () => {
+        authModal.showModal()
+    })
+
+    closeAuthBtn.addEventListener("click", () => {
+        authModal.close()
+    })
+
+    openAuthBtn1.addEventListener("click", () => {
+        regisModal.close()
+        authModal.showModal()
+    })
+
+    authModal.addEventListener("mousedown", e => {
+        const dialogDimensions = authModal.getBoundingClientRect()
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            authModal.close()
+        }
+    })
+
+    openRegisBtn.addEventListener("click", () => {
+        authModal.close()
+        regisModal.showModal()
+    })
+
+    closeRegisBtn.addEventListener("click", () => {
+        regisModal.close()
+    })
+
+    regisModal.addEventListener("mousedown", e => {
+        const dialogDimensions = regisModal.getBoundingClientRect()
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            regisModal.close()
+        }
+    })
+
+    let showBtn = document.querySelectorAll(".modal__content-input-box-show");
+    let hideBtn = document.querySelectorAll(".modal__content-input-box-hide");
+
+    let authPass = document.querySelectorAll(".modal__content-input-box-input");
+
+    for (let i = 0; i < showBtn.length; i++) {
+        showBtn[i].addEventListener('click', () => {
+            if (authPass[i].type === "password") {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "text";
+            } else {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "password";
+            }
+        })
+
+        hideBtn[i].addEventListener('click', () => {
+            if (authPass[i].type === "password") {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "text";
+            } else {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "password";
+            }
+        })
+    }
+</script>
+</body>
+</html>

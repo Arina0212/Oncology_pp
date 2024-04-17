@@ -119,6 +119,7 @@ export const CreatePatientsAction = createAsyncThunk<PatienSData, PatienSData, {
   async ({first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment}, {dispatch, extra: api}) => {
     const {data} = await api.post<PatienSData>(APIRoute.Patiens, {first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment});
     console.log(data)
+    dispatch(fetchPatiensInfoAction());
     dispatch(redirectToRoute(AppRoute.Search))
 
     return data;
@@ -147,11 +148,12 @@ export const UpdatePatientsAction = createAsyncThunk<PatienInfoData, PatienInfoD
   state: State;
   extra: AxiosInstance;
 }>(
-  'patient/CreatePatients',
+  'patient/UpdatePatients',
   async ({id, first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment}, {dispatch, extra: api}) => {
     const {data} = await api.put<PatienInfoData>(`${APIRoute.Patient}${id}/`, {id, first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment});
     console.log(data)
-    dispatch(redirectToRoute(AppRoute.Search))
+    //dispatch(redirectToRoute(AppRoute.Search))
+    dispatch(fetchPatiensInfoAction());
 
     return data;
   },

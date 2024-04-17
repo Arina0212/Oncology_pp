@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap");
 *, *::before, *::after {
   box-sizing: border-box;
@@ -38,13 +39,12 @@ button {
   padding: 0;
 }
 
-a, p, h1, h2, h3, h4, h5, h6, button, input, label {
+a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, tr, ol, li {
   overflow-wrap: break-word;
   font-family: Montserrat, sans-serif;
   color: black;
   font-weight: 700;
   font-size: 1.2631578947vw;
-  text-decoration: none;
 }
 
 .visually-hidden {
@@ -69,6 +69,9 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   background-color: #FFFFFF;
   box-shadow: 0 0.2105263158vw 4.2105263158vw 0 rgba(0, 0, 0, 0.0509803922);
 }
+.header__title {
+  text-decoration: none;
+}
 .header__links {
   display: flex;
   align-items: center;
@@ -84,13 +87,11 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 .header__links-link:hover {
   color: #FF0000;
 }
+.header__links-link_active {
+  color: #FF0000;
+}
 .header__enter {
   width: 5vw;
-  padding: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
   height: 2.2105263158vw;
   font-weight: 600;
   font-size: 0.8421052632vw;
@@ -105,9 +106,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 .header__enter:hover {
   background-color: #D70000;
 }
-.header__links-link_active {
-  color: #FF0000;
-}
+
 .main {
   position: fixed;
   top: 50%;
@@ -167,6 +166,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   flex-direction: column;
   gap: 1.5789473684vw;
   width: 10.4210526316vw;
+  min-width: 10.4210526316vw;
 }
 .usage__btns-btn {
   width: 100%;
@@ -180,19 +180,15 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   border: 0.1052631579vw solid rgba(0, 0, 0, 0.2509803922);
   border-radius: 0.7894736842vw;
   cursor: pointer;
-  transition: 250ms, border ease-in-out 250ms;
+  transition: color ease-in-out 250ms, border ease-in-out 250ms;
   user-select: none;
 }
 .usage__btns-btn:hover {
   color: #000000;
   border: 0.1052631579vw solid #000000;
 }
-
-.usage__btns-btn_active {
-  color: #000000;
-  border: 0.1052631579vw solid #000000;
-}
 .usage__contents-content {
+  display: none;
   grid-column: 2/3;
 }
 .usage__contents-content-title {
@@ -202,7 +198,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 .usage__contents-content-text {
   font-weight: 600;
   font-size: 0.8421052632vw;
-  padding-bottom: 1.01vw;
+  white-space: pre-line;
 }
 .usage__contents-content_active {
   grid-row: span 10;
@@ -212,7 +208,6 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   color: #000000;
   border: 0.1052631579vw solid #000000;
 }
-
 
 .search {
   display: flex;
@@ -758,20 +753,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   color: rgba(0, 0, 0, 0.5019607843);
 }
 
-
-
-
-
-
-
-
-
-.modal__content::backdrop{
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 .modal {
-  position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
@@ -780,15 +762,9 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   border: none;
   border-radius: 1.0526315789vw;
 }
-
-.login__message p{
-  font-weight: 600;
-  color: #FF0000;
-  font-size: 0.8421052632vw;
-  text-align: center;
+.modal::backdrop {
+  background: none;
 }
-
-
 .modal__content {
   width: 100%;
   height: 100%;
@@ -856,7 +832,9 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 .modal__content-input-box-show_active {
   opacity: 0;
 }
-
+.modal__content-input-box-hide {
+  opacity: 0;
+}
 .modal__content-input-box-hide_active {
   opacity: 1;
 }
@@ -868,18 +846,10 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   width: 0.9473684211vw;
   height: 0.7368421053vw;
   transition: opacity 250ms ease-in-out;
+  opacity: 0;
 }
 .modal__content-input-box-tick_show {
   opacity: 1;
-  position: absolute;
-  right: -1.6842105263vw;
-  top: 50%;
-  translate: 0 -50%;
-  width: 0.9473684211vw;
-  height: 0.7368421053vw;
-  transition: opacity 250ms ease-in-out;
-  display: flex;
-  align-items: center;
 }
 .modal__content-frgt-pass {
   font-weight: 600;
@@ -912,19 +882,6 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
 .modal__content-submit:hover {
   background-color: #C80000;
 }
-.modal__content-submit_disable {
-  width: 16.8421052632vw;
-  height: 3.0526315789vw;
-  margin-top: 2.6315789474vw;
-  font-weight: 600;
-  font-size: 0.8421052632vw;
-  color: #FFFFFF;
-  background-color: #7c7c7c;
-  outline: none;
-  border: none;
-  border-radius: 0.7894736842vw;
-  transition: background-color ease-in-out 250ms;
-}
 .modal__content-text {
   font-weight: 600;
   font-size: 0.8421052632vw;
@@ -932,7 +889,6 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   margin-bottom: auto;
 }
 .modal__content-text span {
-  text-decoration: none;
   font-weight: 600;
   font-size: 0.8421052632vw;
   color: #FF0000;
@@ -957,19 +913,44 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   grid-template-columns: 1fr 1fr;
   column-gap: 1.5789473684vw;
 }
-
 .modal_patient-regis {
   width: 24.7368421053vw;
-  height: 36.4736842105vw;
-  border-radius: 1vw;
+  height: 26.4736842105vw;
   box-shadow: 0 0 4.2105263158vw 0 rgba(0, 0, 0, 0.0784313725);
 }
-.MuiPaper-root{
-  border-radius: 1vw !important;
-}
-.MuiBackdrop-root{
-  background-color: rgba(0, 0, 0, 0) !important;
+
+.sortable th {
+  cursor: pointer;
 }
 
+.sortable th.no-sort {
+  pointer-events: none;
+}
+
+.sortable th::after,
+.sortable th::before {
+  transition: color 0.2s ease-in-out;
+  font-size: 1.2em;
+  color: transparent;
+}
+
+.sortable th::after {
+  margin-left: 0.1578947368vw;
+  content: "▸";
+}
+
+.sortable th:hover::after {
+  color: inherit;
+}
+
+.sortable th.dir-d::after {
+  color: inherit;
+  content: "▾";
+}
+
+.sortable th.dir-u::after {
+  color: inherit;
+  content: "▴";
+}
 
 /*# sourceMappingURL=main.css.map */

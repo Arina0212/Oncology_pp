@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Добавление анализа</title>
+</head>
+<body>
+<header class="header">
+    <a href="home.html" class="header__title">Le Ha Im</a>
+
+    <div class="header__links">
+        <a href="usage.html" class="header__links-link">Область применения</a>
+        <a href="copyright.html" class="header__links-link">Авторские права</a>
+    </div>
+
+    <button class="header__enter">Войти</button>
+</header>
+
+<section class="add-analysis">
+    <div class="add-analysis__header">
+        <h3 class="add-analysis__header-name">Результаты исследований</h3>
+        <p class="add-analysis__header-text">Дата исследования:</p>
+        <input type="text" class="add-analysis__header-input" placeholder="дата"/>
+        <button class="add-analysis__header-btn">Сохранить</button>
+    </div>
+
+    <div id="analyse1" class="add-analysis__analyse">
+        <div class="add-analysis__analyse-head">
+            <p class="add-analysis__analyse-head-text">Тип исследования: Имунный статус</p>
+            <button class="add-analysis__analyse-head-delete" onclick="showHide1()">Удалить</button>
+        </div>
+
+        <table class="add-analysis__analyse-table sortable">
+            <thead>
+            <tr>
+                <th>Показатель</th>
+                <th>Результат</th>
+                <th>Ед. изм.</th>
+                <th>Реф. интервал</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Поглотительная активность моноцитов</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>%</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="analyse2" class="add-analysis__analyse add-analysis__analyse_hide">
+        <div class="add-analysis__analyse-head">
+            <p class="add-analysis__analyse-head-text">Тип исследования: Гематологическое исследование</p>
+            <button class="add-analysis__analyse-head-delete" onclick="showHide2()">Удалить</button>
+        </div>
+
+        <table class="add-analysis__analyse-table sortable">
+            <thead>
+            <tr>
+                <th>Показатель</th>
+                <th>Результат</th>
+                <th>Ед. изм.</th>
+                <th>Реф. интервал</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Поглотительная активность моноцитов</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>%</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="analyse3" class="add-analysis__analyse add-analysis__analyse_hide">
+        <div class="add-analysis__analyse-head">
+            <p class="add-analysis__analyse-head-text">Тип исследования: Цитокиновый статус</p>
+            <button class="add-analysis__analyse-head-delete" onclick="showHide3()">Удалить</button>
+        </div>
+
+        <table class="add-analysis__analyse-table sortable">
+            <thead>
+            <tr>
+                <th>Показатель</th>
+                <th>Результат</th>
+                <th>Ед. изм.</th>
+                <th>Реф. интервал</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Поглотительная активность моноцитов</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>%</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            <tr>
+                <td>Лейкоциты (WBC)</td>
+                <td>
+                    <input type="text" placeholder="x"/>
+                </td>
+                <td>10e9/л</td>
+                <td>(0.00 - 0.80)</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="add-analysis__show add-analysis__show_hide" id="showAnalyseBtn1" onclick="showHide1()">Добавить исследование: Имунный статус</button>
+    <button class="add-analysis__show" id="showAnalyseBtn2" onclick="showHide2()">Добавить исследование: Гематологическое исследование</button>
+    <button class="add-analysis__show" id="showAnalyseBtn3" onclick="showHide3()">Добавить исследование: Цитокиновый статус</button>
+
+</section>
+
+<dialog class="modal modal_auth">
+    <form class="modal__content">
+        <button class="modal__content-close" id="closeAuthBtn" formmethod="dialog">
+            <img src="../media/crossRed.svg" alt="закрыть"/>
+        </button>
+
+        <h2 class="modal__content-title">Авторизация</h2>
+
+        <div class="modal__content-input-box">
+            <input type="text" placeholder="Логин" required>
+        </div>
+
+        <div class="modal__content-input-box">
+            <input type="password" id="authPassword" class="modal__content-input-box-input" placeholder="Пароль"
+                   required>
+
+            <img class="modal__content-input-box-show" id="showPass" src="../media/showPass.svg" alt=""/>
+            <img class="modal__content-input-box-hide" id="hidePass" src="../media/hidePass.svg" alt=""/>
+        </div>
+
+        <button class="modal__content-frgt-pass">Забыли пароль?</button>
+
+        <button type="submit" class="modal__content-submit">Войти</button>
+
+        <p class="modal__content-text">Нет аккаунта? <span id="openRegisBtn">Зарегистрироваться</span></p>
+    </form>
+</dialog>
+
+<dialog class="modal modal_regis">
+    <form class="modal__content">
+        <button class="modal__content-close" id="closeRegisBtn" formmethod="dialog">
+            <img src="../media/crossRed.svg" alt="закрыть"/>
+        </button>
+
+        <h2 class="modal__content-title">Регистрация</h2>
+
+
+        <div class="modal_regis__inputs">
+            <div class="modal__content-input-box">
+                <input type="text" placeholder="Фамилия Имя Отчество" required>
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="password" class="modal__content-input-box-input" id="newPassword" placeholder="Пароль"
+                       required>
+
+                <img class="modal__content-input-box-show" src="../media/showPass.svg" alt=""/>
+                <img class="modal__content-input-box-hide" src="../media/hidePass.svg" alt=""/>
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="date" placeholder="Дата Рождения" required>
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="password" class="modal__content-input-box-input" id="confirmNewPassword"
+                       placeholder="Повторите пароль" required>
+
+                <img class="modal__content-input-box-show" src="../media/showPass.svg" alt=""/>
+                <img class="modal__content-input-box-hide" src="../media/hidePass.svg" alt=""/>
+
+                <img class="modal__content-input-box-tick" src="../media/tickGreen.svg" alt="совпадают">
+            </div>
+
+            <div class="modal__content-input-box">
+                <input type="email" placeholder="Почта" required>
+            </div>
+        </div>
+
+        <button type="submit" class="modal__content-submit">Зарегистрироваться</button>
+
+        <p class="modal__content-text">Уже зарегистрированы? <span id="openAuthBtn">Войдите</span>
+        </p>
+    </form>
+</dialog>
+
+<script>
+    const openAuthBtn = document.querySelector('.header__enter')
+    const closeAuthBtn = document.getElementById('closeAuthBtn')
+    const openAuthBtn1 = document.getElementById('openAuthBtn')
+    const openRegisBtn = document.getElementById('openRegisBtn')
+    const closeRegisBtn = document.getElementById('closeRegisBtn')
+
+    const authModal = document.querySelector('.modal_auth')
+    const regisModal = document.querySelector('.modal_regis')
+
+    openAuthBtn.addEventListener("click", () => {
+        authModal.showModal()
+    })
+
+    closeAuthBtn.addEventListener("click", () => {
+        authModal.close()
+    })
+
+    openAuthBtn1.addEventListener("click", () => {
+        regisModal.close()
+        authModal.showModal()
+    })
+
+    authModal.addEventListener("mousedown", e => {
+        const dialogDimensions = authModal.getBoundingClientRect()
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            authModal.close()
+        }
+    })
+
+    openRegisBtn.addEventListener("click", () => {
+        authModal.close()
+        regisModal.showModal()
+    })
+
+    closeRegisBtn.addEventListener("click", () => {
+        regisModal.close()
+    })
+
+    regisModal.addEventListener("mousedown", e => {
+        const dialogDimensions = regisModal.getBoundingClientRect()
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            regisModal.close()
+        }
+    })
+
+    let showBtn = document.querySelectorAll(".modal__content-input-box-show");
+    let hideBtn = document.querySelectorAll(".modal__content-input-box-hide");
+
+    let authPass = document.querySelectorAll(".modal__content-input-box-input");
+
+    for (let i = 0; i < showBtn.length; i++) {
+        showBtn[i].addEventListener('click', () => {
+            if (authPass[i].type === "password") {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "text";
+            } else {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "password";
+            }
+        })
+
+        hideBtn[i].addEventListener('click', () => {
+            if (authPass[i].type === "password") {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "text";
+            } else {
+                showBtn[i].classList.toggle("modal__content-input-box-show_active");
+                hideBtn[i].classList.toggle("modal__content-input-box-hide_active");
+                authPass[i].type = "password";
+            }
+        })
+    }
+
+    let anaylse1 = document.getElementById('analyse1')
+    let anaylse2 = document.getElementById('analyse2')
+    let anaylse3 = document.getElementById('analyse3')
+
+    let showAnalyseBtn1 = document.getElementById('showAnalyseBtn1')
+    let showAnalyseBtn2 = document.getElementById('showAnalyseBtn2')
+    let showAnalyseBtn3 = document.getElementById('showAnalyseBtn3')
+    function showHide1() {
+        anaylse1.classList.toggle("add-analysis__analyse_hide");
+        showAnalyseBtn1.classList.toggle("add-analysis__show_hide");
+    }
+    function showHide2() {
+        anaylse2.classList.toggle("add-analysis__analyse_hide");
+        showAnalyseBtn2.classList.toggle("add-analysis__show_hide");
+    }
+    function showHide3() {
+        anaylse3.classList.toggle("add-analysis__analyse_hide");
+        showAnalyseBtn3.classList.toggle("add-analysis__show_hide");
+    }
+
+    document.addEventListener('click', function (e) {
+        try {
+            function findElementRecursive(element, tag) {
+                return element.nodeName === tag ? element :
+                    findElementRecursive(element.parentNode, tag)
+            }
+
+            var descending_th_class = ' dir-d '
+            var ascending_th_class = ' dir-u '
+            var ascending_table_sort_class = 'asc'
+            var regex_dir = / dir-(u|d) /
+            var regex_table = /\bsortable\b/
+            var alt_sort = e.shiftKey || e.altKey
+            var element = findElementRecursive(e.target, 'TH')
+            var tr = findElementRecursive(element, 'TR')
+            var table = findElementRecursive(tr, 'TABLE')
+
+            function reClassify(element, dir) {
+                element.className = element.className.replace(regex_dir, '') + dir
+            }
+
+            function getValue(element) {
+                return (
+                    (alt_sort && element.getAttribute('data-sort-alt')) ||
+                    element.getAttribute('data-sort') || element.innerText
+                )
+            }
+
+            if (regex_table.test(table.className)) {
+                var column_index
+                var nodes = tr.cells
+                for (var i = 0; i < nodes.length; i++) {
+                    if (nodes[i] === element) {
+                        column_index = element.getAttribute('data-sort-col') || i
+                    } else {
+                        reClassify(nodes[i], '')
+                    }
+                }
+                var dir = descending_th_class
+                if (
+                    element.className.indexOf(descending_th_class) !== -1 ||
+                    (table.className.indexOf(ascending_table_sort_class) !== -1 &&
+                        element.className.indexOf(ascending_th_class) == -1)
+                ) {
+                    dir = ascending_th_class
+                }
+                reClassify(element, dir)
+                var org_tbody = table.tBodies[0]
+                var rows = [].slice.call(org_tbody.rows, 0)
+                var reverse = dir === ascending_th_class
+                rows.sort(function (a, b) {
+                    var x = getValue((reverse ? a : b).cells[column_index])
+                    var y = getValue((reverse ? b : a).cells[column_index])
+                    return isNaN(x - y) ? x.localeCompare(y) : x - y
+                })
+                var clone_tbody = org_tbody.cloneNode()
+                while (rows.length) {
+                    clone_tbody.appendChild(rows.splice(0, 1)[0])
+                }
+                table.replaceChild(clone_tbody, org_tbody)
+            }
+        } catch (error) {
+        }
+    });
+</script>
+</body>
+</html>

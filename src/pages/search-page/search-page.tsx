@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Dialog from '@mui/material/Dialog';
 import { useAppDispatch, useAppSelector } from "../../components/hooks";
 import { CreatePatientsAction, UpdatePatientsAction, fetchPatiensInfoAction } from "../../store/api-actions";
@@ -10,6 +10,7 @@ import { getPatiens } from "../../store/patiens-process/selectors";
 import { PatienInfoData } from "../../types/patient-info";
 import PatientStroke from "../../components/patient-stroke/patient-stroke";
 import { store } from "../../store";
+import { humanizeDate } from "../../utils/change-data-formats";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -22,7 +23,7 @@ const style = {
     boxshoutdown: '0 0 4.2105263158vw 0 rgba(0, 0, 0, 0.0784313725)',
   };
 
-store.dispatch(fetchPatiensInfoAction());
+
   
 export default function SearchPage(){
     const [open, setOpen] = useState(false);
@@ -36,8 +37,13 @@ export default function SearchPage(){
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
 
-    let patiens = useAppSelector(getPatiens);
+    let dateTime = new Date().toLocaleDateString()
 
+
+    let patiens = useAppSelector(getPatiens);
+    useEffect(() => {
+        dispatch(fetchPatiensInfoAction());
+      }, [dispatch]);
 
     const handleSubmitRegist = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
@@ -45,6 +51,8 @@ export default function SearchPage(){
             navigate(`${AppRoute.Login}`);
         } else if(FIO_sep.length!=3){
             setError("Вы ввели неполные данные");
+        }else if(humanizeDate(birth_date) > dateTime){
+            setError("Дата рождения не может быть больше текущей даты");
         }else{
             setError("")
             dispatch(CreatePatientsAction({
@@ -58,7 +66,9 @@ export default function SearchPage(){
                 operation_comment: "",
                 chemoterapy_comment: ""
             }));
+            store.dispatch(fetchPatiensInfoAction());
             handleCloseRegist();
+
             
         }
         
