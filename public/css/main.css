@@ -354,6 +354,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   justify-content: space-between;
   align-items: center;
   margin-top: 2.7368421053vw;
+  width: 35vw;
 }
 .patient__left-add-text {
   font-size: 1.2631578947vw;
@@ -371,6 +372,9 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label {
   cursor: pointer;
   user-select: none;
   transition: background ease-in-out 250ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .patient__left-add-btn:hover {
   background: #C80000;

@@ -1,14 +1,19 @@
+import { useParams } from "react-router-dom";
 import Header from "../../components/header/header";
+import usePatientById from "../../components/hooks/get-patient-by-id";
 
 export default function GraficPage(){
+    const urlParams = useParams();
+
+    const patient_data = usePatientById();
     return(
         <>
             <Header/>
             <section className="graphs">
                 <h2 className="graphs__text">Информациая о пациенте:</h2>
-                <p className="graphs__name">Зубенко Михаил Петрович</p>
+                <p className="graphs__name">{patient_data?.last_name} {patient_data?.first_name} {patient_data?.patronymic}</p>
                 <div className="graphs__info">
-                    <h3 className="graphs__info-diagnose">Диагноз: C50</h3>
+                    <h3 className="graphs__info-diagnose">Диагноз: {patient_data?.diagnosis}</h3>
                     <p className="graphs__info-date">Дата исследования: 12.03.1993</p>
                 </div>
 
@@ -43,7 +48,7 @@ export default function GraficPage(){
 
                 <div className="graphs__result">
                     <div className="graphs__result-pic">
-                        <img src="../media/graph.png" alt="граф"/>
+                        <img src="http://127.0.0.1:8000/media/media/hematological_research_79.png" alt="граф"/>
                     </div>
 
                     <div className="graphs__result-info">

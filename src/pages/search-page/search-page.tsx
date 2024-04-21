@@ -1,11 +1,11 @@
 import { FormEvent, useEffect, useState } from "react";
 import Dialog from '@mui/material/Dialog';
 import { useAppDispatch, useAppSelector } from "../../components/hooks";
-import { CreatePatientsAction, UpdatePatientsAction, fetchPatiensInfoAction } from "../../store/api-actions";
+import { CreatePatientsAction, fetchPatiensInfoAction } from "../../store/api-actions";
 import Header from "../../components/header/header";
 import { AppRoute, AuthorizationStatus } from "../../const";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getPatiens } from "../../store/patiens-process/selectors";
 import { PatienInfoData } from "../../types/patient-info";
 import PatientStroke from "../../components/patient-stroke/patient-stroke";
@@ -239,6 +239,7 @@ export default function SearchPage(){
                     {patiens.map((patien: PatienInfoData) => (
                         <PatientStroke key={patien.id} id={patien.id} first_name_pat={patien.first_name} last_name_pat={patien.last_name} patronomic_pat={patien.patronymic} birth_date_pat={patien.birth_date}/>
                         ))
+                        
                     }    
                 </div>
 

@@ -12,7 +12,9 @@ import { getAuthorizationStatus } from '../../store/user-process/selectors';
 // import PrivateRoute from '../private-route/private-route';
 import PatientsPage from '../../pages/patients-page/patients-page';
 import SearchPage from '../../pages/search-page/search-page';
-import PatiensCreatePopup from '../patiens';
+import AddAnalysisPage from '../../pages/add-analysis-page/add-analysis-page';
+import AnalysisPage from '../../pages/analysis-page/analysis-page';
+import GraficPage from '../../pages/grafics-page/grafic-page';
 
 
 export default function App() {
@@ -37,6 +39,10 @@ export default function App() {
           <Route path=":id" element={<MainPage />} />
         </Route>
         <Route
+          path={AppRoute.Copyright}
+          element={<CopyrightPage />}
+        />
+        <Route
           path={AppRoute.Search}
           element={
             // <PrivateRoute authorizationStatus={authorizationStatus}>
@@ -44,15 +50,18 @@ export default function App() {
             // </PrivateRoute>
           }
         />
-         <Route path={AppRoute.Patients}>
-          <Route path=':id'>
+
+
+        <Route path={AppRoute.Patients}>
+          <Route path=':patid'>
             <Route index element={<PatientsPage />} />
+            <Route path='add-analysis' element={<AddAnalysisPage />}/>
+            <Route path='analysis'>
+              <Route path=':analysid'  element={<AnalysisPage/>}/>
+            </Route>
+            <Route path='grafics' element={<GraficPage/>}/>
           </Route>
         </Route>
-        <Route
-          path={AppRoute.Copyright}
-          element={<CopyrightPage />}
-        />
         <Route
           path="*"
           element={<Error />}

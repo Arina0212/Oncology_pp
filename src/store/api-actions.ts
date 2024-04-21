@@ -13,6 +13,8 @@ import { SubjectData } from '../types/subject-data';
 import { SubjectsData } from '../types/subjects-data';
 import { PatienSData } from '../types/patients-data';
 import { PatienInfoData } from '../types/patient-info';
+import { AnalysisDateData } from '../types/analysis-date';
+import { AnalysData } from '../types/analys-data';
 
 // export const checkAuthAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -164,26 +166,38 @@ export const fetchFullPatientInfoAction = createAsyncThunk<PatienInfoData, {id: 
   state: State;
   extra: AxiosInstance;
 }>(
-  'data/fetchSubjectText',
-  async ({id}, {extra: api}) => {
+  'data/fetchFullPatientInfo',
+  async ({id}, {dispatch, extra: api}) => {
     const {data} = await api.get<PatienInfoData>(`${APIRoute.Patient}${id}/`);
+    dispatch(fetchAnalysisDateAction({id: Number(id)}))
     console.log("полная инфа по id",data)
     return data;
   },
 );
 
-// export const fetchPatientsInfoAction = createAsyncThunk<UserData, undefined, {
-//   dispatch: AppDispatch;
-//   state: State;
-//   extra: AxiosInstance;
-// }>(
-//   'data/fetchDoctorInfo',
-//   async (_arg, {dispatch,extra: api}) => {
-//     const {data} = await api.get<UserData>(APIRoute.Profile);
-//     dispatch(redirectToRoute(AppRoute.Search))
+export const fetchAnalysisDateAction = createAsyncThunk<AnalysisDateData, {id: number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchAnalysisDate',
+  async ({id}, {extra: api}) => {
+    const {data} = await api.get<AnalysisDateData>(`${APIRoute.AnalysisDate}${id}/`);
+    console.log("анализы по дате",data)
+    return data;
+  },
+);
 
-//     return data;
-//   },
-// );
+export const fetchAnalysAction = createAsyncThunk<AnalysData, {id: number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchAnalysDate',
+  async ({id}, {extra: api}) => {
+    const {data} = await api.get<AnalysData>(`${APIRoute.AnalysData}${id}/`);
+    return data;
+  },
+);
 
 

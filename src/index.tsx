@@ -6,10 +6,12 @@ import HistoryRouter from './components/history-route/history-route';
 import browserHistory from './browser-history';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { fetchCopyrightAction, fetchPatiensInfoAction, fetchSubjectsAction } from './store/api-actions';
+import { fetchAnalysisDateAction, fetchCopyrightAction, fetchPatiensInfoAction, fetchSubjectsAction } from './store/api-actions';
 
 store.dispatch(fetchSubjectsAction());
 store.dispatch(fetchCopyrightAction());
+
+
 
 
 

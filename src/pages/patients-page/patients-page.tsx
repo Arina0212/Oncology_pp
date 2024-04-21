@@ -3,13 +3,15 @@ import Header from "../../components/header/header";
 import { FormEvent, useState } from "react";
 import Dialog from '@mui/material/Dialog';
 import { useAppDispatch, useAppSelector } from "../../components/hooks";
-import { UpdatePatientsAction, fetchFullPatientInfoAction } from "../../store/api-actions";
+import { UpdatePatientsAction, fetchAnalysisDateAction, fetchFullPatientInfoAction } from "../../store/api-actions";
 import { AppRoute, AuthorizationStatus } from "../../const";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
 import usePatientById from "../../components/hooks/get-patient-by-id";
 import LoadingPage from "../loading-page/loading-page";
-import { getPatientDataLoading } from "../../store/patiens-process/selectors";
+import { getPatiensAnalyses, getPatientDataLoading } from "../../store/patiens-process/selectors";
 import { humanizeDate } from "../../utils/change-data-formats";
+import { store } from "../../store";
+import { AnalysDateData, AnalysNameDateData, AnalysisDateData } from "../../types/analysis-date";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -35,9 +37,11 @@ export default function PatientPage(){
     const authorizationStatus = useAppSelector(getAuthorizationStatus);
     const isPatientLoading = useAppSelector(getPatientDataLoading);
     let dateTime = new Date().toLocaleDateString()
-
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
+
+    const analysesData = useAppSelector(getPatiensAnalyses)
+    console.log("analysesData=",analysesData)
 
     const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
@@ -104,35 +108,50 @@ export default function PatientPage(){
 
                         <div className="patient__left-add">
                             <h3 className="patient__left-add-text">Результаты анализов</h3>
-                            <button className="patient__left-add-btn">Добавить анализ</button>
+                            <Link to={`${AppRoute.Patients}/${patient_data.id}/add-analysis`} className="patient__left-add-btn">Добавить анализ</Link>
                         </div>
-
+                        {(analysesData?.patient_tests.length != 1 || analysesData?.patient_tests != undefined) ?
                         <div className="patient__left-table">
-                            <div className="patient__left-table-item">
-                                <a href="analysis.html" className="patient__left-table-item-links">ОАК</a>
-                                <a href="analysis.html" className="patient__left-table-item-links">имуннодефицит</a>
-                                <a href="analysis.html" className="patient__left-table-item-links">цитокоины</a>
-                                <p className="patient__left-table-item-date">Дата: 19.11.2023</p>
-                            </div>
-                            <div className="patient__left-table-item">
-                                <a href="analysis.html" className="patient__left-table-item-links">ОАК</a>
-                                <a href="analysis.html" className="patient__left-table-item-links">имуннодефицит</a>
-                                <a href="analysis.html" className="patient__left-table-item-links">цитокоины</a>
-                                <p className="patient__left-table-item-date">Дата: 19.11.2023</p>
-                            </div>
-                            <div className="patient__left-table-item">
-                                <a href="analysis.html" className="patient__left-table-item-links">ОАК</a>
-                                <a href="analysis.html" className="patient__left-table-item-links">имуннодефицит</a>
-                                <a href="analysis.html" className="patient__left-table-item-links">цитокоины</a>
-                                <p className="patient__left-table-item-date">Дата: 19.11.2023</p>
-                            </div>
-                            <div className="patient__left-table-item">
-                                <a href="analysis.html" className="patient__left-table-item-links">ОАК</a>
-                                <a href="analysis.html" className="patient__left-table-item-links">имуннодефицит</a>
-                                <a href="analysis.html" className="patient__left-table-item-links">цитокоины</a>
-                                <p className="patient__left-table-item-date">Дата: 19.11.2023</p>
-                            </div>
+                            
+                                {analysesData?.patient_tests.map((analys: AnalysDateData)=>( 
+                                    <div className="patient__left-table-item">
+                                        {analys.tests.map((analysname: AnalysNameDateData)=>(
+                                            <div>
+                                            {(analysname.name ==='hematological research')?
+                                                <div>
+                                                    <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analysname.id}`} className="patient__left-table-item-links">ОАК</Link>
+                                                </div>
+                                                :
+                                                <div>{(analysname.name ==='immune status')?
+                                                <div>
+                                                    <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis`} className="patient__left-table-item-links">имунодифицит</Link>
+                                                </div>
+                                                :
+                                                <div>{(analysname.name ==='cytokine status') ?
+                                                <div>
+                                                    <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis`} className="patient__left-table-item-links">цитокоины</Link>
+                                                </div>
+                                                :
+                                                <div></div>
+                                        }</div>
+                                        }
+                                        </div>
+                                            }
+                                            </div>
+                                        ))}
+                                        
+                                        <p className="patient__left-table-item-date">{humanizeDate(analys.analysis_date)}</p>
+                                    </div>
+                                ))
+                                }
                         </div>
+                         : 
+                         <div className="patient__left-table">
+                            <div className="patient__left-table-item">
+                                <p className="patient__left-table-item-links">У пациента ещё нет анализов</p>
+                                </div>
+                            </div>
+                        }
                     </div>
 
                     <div className="patient__right">

@@ -1,3 +1,4 @@
+
 export enum AppRoute {
   Main = '/',
   SignUp = '/signup',
@@ -8,7 +9,9 @@ export enum AppRoute {
   Subjects = '/subject-info',
   Subject = ':id',
   Copyright = '/copyright-info',
-  Search = '/search'
+  Search = '/search',
+  addAnalysis = '/add-analysis',
+  Analys = '/analysis'
 }
   
 export enum AuthorizationStatus {
@@ -30,9 +33,9 @@ export enum APIRoute {
   Copyright ='copyright-info/',
   Patiens = 'create-patient/',
   Patient = 'edit-patient/',
-
-  PatiensInfo = 'patients-info'
-
+  AnalysisDate = 'test-patient/',
+  PatiensInfo = 'patients-info',
+  AnalysData = 'patient-analysis/'
 }
 
 export enum NameSpace {

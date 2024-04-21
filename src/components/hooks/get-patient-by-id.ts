@@ -9,11 +9,11 @@ export default function usePatientById() {
   const dispatch = useAppDispatch();
   console.log("по id")
   useEffect(() => {
-    if ((urlParams.id)) {
-      dispatch(fetchFullPatientInfoAction({id: Number(urlParams.id)}));
-      console.log(Number(urlParams.id))
+    if ((urlParams.patid)) {
+      dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
+      console.log(Number(urlParams.patid))
     }
-  }, [dispatch, Number(urlParams.id)]);
+  }, [dispatch, Number(urlParams.patid)]);
   console.log("из хука ",useAppSelector(getCurrentPatient))
 
   return useAppSelector(getCurrentPatient);

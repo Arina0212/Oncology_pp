@@ -1,5 +1,7 @@
 import { AuthorizationStatus } from '../const';
 import { store } from '../store';
+import { AnalysData } from './analys-data';
+import { AnalysisDateData } from './analysis-date';
 import { PatienInfoData } from './patient-info';
 import { SubjectData } from './subject-data';
 import { SubjectsData } from './subjects-data';
@@ -14,6 +16,8 @@ export type PatiensProcess = {
   patients: PatienInfoData[];
   patient?: PatienInfoData;
   isPatientLoading: boolean;
+  analysis?: AnalysisDateData;
+  analys?: AnalysData;
 };
 
 export type CopyrightProcess = {

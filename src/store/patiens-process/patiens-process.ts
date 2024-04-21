@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
 import { PatiensProcess } from '../../types/state';
-import { fetchFullPatientInfoAction, fetchPatiensInfoAction} from '../api-actions';
+import { fetchAnalysAction, fetchAnalysisDateAction, fetchFullPatientInfoAction, fetchPatiensInfoAction} from '../api-actions';
 
 const initialState: PatiensProcess = {
     patients: [],
     patient: undefined,
     isPatientLoading: false,
+    analysis: undefined,
 };
 
 export const patientsProcess = createSlice({
@@ -26,5 +27,17 @@ export const patientsProcess = createSlice({
         state.patient = action.payload;
         state.isPatientLoading = false;
       })
+      .addCase(fetchAnalysisDateAction.fulfilled, (state, action) => {
+        state.analysis = action.payload;
+        //state.isPatientLoading = false;
+      })
+      .addCase(fetchAnalysAction.fulfilled, (state, action) => {
+        state.analys = action.payload;
+        //state.isPatientLoading = false;
+      })
+      
+      // .addCase(fetchAnalysisDateAction.pending, (state) => {
+      //   state.isAnalysesLoading = true;
+      // })
   }
 });

@@ -3,7 +3,7 @@ import { AppRoute, AuthorizationStatus } from "../../const";
 import { FormEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
-import { UpdatePatientsAction, fetchFullPatientInfoAction } from "../../store/api-actions";
+import { UpdatePatientsAction, fetchAnalysisDateAction, fetchFullPatientInfoAction } from "../../store/api-actions";
 import Dialog from '@mui/material/Dialog';
 import { getCurrentPatient } from "../../store/patiens-process/selectors";
 import { humanizeDate } from "../../utils/change-data-formats";
