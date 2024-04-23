@@ -57,14 +57,15 @@ export default function App() {
             <Route index element={<PatientsPage />} />
             <Route path='add-analysis' element={<AddAnalysisPage />}/>
             <Route path='analysis'>
-              <Route path=':analysid' >
-                <Route index element={<AnalysisPage/>}/>
-                <Route path='grafics' element={<GraficPage/>}>
-                  {/* <Route /> */}
+              <Route path=':analysisid' >
+                <Route path=':analysid' >
+                  <Route index element={<AnalysisPage/>}/>
+                  <Route path='grafics' element={<GraficPage/>}>
+                    {/* <Route /> */}
+                  </Route>
                 </Route>
               </Route>
             </Route>
-            
           </Route>
         </Route>
         <Route

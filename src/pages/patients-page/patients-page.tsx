@@ -117,19 +117,19 @@ export default function PatientPage(){
                                     <div className="patient__left-table-item">
                                         {analys.tests.map((analysname: AnalysNameDateData)=>(
                                             <div>
-                                            {(analysname.name ==='hematological_research')?
+                                            {(analysname.name ==='hematological_research') || (analysname.name ==='hematological research')?
                                                 <div>
-                                                    <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analysname.id}`} className="patient__left-table-item-links">ОАК</Link>
+                                                    <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">ОАК</Link>
                                                 </div>
                                                 :
                                                 <div>{(analysname.name ==='immune_status')?
                                                 <div>
-                                                    <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analysname.id}`} className="patient__left-table-item-links">имунодифицит</Link>
+                                                    <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">имунодифицит</Link>
                                                 </div>
                                                 :
                                                 <div>{(analysname.name ==='cytokine_status') ?
                                                 <div>
-                                                    <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analysname.id}`} className="patient__left-table-item-links">цитокоины</Link>
+                                                    <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">цитокоины</Link>
                                                 </div>
                                                 :
                                                 <div><p className="patient__left-table-item-date">{humanizeDate(analys.analysis_date)}</p></div>

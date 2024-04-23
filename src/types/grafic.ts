@@ -1,4 +1,4 @@
 export type GraficData = {
-    image: string;
+    graphic: string;
 };
 export type Grafics = GraficData[]

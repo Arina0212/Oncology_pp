@@ -1,6 +1,7 @@
 export type AnalysisDateData = {
     patient_tests: [
         {
+            id: number,
             analysis_date: string,
             tests: [
                 {
@@ -12,6 +13,7 @@ export type AnalysisDateData = {
     ]
 };
 export type AnalysDateData = {
+    id: number,
     analysis_date: string,
         tests: [
             {
@@ -20,6 +22,7 @@ export type AnalysDateData = {
             }
         ]
     };
+    
 export type AnalysNameDateData = {
     id: number
     name: string

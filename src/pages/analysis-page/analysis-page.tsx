@@ -40,7 +40,7 @@ export default function AnalysisPage(){
                 <p className="analysis__name">{patient_data?.last_name} {patient_data?.first_name} {patient_data?.patronymic}</p>
 
                 <div className="analysis__info">
-                    {(analysData?.name === 'hematological_research')?
+                    {(analysData?.name === 'hematological_research') || (analysData?.name === 'hematological research')?
                         <h3 className="analysis__info-name">Гематологическое исследование</h3>
                     : 
                         <div> 
@@ -53,7 +53,7 @@ export default function AnalysisPage(){
                             }  </div>
                     }
                     <p className="analysis__info-date">Дата исследования: {humanizeDate(analysData?.analysis_date)}</p>
-                    <Link to={`${AppRoute.Patients}/${patient_data?.id}/analysis/${Number(urlParams.analysid)}/grafics`} className="analysis__info-btn">Посмотреть графики</Link>
+                    <Link to={`${AppRoute.Patients}/${patient_data?.id}/analysis/${Number(urlParams.analysisid)}/${Number(urlParams.analysid)}/grafics`} className="analysis__info-btn">Посмотреть графики</Link>
                 </div>
 
                 <div className="analysis__params">
