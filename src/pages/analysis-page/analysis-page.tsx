@@ -6,8 +6,9 @@ import { useAppDispatch, useAppSelector } from "../../components/hooks";
 import { AppRoute } from "../../const";
 import { AnalysDataValue } from "../../types/analys-data";
 import { useEffect } from "react";
-import { fetchAnalysAction } from "../../store/api-actions";
+import { fetchAnalysAction, fetchGraficAction } from "../../store/api-actions";
 import { humanizeDate } from "../../utils/change-data-formats";
+import { store } from "../../store";
 
 export default function AnalysisPage(){
     const urlParams = useParams();
@@ -15,11 +16,16 @@ export default function AnalysisPage(){
     const analysesData = useAppSelector(getPatiensAnalyses)
     console.log(analysesData?.patient_tests)
     console.log('id анализа', Number(urlParams.patid), Number(urlParams.analysid))
+
+
     useEffect(() => {
         dispatch((fetchAnalysAction({id: Number(urlParams.analysid)})));
       }, [dispatch]);
-    const patient_data = usePatientById();
+    const  handleGrafic = () =>{
 
+    }
+
+    const patient_data = usePatientById();
     const analysData = useAppSelector(getPatientAnalys)
 
     return(
@@ -34,20 +40,20 @@ export default function AnalysisPage(){
                 <p className="analysis__name">{patient_data?.last_name} {patient_data?.first_name} {patient_data?.patronymic}</p>
 
                 <div className="analysis__info">
-                    {(analysData?.name === 'hematological research')?
+                    {(analysData?.name === 'hematological_research')?
                         <h3 className="analysis__info-name">Гематологическое исследование</h3>
                     : 
                         <div> 
-                            {(analysData?.name === 'immune status')?
+                            {(analysData?.name === 'immune_status')?
                                 <h3 className="analysis__info-name">Имунный статус</h3>
-                                :  <div>{(analysData?.name === 'cytokine status')?
+                                :  <div>{(analysData?.name === 'cytokine_status')?
                                     <h3 className="analysis__info-name">Цитокиновый статус</h3>
                                     :  <div></div>
                                 }</div>
                             }  </div>
                     }
                     <p className="analysis__info-date">Дата исследования: {humanizeDate(analysData?.analysis_date)}</p>
-                    <Link to={`${AppRoute.Patients}/${patient_data?.id}/grafics`} className="analysis__info-btn">Посмотреть графики</Link>
+                    <Link to={`${AppRoute.Patients}/${patient_data?.id}/analysis/${Number(urlParams.analysid)}/grafics`} className="analysis__info-btn">Посмотреть графики</Link>
                 </div>
 
                 <div className="analysis__params">

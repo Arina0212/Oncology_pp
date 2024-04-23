@@ -1,6 +1,7 @@
 import { NameSpace } from '../../const';
 import { AnalysData } from '../../types/analys-data';
 import { AnalysisDateData } from '../../types/analysis-date';
+import { GraficData, Grafics } from '../../types/grafic';
 import { PatienInfoData } from '../../types/patient-info';
 import { State } from '../../types/state';
 
@@ -9,4 +10,5 @@ export const getCurrentPatient = (state: Pick<State, NameSpace.Patiens>): Patien
 export const getPatientDataLoading = (state: Pick<State, NameSpace.Patiens>): boolean => state[NameSpace.Patiens].isPatientLoading;
 export const getPatiensAnalyses = (state: Pick<State, NameSpace.Patiens>): AnalysisDateData | undefined => state[NameSpace.Patiens].analysis;
 export const getPatientAnalys = (state: Pick<State, NameSpace.Patiens>): AnalysData | undefined => state[NameSpace.Patiens].analys;
+export const getGrafic = (state: Pick<State, NameSpace.Patiens>): Grafics | undefined => state[NameSpace.Patiens].grafic;
 

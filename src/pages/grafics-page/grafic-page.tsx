@@ -1,11 +1,29 @@
 import { useParams } from "react-router-dom";
 import Header from "../../components/header/header";
 import usePatientById from "../../components/hooks/get-patient-by-id";
+import { useAppDispatch, useAppSelector } from "../../components/hooks";
+import { getGrafic, getPatientAnalys } from "../../store/patiens-process/selectors";
+import { humanizeDate } from "../../utils/change-data-formats";
+import { useEffect, useState } from "react";
+import { store } from "../../store";
+import { fetchGraficAction } from "../../store/api-actions";
+import { GraficData } from "../../types/grafic";
 
 export default function GraficPage(){
     const urlParams = useParams();
-
+    console.log(urlParams)
+    const analysData = useAppSelector(getPatientAnalys)
     const patient_data = usePatientById();
+    const dispatch = useAppDispatch();
+    console.log(analysData,patient_data)
+
+    // let [items, setItems] = useState([])
+    useEffect(()=> {
+        dispatch(fetchGraficAction({id: Number(urlParams.analysid)}))
+    },[dispatch])
+
+    const grafics = useAppSelector(getGrafic)
+    console.log(grafics)
     return(
         <>
             <Header/>
@@ -14,14 +32,14 @@ export default function GraficPage(){
                 <p className="graphs__name">{patient_data?.last_name} {patient_data?.first_name} {patient_data?.patronymic}</p>
                 <div className="graphs__info">
                     <h3 className="graphs__info-diagnose">Диагноз: {patient_data?.diagnosis}</h3>
-                    <p className="graphs__info-date">Дата исследования: 12.03.1993</p>
+                    <p className="graphs__info-date">Дата исследования: {humanizeDate(analysData?.analysis_date)}</p>
                 </div>
 
                 <h3 className="graphs__title">B-клеточное звено</h3>
 
                 <div className="graphs__result">
                     <div className="graphs__result-pic">
-                        <img src="../media/graph.png" alt="граф"/>
+                        <img src="./media/hematological_research_79.png" alt="граф"/>
                     </div>
 
                     <div className="graphs__result-info">

@@ -2,6 +2,7 @@ import { AuthorizationStatus } from '../const';
 import { store } from '../store';
 import { AnalysData } from './analys-data';
 import { AnalysisDateData } from './analysis-date';
+import { GraficData, Grafics } from './grafic';
 import { PatienInfoData } from './patient-info';
 import { SubjectData } from './subject-data';
 import { SubjectsData } from './subjects-data';
@@ -18,6 +19,7 @@ export type PatiensProcess = {
   isPatientLoading: boolean;
   analysis?: AnalysisDateData;
   analys?: AnalysData;
+  grafic?: Grafics;
 };
 
 export type CopyrightProcess = {

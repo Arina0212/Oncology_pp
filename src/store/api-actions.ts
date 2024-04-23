@@ -15,6 +15,7 @@ import { PatienSData } from '../types/patients-data';
 import { PatienInfoData } from '../types/patient-info';
 import { AnalysisDateData } from '../types/analysis-date';
 import { AnalysData } from '../types/analys-data';
+import { GraficData, Grafics } from '../types/grafic';
 
 // export const checkAuthAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -200,4 +201,16 @@ export const fetchAnalysAction = createAsyncThunk<AnalysData, {id: number}, {
   },
 );
 
+export const fetchGraficAction = createAsyncThunk<Grafics, {id: number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchGrafic',
+  async ({id}, {extra: api}) => {
+    const {data} = await api.get<Grafics>(`${APIRoute.Grafic}${id}/`);
+    console.log(data)
+    return data;
+  },
+);
 
