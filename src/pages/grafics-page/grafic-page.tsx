@@ -37,16 +37,21 @@ export default function GraficPage(){
                 </div>
                 {(grafics?.map((grafic: GraficData)=>
                 <div>
-                <h3 className="graphs__title">B-клеточное звено</h3>
+                    {(grafic.graphic.includes('hematological'))?
+                        <div><h3 className="graphs__title">B-клеточное звено</h3></div>
+                        :
+                        <div>
+                            {(grafic.graphic.includes('immune'))?
+                            <div><h3 className="graphs__title">T-клеточное звено</h3></div>
+                            :
+                            <div>{(grafic.graphic.includes('cytokine'))?
+                            <div><h3 className="graphs__title">Цитокиновые пары</h3></div>
+                            :
+                            <div></div>}</div>
+                        }
+                        </div>
 
-                <div className="graphs__result">
-          
-
-
-                   
-                </div>
-
-                <h3 className="graphs__title">T-клеточное звено</h3>
+                    }
 
                 <div className="graphs__result">
                 
