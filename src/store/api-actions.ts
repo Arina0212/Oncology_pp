@@ -16,6 +16,7 @@ import { PatienInfoData } from '../types/patient-info';
 import { AnalysisDateData } from '../types/analysis-date';
 import { AnalysData } from '../types/analys-data';
 import { GraficData, Grafics } from '../types/grafic';
+import { AnalysComparisonData } from '../types/analys-comparation';
 
 // export const checkAuthAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -144,8 +145,7 @@ export const fetchPatiensInfoAction = createAsyncThunk<PatienInfoData[], undefin
 );
 
 //редактирование данных о пациенте по id
-    //нужно создать новый тип patient-data с id 
-    ///*///
+
 export const UpdatePatientsAction = createAsyncThunk<PatienInfoData, PatienInfoData,{
   dispatch: AppDispatch;
   state: State;
@@ -214,3 +214,31 @@ export const fetchGraficAction = createAsyncThunk<Grafics, {id: number}, {
   },
 );
 
+export const fetchAnalysComparisonAction = createAsyncThunk<AnalysComparisonData , {id: number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchAnalysComparison',
+  async ({id}, {extra: api}) => {
+    const {data} = await api.get<AnalysComparisonData>(`${APIRoute.Comparison}${id}/`);
+    console.log(data)
+    return data;
+  },
+);
+
+export const CreatePatientAnalysesAction = createAsyncThunk<PostAnalyses, PostAnalyses, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'patient/CreatePatientsAnalyses',
+  async ({analysis_date, test, patient_id}, {dispatch, extra: api}) => {
+    const {data} = await api.post<PostAnalyses>(APIRoute.Patiens, {analysis_date, test, patient_id});
+    console.log(data)
+    dispatch(fetchPatiensInfoAction());
+    dispatch(redirectToRoute(AppRoute.Search))
+
+    return data;
+  },
+);

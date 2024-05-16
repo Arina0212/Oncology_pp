@@ -1,5 +1,6 @@
 import { AuthorizationStatus } from '../const';
 import { store } from '../store';
+import { AnalysComparisonData } from './analys-comparation';
 import { AnalysData } from './analys-data';
 import { AnalysisDateData } from './analysis-date';
 import { GraficData, Grafics } from './grafic';
@@ -20,6 +21,8 @@ export type PatiensProcess = {
   analysis?: AnalysisDateData;
   analys?: AnalysData;
   grafic?: Grafics;
+  comparison?: AnalysComparisonData;
+  NewAnalysis?: PostAnalyses;
 };
 
 export type CopyrightProcess = {

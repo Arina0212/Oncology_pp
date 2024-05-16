@@ -41,7 +41,7 @@ export default function PatientPage(){
     const navigate = useNavigate()
 
     const analysesData = useAppSelector(getPatiensAnalyses)
-    console.log("analysesData=",analysesData?.patient_tests.length != 0, analysesData?.patient_tests != undefined)
+    // console.log("analysesData=",&& analysesData?.patient_tests.length != 0, analysesData?.patient_tests != undefined)
 
     const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
@@ -53,7 +53,7 @@ export default function PatientPage(){
             setError("Дата рождения не может быть больше текущей даты");
         }else{
         dispatch(UpdatePatientsAction({
-            id: Number(urlParams.id),
+            id: Number(urlParams.patid),
             first_name: first_name,
             last_name: last_name,
             patronymic: patronymic,
@@ -65,8 +65,8 @@ export default function PatientPage(){
             chemoterapy_comment: ""
         }));}
         handleClose();
-        dispatch(fetchFullPatientInfoAction({id: Number(urlParams.id)}));
-        console.log(Number(urlParams.id))
+        dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
+        console.log(Number(urlParams.patid))
     };
 
     const FIO_sep = FIO.split(' ', 3);
@@ -110,7 +110,7 @@ export default function PatientPage(){
                             <h3 className="patient__left-add-text">Результаты анализов</h3>
                             <Link to={`${AppRoute.Patients}/${patient_data.id}/add-analysis`} className="patient__left-add-btn">Добавить анализ</Link>
                         </div>
-                        {(analysesData?.patient_tests != undefined && analysesData?.patient_tests.length!=0) ?
+                        {(analysesData?.patient_tests != undefined ) ?
                         <div className="patient__left-table">
                             
                                 {analysesData?.patient_tests.map((analys: AnalysDateData)=>( 

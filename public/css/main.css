@@ -38,7 +38,7 @@ button {
   padding: 0;
 }
 
-a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody {
+a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li {
   overflow-wrap: break-word;
   font-family: Montserrat, sans-serif;
   color: black;
@@ -713,6 +713,30 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody {
   flex-direction: column;
   padding: 3.1578947368vw 18.9473684211vw;
 }
+.graphs__text-print {
+  position: absolute;
+  top: 6.5vw;
+  right: 18.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  color: #FFFFFF;
+  background-color: #000000;
+  width: 16.8421052632vw;
+  height: 3.0526315789vw;
+  outline: none;
+  border: none;
+  border-radius: 0.7894736842vw;
+  cursor: pointer;
+  box-shadow: 0 0 4.2105263158vw 0 rgba(0, 0, 0, 0.0784313725);
+  transition: background-color ease-in-out 250ms;
+}
+.graphs__text-print:hover {
+  background-color: #1A0000;
+}
 .graphs__name {
   font-weight: 600;
   margin: 1.5789473684vw 0;
@@ -726,9 +750,33 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody {
   font-weight: 600;
   font-size: 0.9473684211vw;
 }
+.graphs__info-backbtn {
+  position: absolute;
+  right: 18.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  color: #FFFFFF;
+  background-color: #FF0000;
+  width: 16.8421052632vw;
+  height: 3.0526315789vw;
+  border-radius: 0.7894736842vw;
+  box-shadow: 0 0 4.2105263158vw 0 rgba(0, 0, 0, 0.0784313725);
+  cursor: pointer;
+  transition: background-color ease-in-out 250ms;
+}
+.graphs__info-backbtn:hover {
+  background-color: #C80000;
+}
 .graphs__title {
+  display: flex;
   margin: 2.6315789474vw 0 1.5789473684vw;
   align-self: center;
+  justify-content: center;
+  height: 1.5vw;
 }
 .graphs__result {
   align-self: center;
@@ -761,7 +809,65 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody {
   font-size: 0.8421052632vw;
   color: rgba(0, 0, 0, 0.5019607843);
 }
+.graphs__analysis {
+  display: none;
+}
 
+
+@media print {
+  .header {
+    display: none;
+  }
+  .graphs__text-print {
+    display: none;
+  }
+  .graphs__info-backbtn {
+    display: none;
+  }
+  .graphs__analysis {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5789473684vw;
+    margin-top: 2.6315789474vw;
+  }
+  .graphs__analysis-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .graphs__analysis-table thead tr {
+    border-top: 0.0526315789vw solid rgba(208, 208, 208, 0.5019607843);
+    border-bottom: 0.0526315789vw solid rgba(208, 208, 208, 0.5019607843);
+    font-weight: 600;
+    font-size: 0.9473684211vw;
+    color: rgba(0, 0, 0, 0.5019607843);
+    height: 3.1578947368vw;
+  }
+  .graphs__analysis-table thead tr th {
+    text-align: center;
+    user-select: none;
+    padding: 0;
+  }
+  .graphs__analysis-table thead tr th:nth-child(1) {
+    text-align: left;
+    padding-left: 3.1578947368vw;
+    width: 25%;
+  }
+  .graphs__analysis-table tbody tr {
+    border-bottom: 0.0526315789vw solid rgba(208, 208, 208, 0.5019607843);
+    padding: 1vw 0;
+    font-weight: 600;
+    font-size: 0.9473684211vw;
+    height: 3.1578947368vw;
+  }
+  .graphs__analysis-table tbody tr td {
+    text-align: center;
+    padding: 0;
+  }
+  .graphs__analysis-table tbody tr td:nth-child(1) {
+    text-align: left;
+    padding-left: 3.1578947368vw;
+  }
+}
 
 
 
