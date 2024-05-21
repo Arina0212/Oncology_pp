@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom"
 import Header from "../../components/header/header"
 import { AppRoute } from "../../const"
-import MainButton from "../../components/main-button/main-button"
-import { useAppSelector } from "../../components/hooks"
-import { getAuthorizationStatus } from "../../store/user-process/selectors"
 
 
 export default function MainPage(){
-    const authorizationStatus=useAppSelector(getAuthorizationStatus)
     return(
         <>
         <Header/>

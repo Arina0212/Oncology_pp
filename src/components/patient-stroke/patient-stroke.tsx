@@ -3,9 +3,8 @@ import { AppRoute, AuthorizationStatus } from "../../const";
 import { FormEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
-import { UpdatePatientsAction, fetchAnalysisDateAction, fetchFullPatientInfoAction } from "../../store/api-actions";
+import { UpdatePatientsAction, fetchFullPatientInfoAction } from "../../store/api-actions";
 import Dialog from '@mui/material/Dialog';
-import { getCurrentPatient } from "../../store/patiens-process/selectors";
 import { humanizeDate } from "../../utils/change-data-formats";
 
 type PatienInfoProps={
@@ -80,17 +79,12 @@ export default function PatientStroke({id, first_name_pat, last_name_pat, patron
             console.log(id)
         }
       }, [dispatch, id]);
-      const update_patient = useAppSelector(getCurrentPatient);      
     const FIO_sep = FIO.split(' ', 3);
 
     let first_name: string = FIO_sep[1];
     let last_name: string = FIO_sep[0];
     let patronymic: string = FIO_sep[2];
 
-    const [new_last_name] = useState(last_name);
-    const [new_first_name] = useState(first_name);
-    const [new_patronomic] = useState(patronymic);
-    const [new_birth_date] = useState(birth_date);
 
   const handleClickOpenUpdate = () => {
     setOpenUp(true);

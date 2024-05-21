@@ -6,9 +6,8 @@ import { useAppDispatch, useAppSelector } from "../../components/hooks";
 import { AppRoute } from "../../const";
 import { AnalysDataValue } from "../../types/analys-data";
 import { useEffect } from "react";
-import { fetchAnalysAction, fetchGraficAction } from "../../store/api-actions";
+import { fetchAnalysAction } from "../../store/api-actions";
 import { humanizeDate } from "../../utils/change-data-formats";
-import { store } from "../../store";
 
 export default function AnalysisPage(){
     const urlParams = useParams();
@@ -21,9 +20,7 @@ export default function AnalysisPage(){
     useEffect(() => {
         dispatch((fetchAnalysAction({id: Number(urlParams.analysid)})));
       }, [dispatch]);
-    const  handleGrafic = () =>{
 
-    }
 
     const patient_data = usePatientById();
     const analysData = useAppSelector(getPatientAnalys)
@@ -58,7 +55,7 @@ export default function AnalysisPage(){
 
                 <div className="analysis__params">
                     <h3 className="analysis__params-text">Параметры анализов</h3>
-                    <Link to="addAnalysis.html" className="analysis__params-btn">Редактировать анализ</Link>
+                    <Link to={`${AppRoute.Patients}/${Number(urlParams.patid)}/analysis/${Number(urlParams.analysisid)}/${Number(urlParams.analysid)}/edit-analysis`} className="analysis__params-btn">Редактировать анализ</Link>
                 </div>
 
                 <table className="analysis__table sortable">

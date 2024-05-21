@@ -15,8 +15,10 @@ import { PatienSData } from '../types/patients-data';
 import { PatienInfoData } from '../types/patient-info';
 import { AnalysisDateData } from '../types/analysis-date';
 import { AnalysData } from '../types/analys-data';
-import { GraficData, Grafics } from '../types/grafic';
+import { Grafics } from '../types/grafic';
 import { AnalysComparisonData } from '../types/analys-comparation';
+import { PostAnalyses, PostAnalysesSecond, PostAnalysesThird, PostAnalysesTree, PostAnalysesTwo, PostAnalysesTwo2, PostAnalysesTwo3 } from '../types/patient-analyses-post';
+import { EditAnalyses, EditAnalysesId, EditAnalysesSecond, EditAnalysesSecondId, EditAnalysesThird, EditAnalysesThirdId, EditAnalysesTree, EditAnalysesTreeID, EditAnalysesTwo, EditAnalysesTwo2, EditAnalysesTwo2Id, EditAnalysesTwo3, EditAnalysesTwo3Id, EditAnalysesTwoId } from '../types/patient-analyses-post copy';
 
 // export const checkAuthAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -227,18 +229,32 @@ export const fetchAnalysComparisonAction = createAsyncThunk<AnalysComparisonData
   },
 );
 
-export const CreatePatientAnalysesAction = createAsyncThunk<PostAnalyses, PostAnalyses, {
+export const CreatePatientAnalysesAction = createAsyncThunk<PostAnalyses | PostAnalysesSecond | PostAnalysesThird | PostAnalysesTwo3 | PostAnalysesTwo2 | PostAnalysesTwo | PostAnalysesTree , PostAnalyses | PostAnalysesSecond | PostAnalysesThird | PostAnalysesTwo3 | PostAnalysesTwo2 | PostAnalysesTwo | PostAnalysesTree, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'patient/CreatePatientsAnalyses',
   async ({analysis_date, test, patient_id}, {dispatch, extra: api}) => {
-    const {data} = await api.post<PostAnalyses>(APIRoute.Patiens, {analysis_date, test, patient_id});
+    const {data} = await api.post<PostAnalyses | PostAnalysesSecond | PostAnalysesThird | PostAnalysesTwo3 | PostAnalysesTwo2 | PostAnalysesTwo | PostAnalysesTree>(APIRoute.AddAnalysis, {analysis_date, test, patient_id});
     console.log(data)
     dispatch(fetchPatiensInfoAction());
-    dispatch(redirectToRoute(AppRoute.Search))
+    dispatch(redirectToRoute(`${AppRoute.Patients}/${patient_id}`))
+    return data;
+  },
+);
 
+export const EditPatientAnalysesAction = createAsyncThunk<EditAnalyses | EditAnalysesSecond | EditAnalysesThird | EditAnalysesTwo3 | EditAnalysesTwo2 | EditAnalysesTwo | EditAnalysesTree, EditAnalysesId | EditAnalysesSecondId | EditAnalysesThirdId | EditAnalysesTwo3Id | EditAnalysesTwo2Id | EditAnalysesTwoId | EditAnalysesTreeID, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'patient/EditPatientsAnalyses',
+  async ({id, analysis_date, test}, {dispatch, extra: api}) => {
+    const {data} = await api.put<EditAnalyses | EditAnalysesSecond | EditAnalysesThird | EditAnalysesTwo3 | EditAnalysesTwo2 | EditAnalysesTwo | EditAnalysesTree>(`${APIRoute.AnalysEditData}${id}/`, {analysis_date, test});
+    console.log(data)
+    dispatch(fetchPatiensInfoAction());
+    // dispatch(window.history.back)
     return data;
   },
 );

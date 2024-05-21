@@ -27,7 +27,6 @@ const style = {
   
 export default function SearchPage(){
     const [open, setOpen] = useState(false);
-    const [openUp, setOpenUp] = useState(false);
     const [error, setError] = useState('');
     const [FIO, setFIO] = useState('');
     const [birth_date, setDate] = useState('');

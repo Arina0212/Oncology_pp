@@ -3,15 +3,14 @@ import Header from "../../components/header/header";
 import { FormEvent, useState } from "react";
 import Dialog from '@mui/material/Dialog';
 import { useAppDispatch, useAppSelector } from "../../components/hooks";
-import { UpdatePatientsAction, fetchAnalysisDateAction, fetchFullPatientInfoAction } from "../../store/api-actions";
+import { UpdatePatientsAction, fetchFullPatientInfoAction } from "../../store/api-actions";
 import { AppRoute, AuthorizationStatus } from "../../const";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
 import usePatientById from "../../components/hooks/get-patient-by-id";
 import LoadingPage from "../loading-page/loading-page";
 import { getPatiensAnalyses, getPatientDataLoading } from "../../store/patiens-process/selectors";
 import { humanizeDate } from "../../utils/change-data-formats";
-import { store } from "../../store";
-import { AnalysDateData, AnalysNameDateData, AnalysisDateData } from "../../types/analysis-date";
+import { AnalysDateData, AnalysNameDateData } from "../../types/analysis-date";
 
 const style = {
     position: 'absolute' as 'absolute',

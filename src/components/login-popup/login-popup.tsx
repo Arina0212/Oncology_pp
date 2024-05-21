@@ -20,6 +20,7 @@ export default function LoginPopup(){
     const [isErrorPassword, setIsErrorPassword] = useState(false);
 
     const dispatch = useAppDispatch();
+    console.log(isErrorEmail, isErrorPassword)
 
     const containsAnyLetters = (password: string) => /[a-z]+/i.test(password);
     const containsAnyNumbers = (password: string) => /[0-9]+/i.test(password);

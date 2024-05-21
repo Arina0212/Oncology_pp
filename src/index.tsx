@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { ToastContainer } from 'react-toastify';
 import HistoryRouter from './components/history-route/history-route';
 import browserHistory from './browser-history';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { fetchAnalysComparisonAction, fetchAnalysisDateAction, fetchCopyrightAction, fetchPatiensInfoAction, fetchSubjectsAction } from './store/api-actions';
+import { fetchCopyrightAction, fetchSubjectsAction } from './store/api-actions';
 
 store.dispatch(fetchSubjectsAction());
 store.dispatch(fetchCopyrightAction());
-store.dispatch(fetchAnalysComparisonAction({id: 334}))
 
 
 

@@ -37,6 +37,7 @@ export enum APIRoute {
   PatiensInfo = 'patients-info',
   AnalysData = 'patient-analysis/',
   AnalysEditData = 'patient-test-edit/',
+  AddAnalysis = 'patient-test/',
   Grafic = 'graphic/',
   Comparison = 'analysis-comparison/'
 }

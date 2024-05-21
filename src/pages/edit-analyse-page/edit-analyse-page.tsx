@@ -1,115 +1,90 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Header from "../../components/header/header";
-import { useAppDispatch } from "../../components/hooks";
-import { CreatePatientAnalysesAction } from "../../store/api-actions";
+import { useAppDispatch, useAppSelector } from "../../components/hooks";
+import { EditPatientAnalysesAction, fetchAnalysAction } from "../../store/api-actions";
 import { useParams } from "react-router-dom";
 import { humanizeDate } from "../../utils/change-data-formats";
+import { getPatientAnalys } from "../../store/patiens-process/selectors";
 
-export default function AddAnalysisPage(){
+export default function EditAnalysisPage(){
     const urlParams = useParams();
     const dispatch = useAppDispatch();
+
+
+    useEffect(() => {
+        dispatch((fetchAnalysAction({id: Number(urlParams.analysid)})));
+      }, [dispatch]);
+      const analysData = useAppSelector(getPatientAnalys)
+
+
+      const [value1_1, setValue1_1] = useState('');
+      const [value2_1, setValue2_1] = useState('');
+      const [value3_1, setValue3_1] = useState('');
+      const [value4_1, setValue4_1] = useState('');
+      const [value1_2, setValue1_2] = useState('');
+      const [value2_2, setValue2_2] = useState('');
+      const [value3_2, setValue3_2] = useState('');
+      const [value4_2, setValue4_2] = useState('');
+      const [value5_2, setValue5_2] = useState('');
+      const [value6_2, setValue6_2] = useState('');
+      const [value7_2, setValue7_2] = useState('');
+      const [value1_3, setValue1_3] = useState('');
+      const [value2_3, setValue2_3] = useState('');
+      const [value3_3, setValue3_3] = useState('');
+      const [value4_3, setValue4_3] = useState('');
+      const [value5_3, setValue5_3] = useState('');
+      const [value6_3, setValue6_3] = useState('');
+
+    if(analysData?.name==='hematological_research' || analysData?.name === 'hematological research'){
+        let anaylse2 = document.getElementById('analyse2')
+        let showBtn2 = document.getElementById('showBtn2')
+        anaylse2?.classList.remove("add-analysis__analyse_hide");
+        showBtn2?.classList.add("add-analysis__show_hide");
+        console.log(analysData.name, "гемотологическое")
+    }else if(analysData?.name==='cytokine_status'){
+        let anaylse3 = document.getElementById('analyse3')
+        let showBtn3 = document.getElementById('showBtn3')
+        anaylse3?.classList.remove("add-analysis__analyse_hide");
+        showBtn3?.classList.add("add-analysis__show_hide");
+        console.log(analysData.name, 'цитокины')
+
+    }else{
+        let anaylse1 = document.getElementById('analyse1')
+        let showBtn1 = document.getElementById('showBtn1')
+        anaylse1?.classList.remove("add-analysis__analyse_hide");
+        showBtn1?.classList.add("add-analysis__show_hide");
+
+    }
     let dateTime = new Date().toLocaleDateString()
     const [error, setError] = useState('');
-
-    const [value1_1, setValue1_1] = useState('');
-    const [value2_1, setValue2_1] = useState('');
-    const [value3_1, setValue3_1] = useState('');
-    const [value4_1, setValue4_1] = useState('');
-    const [value1_2, setValue1_2] = useState('');
-    const [value2_2, setValue2_2] = useState('');
-    const [value3_2, setValue3_2] = useState('');
-    const [value4_2, setValue4_2] = useState('');
-    const [value5_2, setValue5_2] = useState('');
-    const [value6_2, setValue6_2] = useState('');
-    const [value7_2, setValue7_2] = useState('');
-    const [value1_3, setValue1_3] = useState('');
-    const [value2_3, setValue2_3] = useState('');
-    const [value3_3, setValue3_3] = useState('');
-    const [value4_3, setValue4_3] = useState('');
-    const [value5_3, setValue5_3] = useState('');
-    const [value6_3, setValue6_3] = useState('');
-
-
-
-    const [date, setDate] = useState('');
+    const [date, setDate] = useState(analysData?.analysis_date);
     
     let elementsID1: string, elementsID2: string, elementsID3 : string
     let countCloseAnalyses: number
 
     const showHide1=()=>{
         let anaylse1 = document.getElementById('analyse1')
-    let anaylse2 = document.getElementById('analyse2')
-    let anaylse3 = document.getElementById('analyse3')
-    let showBtn1 = document.getElementById('showBtn1')
-    let showBtn2 = document.getElementById('showBtn2')
-    let showBtn3 = document.getElementById('showBtn3')
+        let showBtn1 = document.getElementById('showBtn1')
         anaylse1?.classList.toggle("add-analysis__analyse_hide");
         showBtn1?.classList.toggle("add-analysis__show_hide");
         countCloseAnalyses = document.querySelectorAll('.add-analysis__analyse_hide').length;
         console.log(countCloseAnalyses,'-количество зарытых анализов')
-        // var elements = document.getElementsByClassName("add-analysis__analyse_hide");
-        // if(elements.length === 3){
-        //     elementsID1 = elements[0].id;
-        //     elementsID2 = elements[1].id;
-        //     elementsID3 = elements[2].id;
-        // }else if(elements.length === 2){
-        //     elementsID1 = elements[0].id;
-        //     elementsID2 = elements[1].id;
-        // }else{
-        //     elementsID1 = elements[0].id;
-        // }
-        // console.log(elementsID1, elementsID2, elementsID3)
-
     }
     function showHide2(){
-        let anaylse1 = document.getElementById('analyse1')
-    let anaylse2 = document.getElementById('analyse2')
-    let anaylse3 = document.getElementById('analyse3')
-    let showBtn1 = document.getElementById('showBtn1')
-    let showBtn2 = document.getElementById('showBtn2')
-    let showBtn3 = document.getElementById('showBtn3')
+        let anaylse2 = document.getElementById('analyse2')
+        let showBtn2 = document.getElementById('showBtn2')
         anaylse2?.classList.toggle("add-analysis__analyse_hide");
         showBtn2?.classList.toggle("add-analysis__show_hide");
         countCloseAnalyses = document.querySelectorAll('.add-analysis__analyse_hide').length;
         console.log(countCloseAnalyses,'-количество зарытых анализов')
-        // var elements = document.getElementsByClassName("add-analysis__analyse_hide");
-        // if(elements.length === 3){
-        //     elementsID1 = elements[0].id;
-        //     elementsID2 = elements[1].id;
-        //     elementsID3 = elements[2].id;
-        // }else if(elements.length === 2){
-        //     elementsID1 = elements[0].id;
-        //     elementsID2 = elements[1].id;
-        // }else{
-        //     elementsID1 = elements[0].id;
-        // }
-        // console.log(elementsID1, elementsID2, elementsID3)
-        
-    }
+        }
     function showHide3(){
-        let anaylse1 = document.getElementById('analyse1')
-    let anaylse2 = document.getElementById('analyse2')
-    let anaylse3 = document.getElementById('analyse3')
-    let showBtn1 = document.getElementById('showBtn1')
-    let showBtn2 = document.getElementById('showBtn2')
-    let showBtn3 = document.getElementById('showBtn3')
+        let anaylse3 = document.getElementById('analyse3')
+        let showBtn3 = document.getElementById('showBtn3')
         anaylse3?.classList.toggle("add-analysis__analyse_hide");
         showBtn3?.classList.toggle("add-analysis__show_hide");
         countCloseAnalyses = document.querySelectorAll('.add-analysis__analyse_hide').length;
         console.log(countCloseAnalyses,'-количество зарытых анализов')
-        // var elements = document.getElementsByClassName("add-analysis__analyse_hide");
-        // if(elements.length === 3){
-        //     elementsID1 = elements[0].id;
-        //     elementsID2 = elements[1].id;
-        //     elementsID3 = elements[2].id;
-        // }else if(elements.length === 2){
-        //     elementsID1 = elements[0].id;
-        //     elementsID2 = elements[1].id;
-        // }else{
-        //     elementsID1 = elements[0].id;
-        // }
-        // console.log(elementsID1, elementsID2, elementsID3)
-
     }
     
 
@@ -130,7 +105,8 @@ export default function AddAnalysisPage(){
         if(humanizeDate(date) > dateTime){
             setError("Дата анализа не может быть больше текущей даты");
         }else if(elements.length === 3 && elementsID1==='analyse2' && elementsID2==='analyse3'){
-            dispatch(CreatePatientAnalysesAction({
+            dispatch(EditPatientAnalysesAction({
+                id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
                     {
@@ -154,11 +130,11 @@ export default function AddAnalysisPage(){
                             }
                         ]
                     }
-                ],
-                patient_id: Number(urlParams.patid),
+                ]
                 }));
         }else if(elements.length === 3 && elementsID1==='analyse1' && elementsID2==='analyse3'){
-            dispatch(CreatePatientAnalysesAction({
+            dispatch(EditPatientAnalysesAction({
+                id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
                     {
@@ -195,10 +171,10 @@ export default function AddAnalysisPage(){
                         ]
                     }
                 ],
-                patient_id: Number(urlParams.patid),
                 }));
             }else if(elements.length === 3 && elementsID1==='analyse1' && elementsID2==='analyse2'){
-                    dispatch(CreatePatientAnalysesAction({
+                    dispatch(EditPatientAnalysesAction({
+                        id: Number(urlParams.analysisid),
                         analysis_date: date,
                         test:[
                             {
@@ -231,11 +207,11 @@ export default function AddAnalysisPage(){
                                 ]
                             }
                         ],
-                        patient_id: Number(urlParams.patid),
                         }));
                 }
                 else if(elements.length === 2 && elementsID1==='analyse3'){
-            dispatch(CreatePatientAnalysesAction({
+            dispatch(EditPatientAnalysesAction({
+                id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
                     {
@@ -293,10 +269,10 @@ export default function AddAnalysisPage(){
                         ]
                     }
                 ],
-                patient_id: Number(urlParams.patid),
                 }));
         }else if(elements.length === 2 && elementsID1==='analyse2'){
-            dispatch(CreatePatientAnalysesAction({
+            dispatch(EditPatientAnalysesAction({
+                id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
                     {
@@ -350,10 +326,10 @@ export default function AddAnalysisPage(){
                                 ]
                     }
                 ],
-                patient_id: Number(urlParams.patid),
                 }));
         }else if(countCloseAnalyses === 2 && elements.length === 2 && elementsID1==='analyse1'){
-            dispatch(CreatePatientAnalysesAction({
+            dispatch(EditPatientAnalysesAction({
+                id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
                     {
@@ -419,11 +395,11 @@ export default function AddAnalysisPage(){
                                 ]
                     }
                 ],
-                patient_id: Number(urlParams.patid),
                 }));
         }else{
             console.log('введены все анализы')
-            dispatch(CreatePatientAnalysesAction({
+            dispatch(EditPatientAnalysesAction({
+                id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
                     {
@@ -510,7 +486,6 @@ export default function AddAnalysisPage(){
                                 ]
                     }
                 ],
-                patient_id: Number(urlParams.patid),
                 }));
         }
     }
@@ -529,7 +504,7 @@ export default function AddAnalysisPage(){
         <button type="submit" className="add-analysis__header-btn">Сохранить</button>
     </div>
 
-    <div id="analyse1" className="add-analysis__analyse">
+    <div id="analyse1" className="add-analysis__analyse add-analysis__analyse_hide">
         <div className="add-analysis__analyse-head">
             <p className="add-analysis__analyse-head-text" >Тип исследования: Имунный статус</p>
             <button type="reset" className="add-analysis__analyse-head-delete" onClick={showHide1}>Удалить</button>
@@ -729,7 +704,7 @@ export default function AddAnalysisPage(){
 
     </form>
     <div id="analyse4" className="add-analysis__analyse_hide"></div>
-    <button className="add-analysis__show add-analysis__show_hide" onClick={showHide1} id="showBtn1">Добавить исследование: Имунный статус</button>
+    <button className="add-analysis__show" onClick={showHide1} id="showBtn1">Добавить исследование: Имунный статус</button>
     <button className="add-analysis__show" onClick={showHide2} id="showBtn2">Добавить исследование: Гематологическое исследование</button>
     <button className="add-analysis__show" onClick={showHide3} id="showBtn3">Добавить исследование: Цитокиновый статус</button>
 
@@ -737,5 +712,3 @@ export default function AddAnalysisPage(){
         </>
     );
 }
-
-

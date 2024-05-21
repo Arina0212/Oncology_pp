@@ -12,13 +12,12 @@ const SignUpPopup: React.FC =() => {
     const emailRef = useRef<HTMLInputElement | null>(null);
     const passwordRef = useRef<HTMLInputElement | null>(null);
     const [error, setError] = useState('');
-    const [error_FIO, setFIO_e] = useState('');
+    const [error_FIO] = useState('');
     const [FIO, setFIO] = useState('');
     const [isErrorEmail, setIsErrorEmail] = useState(false);
     const [isErrorPassword, setIsErrorPassword] = useState(false);
-
+    console.log(isErrorEmail, isErrorPassword)
     const dispatch = useAppDispatch();
-
     const containsAnyLetters = (password: string) => /[a-z]+/i.test(password);
     const containsAnyNumbers = (password: string) => /[0-9]+/i.test(password);
     const isValidEmail = (email: string) => /^[\w-\\.]+@+[\w-]+\.[a-z]{2,4}$/i.test(email);

@@ -5,7 +5,6 @@ import { CreatePatientsAction } from "../store/api-actions";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { getAuthorizationStatus } from "../store/user-process/selectors";
 import { useNavigate } from 'react-router-dom';
-import { getToken } from "../services/token";
 
 export default function PatiensCreatePopup(){
     const [FIO, setFIO] = useState('');

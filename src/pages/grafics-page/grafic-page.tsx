@@ -4,12 +4,11 @@ import usePatientById from "../../components/hooks/get-patient-by-id";
 import { useAppDispatch, useAppSelector } from "../../components/hooks";
 import { getComparison, getGrafic, getPatientAnalys } from "../../store/patiens-process/selectors";
 import { humanizeDate } from "../../utils/change-data-formats";
-import { useEffect, useState } from "react";
-import { store } from "../../store";
+import { useEffect } from "react";
 import { fetchAnalysComparisonAction, fetchGraficAction } from "../../store/api-actions";
 import { GraficData } from "../../types/grafic";
 import { AppRoute } from "../../const";
-import { AnalysComparison, AnalysComparisonData } from "../../types/analys-comparation";
+import { AnalysComparison } from "../../types/analys-comparation";
 // import { PDFDownloadLink } from "@react-pdf/renderer";
 // import MyDocument from "../../components/subject-only-text/subject-only-text";
 
@@ -88,7 +87,7 @@ export default function GraficPage(){
         </table>
     </div>
                 {(grafics?.map((grafic: GraficData)=>
-                <div >
+                <div key={grafic.graphic}>
                     {(grafic.graphic.includes('hematological'))?
                         <div><h3 className="graphs__title">B-клеточное звено</h3></div>
                         :

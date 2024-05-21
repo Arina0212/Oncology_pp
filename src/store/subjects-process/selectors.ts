@@ -1,5 +1,4 @@
 import { NameSpace } from '../../const';
-import { ActiveSubjectData } from '../../types/active-subject';
 import { State } from '../../types/state';
 import { SubjectData } from '../../types/subject-data';
 import { SubjectsData } from '../../types/subjects-data';
