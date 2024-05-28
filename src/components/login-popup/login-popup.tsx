@@ -75,7 +75,7 @@ export default function LoginPopup(){
 
                     <div className="modal__content-input-box ">
                         <input type="text" 
-                            placeholder="Логин" 
+                            placeholder="Почта" 
                             ref={emailRef}
                             required/>
                     </div>

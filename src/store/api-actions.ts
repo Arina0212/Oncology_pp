@@ -19,6 +19,8 @@ import { Grafics } from '../types/grafic';
 import { AnalysComparisonData } from '../types/analys-comparation';
 import { PostAnalyses, PostAnalysesSecond, PostAnalysesThird, PostAnalysesTree, PostAnalysesTwo, PostAnalysesTwo2, PostAnalysesTwo3 } from '../types/patient-analyses-post';
 import { EditAnalyses, EditAnalysesId, EditAnalysesSecond, EditAnalysesSecondId, EditAnalysesThird, EditAnalysesThirdId, EditAnalysesTree, EditAnalysesTreeID, EditAnalysesTwo, EditAnalysesTwo2, EditAnalysesTwo2Id, EditAnalysesTwo3, EditAnalysesTwo3Id, EditAnalysesTwoId } from '../types/patient-analyses-post copy';
+import { Conclusion, ConclusionId } from '../types/conclusion';
+
 
 // export const checkAuthAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -250,11 +252,38 @@ export const EditPatientAnalysesAction = createAsyncThunk<EditAnalyses | EditAna
   extra: AxiosInstance;
 }>(
   'patient/EditPatientsAnalyses',
-  async ({id, analysis_date, test}, {dispatch, extra: api}) => {
+  async ({ pat_id, analys_id, id, analysis_date, test}, {dispatch, extra: api}) => {
     const {data} = await api.put<EditAnalyses | EditAnalysesSecond | EditAnalysesThird | EditAnalysesTwo3 | EditAnalysesTwo2 | EditAnalysesTwo | EditAnalysesTree>(`${APIRoute.AnalysEditData}${id}/`, {analysis_date, test});
     console.log(data)
-    dispatch(fetchPatiensInfoAction());
-    // dispatch(window.history.back)
+    dispatch(redirectToRoute(`${AppRoute.Patients}/${pat_id}/analysis/${id}/${analys_id}`))
     return data;
+  },
+);
+
+export const fetchConclusionAction = createAsyncThunk<Conclusion , {id: number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchConclusion',
+  async ({id}, {extra: api}) => {
+    const {data} = await api.get<Conclusion>(`${APIRoute.Conclusion}${id}/`);
+    console.log(data)
+    return data;
+  },
+);
+
+
+export const UpdateConclusionAction = createAsyncThunk<Conclusion, ConclusionId,{
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'patient/UpdateConclusion',
+  async ({id, conclusion, recommendations}, {extra: api}) => {
+    const {data} = await api.put<Conclusion>(`${APIRoute.Conclusion}${id}/`, {conclusion, recommendations});
+    console.log(data)
+    //dispatch(redirectToRoute(AppRoute.Search))
+     return data;
   },
 );

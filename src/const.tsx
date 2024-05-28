@@ -39,7 +39,8 @@ export enum APIRoute {
   AnalysEditData = 'patient-test-edit/',
   AddAnalysis = 'patient-test/',
   Grafic = 'graphic/',
-  Comparison = 'analysis-comparison/'
+  Comparison = 'analysis-comparison/',
+  Conclusion= 'conclusion/'
 }
 
 export enum NameSpace {

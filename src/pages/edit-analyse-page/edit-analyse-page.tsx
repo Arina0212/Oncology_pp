@@ -15,8 +15,6 @@ export default function EditAnalysisPage(){
         dispatch((fetchAnalysAction({id: Number(urlParams.analysid)})));
       }, [dispatch]);
       const analysData = useAppSelector(getPatientAnalys)
-
-
       const [value1_1, setValue1_1] = useState('');
       const [value2_1, setValue2_1] = useState('');
       const [value3_1, setValue3_1] = useState('');
@@ -35,18 +33,73 @@ export default function EditAnalysisPage(){
       const [value5_3, setValue5_3] = useState('');
       const [value6_3, setValue6_3] = useState('');
 
+
+    //   const [value1_1, setValue1_1] = useState((analysData?.name==='immune_status')?
+    //   String(analysData.analysis[0].value)
+    //   :'');
+    //   const [value2_1, setValue2_1] = useState((analysData?.name==='immune_status')?
+    //   String(analysData?.analysis[1]?.value)
+    //   :'');
+    //   const [value3_1, setValue3_1] = useState((analysData?.name==='immune_status')?
+    //   String(analysData?.analysis[2]?.value)
+    //   :'');
+    //   const [value4_1, setValue4_1] = useState((analysData?.name==='immune_status')?
+    //   String(analysData.analysis[3]?.value)
+    //   :'');
+    //   const [value1_2, setValue1_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+    //   String(analysData.analysis[0].value)
+    //   :'');
+    //   const [value2_2, setValue2_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+    //   String(analysData.analysis[1]?.value)
+    //   :'');
+    //   const [value3_2, setValue3_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+    //   String(analysData.analysis[2]?.value)
+    //   :'');
+    //   const [value4_2, setValue4_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+    //   String(analysData.analysis[3]?.value)
+    //   :'');
+    //   const [value5_2, setValue5_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+    //   String(analysData.analysis[4]?.value)
+    //   :'');
+    //   const [value6_2, setValue6_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+    //   String(analysData.analysis[5]?.value)
+    //   :'');
+    //   const [value7_2, setValue7_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+    //   String(analysData.analysis[6]?.value)
+    //   :'');
+    //   const [value1_3, setValue1_3] = useState((analysData?.name==='cytokine_status')?
+    //   String(analysData.analysis[0].value)
+    //   :'');
+    //   const [value2_3, setValue2_3] = useState((analysData?.name==='cytokine_status')?
+    //   String(analysData.analysis[1]?.value)
+    //   :'');
+    //   const [value3_3, setValue3_3] = useState((analysData?.name==='cytokine_status')?
+    //   String(analysData.analysis[2]?.value)
+    //   :'');
+    //   const [value4_3, setValue4_3] = useState((analysData?.name==='cytokine_status')?
+    //   String(analysData.analysis[3]?.value)
+    //   :'');
+    //   const [value5_3, setValue5_3] = useState((analysData?.name==='cytokine_status')?
+    //   String(analysData.analysis[4]?.value)
+    //   :'');
+    //   const [value6_3, setValue6_3] = useState((analysData?.name==='cytokine_status')?
+    //   String(analysData.analysis[5]?.value)
+    //   :'');
+
     if(analysData?.name==='hematological_research' || analysData?.name === 'hematological research'){
         let anaylse2 = document.getElementById('analyse2')
         let showBtn2 = document.getElementById('showBtn2')
         anaylse2?.classList.remove("add-analysis__analyse_hide");
         showBtn2?.classList.add("add-analysis__show_hide");
         console.log(analysData.name, "гемотологическое")
+        
     }else if(analysData?.name==='cytokine_status'){
         let anaylse3 = document.getElementById('analyse3')
         let showBtn3 = document.getElementById('showBtn3')
         anaylse3?.classList.remove("add-analysis__analyse_hide");
         showBtn3?.classList.add("add-analysis__show_hide");
         console.log(analysData.name, 'цитокины')
+        
 
     }else{
         let anaylse1 = document.getElementById('analyse1')
@@ -106,6 +159,8 @@ export default function EditAnalysisPage(){
             setError("Дата анализа не может быть больше текущей даты");
         }else if(elements.length === 3 && elementsID1==='analyse2' && elementsID2==='analyse3'){
             dispatch(EditPatientAnalysesAction({
+                pat_id: Number(urlParams.patid),
+                analys_id: Number(urlParams.analysid),
                 id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
@@ -134,6 +189,8 @@ export default function EditAnalysisPage(){
                 }));
         }else if(elements.length === 3 && elementsID1==='analyse1' && elementsID2==='analyse3'){
             dispatch(EditPatientAnalysesAction({
+                pat_id: Number(urlParams.patid),
+                analys_id: Number(urlParams.analysid),
                 id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
@@ -174,6 +231,8 @@ export default function EditAnalysisPage(){
                 }));
             }else if(elements.length === 3 && elementsID1==='analyse1' && elementsID2==='analyse2'){
                     dispatch(EditPatientAnalysesAction({
+                        pat_id: Number(urlParams.patid),
+                        analys_id: Number(urlParams.analysid),
                         id: Number(urlParams.analysisid),
                         analysis_date: date,
                         test:[
@@ -211,6 +270,8 @@ export default function EditAnalysisPage(){
                 }
                 else if(elements.length === 2 && elementsID1==='analyse3'){
             dispatch(EditPatientAnalysesAction({
+                pat_id: Number(urlParams.patid),
+                analys_id: Number(urlParams.analysid),
                 id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
@@ -272,6 +333,8 @@ export default function EditAnalysisPage(){
                 }));
         }else if(elements.length === 2 && elementsID1==='analyse2'){
             dispatch(EditPatientAnalysesAction({
+                pat_id: Number(urlParams.patid),
+                analys_id: Number(urlParams.analysid),
                 id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
@@ -329,6 +392,8 @@ export default function EditAnalysisPage(){
                 }));
         }else if(countCloseAnalyses === 2 && elements.length === 2 && elementsID1==='analyse1'){
             dispatch(EditPatientAnalysesAction({
+                pat_id: Number(urlParams.patid),
+                analys_id: Number(urlParams.analysid),
                 id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[
@@ -399,6 +464,8 @@ export default function EditAnalysisPage(){
         }else{
             console.log('введены все анализы')
             dispatch(EditPatientAnalysesAction({
+                pat_id: Number(urlParams.patid),
+                analys_id: Number(urlParams.analysid),
                 id: Number(urlParams.analysisid),
                 analysis_date: date,
                 test:[

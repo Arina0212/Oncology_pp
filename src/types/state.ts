@@ -3,6 +3,7 @@ import { store } from '../store';
 import { AnalysComparisonData } from './analys-comparation';
 import { AnalysData } from './analys-data';
 import { AnalysisDateData } from './analysis-date';
+import { Conclusion } from './conclusion';
 import {  Grafics } from './grafic';
 import { PostAnalyses } from './patient-analyses-post';
 import { PatienInfoData } from './patient-info';
@@ -24,6 +25,7 @@ export type PatiensProcess = {
   grafic?: Grafics;
   comparison?: AnalysComparisonData;
   NewAnalysis?: PostAnalyses;
+  conclusion?: Conclusion;
 };
 
 export type CopyrightProcess = {

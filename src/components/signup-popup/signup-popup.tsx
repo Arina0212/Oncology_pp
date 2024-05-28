@@ -179,10 +179,10 @@ const SignUpPopup: React.FC =() => {
                         </div>
                     </div>
                     {((valueConfirmNewPass === valueNewPass) && (valueConfirmNewPass != '') ) &&
-                        <button type="submit" className="modal__content-submit">Войти</button>
+                        <button type="submit" className="modal__content-submit">Зарегистрироваться</button>
                     }
                     {((valueConfirmNewPass != valueNewPass) || (valueConfirmNewPass === '')) &&
-                        <button disabled className="modal__content-submit_disable">Войти</button>
+                        <button disabled className="modal__content-submit_disable">Зарегистрироваться</button>
                     }
                     <p className="modal__content-text">Уже зарегистрированы?<Link to={AppRoute.Login}><span id="openAuthBtn"> Войдите</span></Link></p>
                 </form>

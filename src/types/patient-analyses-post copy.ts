@@ -349,6 +349,8 @@ export type EditAnalysesTree = {
 }
 
 export type EditAnalysesId = {
+    pat_id: number
+    analys_id: number
     id:	number
     analysis_date:	string | undefined
     test:	[{
@@ -373,6 +375,8 @@ export type EditAnalysesId = {
     }]
 }
 export type EditAnalysesSecondId = {
+    pat_id: number
+    analys_id: number
     id:	number
     analysis_date:	string | undefined
     test:	[{
@@ -409,6 +413,8 @@ export type EditAnalysesSecondId = {
     }]
 }
 export type EditAnalysesThirdId = {
+    pat_id: number
+    analys_id: number
     id:	number
     analysis_date:	string | undefined
     test:	[{
@@ -442,6 +448,8 @@ export type EditAnalysesThirdId = {
 }
 
 export type EditAnalysesTwoId = {
+    pat_id: number
+    analys_id: number
     id:	number
     analysis_date:	string | undefined
     test:	[{
@@ -500,6 +508,8 @@ export type EditAnalysesTwoId = {
 }
 
 export type EditAnalysesTwo3Id = {
+    pat_id: number
+    analys_id: number
     id:	number
     analysis_date:	string | undefined
     test:	[{
@@ -554,6 +564,8 @@ export type EditAnalysesTwo3Id = {
 }
 
 export type EditAnalysesTwo2Id = {
+    pat_id: number
+    analys_id: number
     id:	number
     analysis_date:	string | undefined
     test:	[{
@@ -620,6 +632,8 @@ export type EditAnalysesTwo2Id = {
 }
 
 export type EditAnalysesTreeID = {
+    pat_id: number
+    analys_id: number
     id:	number
     analysis_date:	string | undefined
     test:	[{

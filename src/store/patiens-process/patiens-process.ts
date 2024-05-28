@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
 import { PatiensProcess } from '../../types/state';
-import { fetchAnalysAction, fetchAnalysComparisonAction, fetchAnalysisDateAction, fetchFullPatientInfoAction, fetchGraficAction, fetchPatiensInfoAction} from '../api-actions';
+import { fetchAnalysAction, fetchAnalysComparisonAction, fetchAnalysisDateAction, fetchConclusionAction, fetchFullPatientInfoAction, fetchGraficAction, fetchPatiensInfoAction} from '../api-actions';
 
 const initialState: PatiensProcess = {
     patients: [],
@@ -44,6 +44,10 @@ export const patientsProcess = createSlice({
       })
       .addCase(fetchAnalysComparisonAction.fulfilled, (state, action) => {
         state.comparison = action.payload;
+        //state.isPatientLoading = false;
+      })
+      .addCase(fetchConclusionAction.fulfilled, (state, action) => {
+        state.conclusion = action.payload;
         //state.isPatientLoading = false;
       })
       

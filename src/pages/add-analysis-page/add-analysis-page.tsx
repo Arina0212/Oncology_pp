@@ -38,11 +38,7 @@ export default function AddAnalysisPage(){
 
     const showHide1=()=>{
         let anaylse1 = document.getElementById('analyse1')
-    let anaylse2 = document.getElementById('analyse2')
-    let anaylse3 = document.getElementById('analyse3')
     let showBtn1 = document.getElementById('showBtn1')
-    let showBtn2 = document.getElementById('showBtn2')
-    let showBtn3 = document.getElementById('showBtn3')
         anaylse1?.classList.toggle("add-analysis__analyse_hide");
         showBtn1?.classList.toggle("add-analysis__show_hide");
         countCloseAnalyses = document.querySelectorAll('.add-analysis__analyse_hide').length;
@@ -62,12 +58,8 @@ export default function AddAnalysisPage(){
 
     }
     function showHide2(){
-        let anaylse1 = document.getElementById('analyse1')
     let anaylse2 = document.getElementById('analyse2')
-    let anaylse3 = document.getElementById('analyse3')
-    let showBtn1 = document.getElementById('showBtn1')
     let showBtn2 = document.getElementById('showBtn2')
-    let showBtn3 = document.getElementById('showBtn3')
         anaylse2?.classList.toggle("add-analysis__analyse_hide");
         showBtn2?.classList.toggle("add-analysis__show_hide");
         countCloseAnalyses = document.querySelectorAll('.add-analysis__analyse_hide').length;
@@ -87,11 +79,7 @@ export default function AddAnalysisPage(){
         
     }
     function showHide3(){
-        let anaylse1 = document.getElementById('analyse1')
-    let anaylse2 = document.getElementById('analyse2')
     let anaylse3 = document.getElementById('analyse3')
-    let showBtn1 = document.getElementById('showBtn1')
-    let showBtn2 = document.getElementById('showBtn2')
     let showBtn3 = document.getElementById('showBtn3')
         anaylse3?.classList.toggle("add-analysis__analyse_hide");
         showBtn3?.classList.toggle("add-analysis__show_hide");

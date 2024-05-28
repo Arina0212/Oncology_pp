@@ -10,7 +10,7 @@ export default function SubjectText(){
             <div className="usage__contents-content usage__contents-content_active" id="usage-content">
             <h3 className="usage__contents-content-title">{subject_data?.subject_name}</h3>
                 <div >
-                    {subject_data?.subject_text?.split('\\n')?.map((subject) => (
+                    {subject_data?.subject_text?.split('\n')?.map((subject) => (
                         <p className="usage__contents-content-text">{subject}</p>
                     ))
                     }
