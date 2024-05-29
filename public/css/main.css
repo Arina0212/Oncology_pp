@@ -38,7 +38,7 @@ button {
   padding: 0;
 }
 
-a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li {
+a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li, textarea {
   overflow-wrap: break-word;
   font-family: Montserrat, sans-serif;
   color: black;
@@ -616,6 +616,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li 
   display: flex;
   flex-direction: column;
   gap: 1.5789473684vw;
+  padding-top: 2.5vw;
 }
 .add-analysis__analyse-head {
   display: flex;
@@ -835,6 +836,9 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li 
 
 @media print {
   .header {
+    display: none;
+  }
+  .graphs__title-pic{
     display: none;
   }
   .graphs__text-print {
@@ -1140,9 +1144,10 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li 
   font-weight: 600;
   font-size: 0.8421052632vw;
 }
-.modal_edit__content-block-text input{
+.modal_edit__content-block-text textarea{
   width: 16.8421052632vw;
   height: 100%;
+  /* height: 20vw; */
   padding: 1vw 1.5789473684vw;
   outline: none;
   border-radius: 0.7894736842vw;
@@ -1152,12 +1157,13 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li 
   overflow-y: auto;
   overscroll-behavior: contain;
 }
-.modal_edit__content-block-text-list input {
+.modal_edit__content-block-text-list textarea {
   list-style-position: inside;
   font-weight: 600;
+  /* height: 20vw; */
   font-size: 0.8421052632vw;
 }
-.modal_edit__content-block-text-list li {
+.modal_edit__content-block-text-list textarea {
   font-weight: 600;
   font-size: 0.8421052632vw;
 }

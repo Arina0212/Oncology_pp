@@ -11,7 +11,7 @@ import { DoctorData } from '../types/doctor-data';
 import { CopyrightData } from '../types/copyrigthing-data';
 import { SubjectData } from '../types/subject-data';
 import { SubjectsData } from '../types/subjects-data';
-import { PatienSData } from '../types/patients-data';
+import { PatienSData, PatientSearchData } from '../types/patients-data';
 import { PatienInfoData } from '../types/patient-info';
 import { AnalysisDateData } from '../types/analysis-date';
 import { AnalysData } from '../types/analys-data';
@@ -166,6 +166,19 @@ export const UpdatePatientsAction = createAsyncThunk<PatienInfoData, PatienInfoD
   },
 );
 
+export const fetchCurrentPatientAction = createAsyncThunk<PatientSearchData, PatientSearchData, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchCurrentPatient',
+  async (_arg, {dispatch, extra: api}) => {
+    const {data} = await api.get<PatientSearchData>(`${APIRoute.Search}`);
+    return data;
+  },
+);
+
+
 export const fetchFullPatientInfoAction = createAsyncThunk<PatienInfoData, {id: number}, {
   dispatch: AppDispatch;
   state: State;
@@ -280,10 +293,11 @@ export const UpdateConclusionAction = createAsyncThunk<Conclusion, ConclusionId,
   extra: AxiosInstance;
 }>(
   'patient/UpdateConclusion',
-  async ({id, conclusion, recommendations}, {extra: api}) => {
+  async ({id, idgraf, conclusion, recommendations}, {dispatch, extra: api}) => {
     const {data} = await api.put<Conclusion>(`${APIRoute.Conclusion}${id}/`, {conclusion, recommendations});
     console.log(data)
     //dispatch(redirectToRoute(AppRoute.Search))
+    dispatch(fetchGraficAction({id: idgraf}));
      return data;
   },
 );

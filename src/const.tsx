@@ -1,3 +1,4 @@
+import SearchPage from "./pages/search-page/search-page";
 
 export enum AppRoute {
   Main = '/',
@@ -40,7 +41,8 @@ export enum APIRoute {
   AddAnalysis = 'patient-test/',
   Grafic = 'graphic/',
   Comparison = 'analysis-comparison/',
-  Conclusion= 'conclusion/'
+  Conclusion= 'conclusion/',
+  Search = 'search-patient/'
 }
 
 export enum NameSpace {

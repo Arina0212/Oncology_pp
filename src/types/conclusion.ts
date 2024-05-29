@@ -4,7 +4,8 @@ export type Conclusion = {
 }
 
 export type ConclusionId = {
-    id: number
+    id: number | undefined
+    idgraf: number
     conclusion: string
     recommendations : string
 }

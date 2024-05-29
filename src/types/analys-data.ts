@@ -8,6 +8,48 @@ export type AnalysData = {
             interval_min: number
             interval_max: number
             unit: number
+        },
+        {
+            name: string
+            value: number
+            interval_min: number
+            interval_max: number
+            unit: number
+        },
+        {
+            name: string
+            value: number
+            interval_min: number
+            interval_max: number
+            unit: number
+        },
+        {
+            name: string
+            value: number
+            interval_min: number
+            interval_max: number
+            unit: number
+        },
+        {
+            name: string
+            value: number
+            interval_min: number
+            interval_max: number
+            unit: number
+        },
+        {
+            name: string
+            value: number
+            interval_min: number
+            interval_max: number
+            unit: number
+        },
+        {
+            name: string
+            value: number
+            interval_min: number
+            interval_max: number
+            unit: number
         }
     ]
 };

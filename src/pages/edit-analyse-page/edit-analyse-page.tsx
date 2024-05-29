@@ -15,76 +15,76 @@ export default function EditAnalysisPage(){
         dispatch((fetchAnalysAction({id: Number(urlParams.analysid)})));
       }, [dispatch]);
       const analysData = useAppSelector(getPatientAnalys)
-      const [value1_1, setValue1_1] = useState('');
-      const [value2_1, setValue2_1] = useState('');
-      const [value3_1, setValue3_1] = useState('');
-      const [value4_1, setValue4_1] = useState('');
-      const [value1_2, setValue1_2] = useState('');
-      const [value2_2, setValue2_2] = useState('');
-      const [value3_2, setValue3_2] = useState('');
-      const [value4_2, setValue4_2] = useState('');
-      const [value5_2, setValue5_2] = useState('');
-      const [value6_2, setValue6_2] = useState('');
-      const [value7_2, setValue7_2] = useState('');
-      const [value1_3, setValue1_3] = useState('');
-      const [value2_3, setValue2_3] = useState('');
-      const [value3_3, setValue3_3] = useState('');
-      const [value4_3, setValue4_3] = useState('');
-      const [value5_3, setValue5_3] = useState('');
-      const [value6_3, setValue6_3] = useState('');
+      //const [value1_1, setValue1_1] = useState('');
+      //const [value2_1, setValue2_1] = useState('');
+      //const [value3_1, setValue3_1] = useState('');
+    //   const [value4_1, setValue4_1] = useState('');
+    //   const [value1_2, setValue1_2] = useState('');
+    //   const [value2_2, setValue2_2] = useState('');
+    //   const [value3_2, setValue3_2] = useState('');
+    //   const [value4_2, setValue4_2] = useState('');
+    //   const [value5_2, setValue5_2] = useState('');
+    //   const [value6_2, setValue6_2] = useState('');
+    //   const [value7_2, setValue7_2] = useState('');
+    //   const [value1_3, setValue1_3] = useState('');
+    //   const [value2_3, setValue2_3] = useState('');
+    //   const [value3_3, setValue3_3] = useState('');
+    //   const [value4_3, setValue4_3] = useState('');
+    //   const [value5_3, setValue5_3] = useState('');
+    //   const [value6_3, setValue6_3] = useState('');
 
 
-    //   const [value1_1, setValue1_1] = useState((analysData?.name==='immune_status')?
-    //   String(analysData.analysis[0].value)
-    //   :'');
-    //   const [value2_1, setValue2_1] = useState((analysData?.name==='immune_status')?
-    //   String(analysData?.analysis[1]?.value)
-    //   :'');
-    //   const [value3_1, setValue3_1] = useState((analysData?.name==='immune_status')?
-    //   String(analysData?.analysis[2]?.value)
-    //   :'');
-    //   const [value4_1, setValue4_1] = useState((analysData?.name==='immune_status')?
-    //   String(analysData.analysis[3]?.value)
-    //   :'');
-    //   const [value1_2, setValue1_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
-    //   String(analysData.analysis[0].value)
-    //   :'');
-    //   const [value2_2, setValue2_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
-    //   String(analysData.analysis[1]?.value)
-    //   :'');
-    //   const [value3_2, setValue3_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
-    //   String(analysData.analysis[2]?.value)
-    //   :'');
-    //   const [value4_2, setValue4_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
-    //   String(analysData.analysis[3]?.value)
-    //   :'');
-    //   const [value5_2, setValue5_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
-    //   String(analysData.analysis[4]?.value)
-    //   :'');
-    //   const [value6_2, setValue6_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
-    //   String(analysData.analysis[5]?.value)
-    //   :'');
-    //   const [value7_2, setValue7_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
-    //   String(analysData.analysis[6]?.value)
-    //   :'');
-    //   const [value1_3, setValue1_3] = useState((analysData?.name==='cytokine_status')?
-    //   String(analysData.analysis[0].value)
-    //   :'');
-    //   const [value2_3, setValue2_3] = useState((analysData?.name==='cytokine_status')?
-    //   String(analysData.analysis[1]?.value)
-    //   :'');
-    //   const [value3_3, setValue3_3] = useState((analysData?.name==='cytokine_status')?
-    //   String(analysData.analysis[2]?.value)
-    //   :'');
-    //   const [value4_3, setValue4_3] = useState((analysData?.name==='cytokine_status')?
-    //   String(analysData.analysis[3]?.value)
-    //   :'');
-    //   const [value5_3, setValue5_3] = useState((analysData?.name==='cytokine_status')?
-    //   String(analysData.analysis[4]?.value)
-    //   :'');
-    //   const [value6_3, setValue6_3] = useState((analysData?.name==='cytokine_status')?
-    //   String(analysData.analysis[5]?.value)
-    //   :'');
+      const [value1_1, setValue1_1] = useState((analysData?.name==='immune_status')?
+      String(analysData.analysis[0].value)
+      :'');
+      const [value2_1, setValue2_1] = useState((analysData?.name==='immune_status')?
+      String(analysData?.analysis[1]?.value)
+      :'');
+      const [value3_1, setValue3_1] = useState((analysData?.name==='immune_status')?
+      String(analysData?.analysis[2]?.value)
+      :'');
+      const [value4_1, setValue4_1] = useState((analysData?.name==='immune_status')?
+      String(analysData.analysis[3]?.value)
+      :'');
+      const [value1_2, setValue1_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+      String(analysData.analysis[0].value)
+      :'');
+      const [value2_2, setValue2_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+      String(analysData.analysis[1]?.value)
+      :'');
+      const [value3_2, setValue3_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+      String(analysData.analysis[2]?.value)
+      :'');
+      const [value4_2, setValue4_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+      String(analysData.analysis[3]?.value)
+      :'');
+      const [value5_2, setValue5_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+      String(analysData.analysis[4]?.value)
+      :'');
+      const [value6_2, setValue6_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+      String(analysData.analysis[5]?.value)
+      :'');
+      const [value7_2, setValue7_2] = useState((analysData?.name==='hematological_research' || analysData?.name === 'hematological research')?
+      String(analysData.analysis[6]?.value)
+      :'');
+      const [value1_3, setValue1_3] = useState((analysData?.name==='cytokine_status')?
+      String(analysData.analysis[0].value)
+      :'');
+      const [value2_3, setValue2_3] = useState((analysData?.name==='cytokine_status')?
+      String(analysData.analysis[1]?.value)
+      :'');
+      const [value3_3, setValue3_3] = useState((analysData?.name==='cytokine_status')?
+      String(analysData.analysis[2]?.value)
+      :'');
+      const [value4_3, setValue4_3] = useState((analysData?.name==='cytokine_status')?
+      String(analysData.analysis[3]?.value)
+      :'');
+      const [value5_3, setValue5_3] = useState((analysData?.name==='cytokine_status')?
+      String(analysData.analysis[4]?.value)
+      :'');
+      const [value6_3, setValue6_3] = useState((analysData?.name==='cytokine_status')?
+      String(analysData.analysis[5]?.value)
+      :'');
 
     if(analysData?.name==='hematological_research' || analysData?.name === 'hematological research'){
         let anaylse2 = document.getElementById('analyse2')

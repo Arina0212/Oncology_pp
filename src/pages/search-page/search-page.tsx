@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import Dialog from '@mui/material/Dialog';
 import { useAppDispatch, useAppSelector } from "../../components/hooks";
-import { CreatePatientsAction, fetchPatiensInfoAction } from "../../store/api-actions";
+import { CreatePatientsAction, fetchCurrentPatientAction, fetchPatiensInfoAction } from "../../store/api-actions";
 import Header from "../../components/header/header";
 import { AppRoute, AuthorizationStatus } from "../../const";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
@@ -33,6 +33,9 @@ export default function SearchPage(){
     const [region, setRegion] = useState('');
     const [diagnoses, setDiagnoses] = useState('');
     const authorizationStatus = useAppSelector(getAuthorizationStatus);
+    const [last_name_search, setLastName]= useState('');
+    const [first_name_search, setFirstName]= useState('');
+    const [patronymic_search, setPatronymic]= useState('');
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
 
@@ -112,6 +115,16 @@ export default function SearchPage(){
   const handleCloseRegist = () => {
     setOpen(false);
   }
+   const handleSearch = (evt: FormEvent<HTMLFormElement>) =>{
+    evt.preventDefault();
+    dispatch(fetchCurrentPatientAction({
+        first_name: first_name,
+        last_name: last_name,
+        patronymic: patronymic,
+        birth_date: birth_date,
+    }));
+
+   }
 
 //   const handleClickOpenUpdate = () => {
 //     setOpenUp(true);
@@ -218,14 +231,14 @@ export default function SearchPage(){
                     {/* <Link className="search__header-regis" to={AppRoute.Profile} >Регистрация пациента</Link> */}
                 </div>
 
-                <div className="search__inputs">
-                    <input type="text" className="search__inputs-input" placeholder="Фамилия"/>
-                    <input type="text" className="search__inputs-input" placeholder="Имя"/>
-                    <input type="text" className="search__inputs-input" placeholder="Отчество"/>
-                    <input type="text" className="search__inputs-input" placeholder="Дата Рождения"/>
+                <form className="search__inputs" onSubmit={handleSearch}>
+                    <input type="text" className="search__inputs-input" value={last_name_search} onChange={(evt) => setLastName(evt.target.value)}  placeholder="Фамилия"/>
+                    <input type="text" className="search__inputs-input" value={first_name_search} onChange={(evt) => setFirstName(evt.target.value)} placeholder="Имя"/>
+                    <input type="text" className="search__inputs-input" value={patronymic_search} onChange={(evt) => setPatronymic(evt.target.value)} placeholder="Отчество"/>
+                    <input type="text" className="search__inputs-input" value={birth_date} onChange={(evt) => setDate(evt.target.value)} placeholder="Дата Рождения"/>
 
-                    <button className="search__inputs-btn">Найти</button>
-                </div>
+                    <button type="submit" className="search__inputs-btn">Найти</button>
+                </form>
 
                 <div className="search__table">
                     <div className="search__table-titles">
