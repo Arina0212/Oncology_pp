@@ -28,7 +28,7 @@ export const SingInErrorMessage = {
 export enum APIRoute {
   SignUp = 'signup/',
   Login = 'login/',
-  Logout = '/logout',
+  Logout = '/logout/',
   Profile = 'profile/',
   Subjects = 'subject-info',
   Copyright ='copyright-info/',

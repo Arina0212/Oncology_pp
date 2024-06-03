@@ -172,7 +172,7 @@ export const fetchCurrentPatientAction = createAsyncThunk<PatientSearchData, Pat
   extra: AxiosInstance;
 }>(
   'data/fetchCurrentPatient',
-  async (_arg, {dispatch, extra: api}) => {
+  async (_arg, {extra: api}) => {
     const {data} = await api.get<PatientSearchData>(`${APIRoute.Search}`);
     return data;
   },

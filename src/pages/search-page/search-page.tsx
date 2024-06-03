@@ -248,7 +248,7 @@ export default function SearchPage(){
                         <p className="search__table-titles-title">Дата Рождения</p>
                         <p className="search__table-titles-title">Действия</p>
                     </div>
-                    {patiens.map((patien: PatienInfoData) => (
+                    {[...patiens].reverse().map((patien: PatienInfoData) => (
                         <PatientStroke key={patien.id} id={patien.id} first_name_pat={patien.first_name} last_name_pat={patien.last_name} patronomic_pat={patien.patronymic} birth_date_pat={patien.birth_date}/>
                         ))
                         

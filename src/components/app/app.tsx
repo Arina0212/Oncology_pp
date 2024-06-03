@@ -7,16 +7,20 @@ import SignUpPopup from '../signup-popup/signup-popup';
 import { HelmetProvider } from 'react-helmet-async';
 import UsagePage from '../../pages/usage-page/usage-page';
 import CopyrightPage from '../../pages/copyright-page/copyright-page';
-// import PrivateRoute from '../private-route/private-route';
+//import PrivateRoute from '../private-route/private-route';
 import PatientsPage from '../../pages/patients-page/patients-page';
 import SearchPage from '../../pages/search-page/search-page';
 import AddAnalysisPage from '../../pages/add-analysis-page/add-analysis-page';
 import AnalysisPage from '../../pages/analysis-page/analysis-page';
 import GraficPage from '../../pages/grafics-page/grafic-page';
 import EditAnalysisPage from '../../pages/edit-analyse-page/edit-analyse-page';
+import { useAppSelector } from '../hooks';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 
 
 export default function App() {
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  console.log(authorizationStatus)
 
   return (
     <HelmetProvider>
@@ -43,9 +47,9 @@ export default function App() {
         <Route
           path={AppRoute.Search}
           element={
-            // <PrivateRoute authorizationStatus={authorizationStatus}>
+            //<PrivateRoute authorizationStatus={authorizationStatus}>
               <SearchPage />
-            // </PrivateRoute>
+            //</PrivateRoute>
           }
         />
 

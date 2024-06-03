@@ -69,7 +69,7 @@ export default function AnalysisPage(){
                     </thead>
                     <tbody>
                         {analysData?.analysis.map((analys: AnalysDataValue)=>(
-                            <tr>
+                            <tr key={analys.name}>
                                 <td>{analys.name}</td>
                                 <td>{analys.value}</td>
                                 <td>{analys.unit}</td>

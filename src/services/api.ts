@@ -16,7 +16,7 @@ export const shouldDisplayError = (response: AxiosResponse) => !!StatusCodeMappi
 
 export const shouldUnauthorizedError = (response: AxiosResponse) => response.status === StatusCodes.UNAUTHORIZED;
 
- const BACKEND_URL = 'http://158.160.103.152:8000/api/v1';
+const BACKEND_URL = 'http://158.160.103.152:8000/api/v1';
 //const BACKEND_URL = 'http://127.0.0.1:8000/api/v1';
 const REQUEST_TIMEOUT = 50000;
 

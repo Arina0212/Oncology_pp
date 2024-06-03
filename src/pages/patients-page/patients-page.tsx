@@ -112,10 +112,10 @@ export default function PatientPage(){
                         {(analysesData?.patient_tests != undefined ) ?
                         <div className="patient__left-table">
                             
-                                {analysesData?.patient_tests.map((analys: AnalysDateData)=>( 
-                                    <div className="patient__left-table-item">
+                                {[...analysesData?.patient_tests].reverse().map((analys: AnalysDateData)=>( 
+                                    <div key={analys.id} className="patient__left-table-item">
                                         {analys.tests.map((analysname: AnalysNameDateData)=>(
-                                            <div>
+                                            <div key={analysname.id}>
                                             {(analysname.name ==='hematological_research') || (analysname.name ==='hematological research')?
                                                 <div>
                                                     <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">ОАК</Link>

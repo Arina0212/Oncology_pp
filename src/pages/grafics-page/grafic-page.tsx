@@ -71,8 +71,8 @@ export default function GraficPage(){
             </thead>
             <tbody>
             {comparison?.analysis.map((analys: AnalysComparison)=>(
-            <tr>
-                <td key={analys.name}>{analys.name}</td>
+            <tr key={analys.name}>
+                <td>{analys.name}</td>
                 {(analys.avg_prev_value===null)?
                 <td>-</td>
                 :
