@@ -71,8 +71,6 @@ export default function SearchPage(){
       }));
       store.dispatch(fetchPatiensInfoAction());
       handleCloseRegist();
-
-
     }
 
   };

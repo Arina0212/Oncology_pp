@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
 import { UpdatePatientsAction, fetchFullPatientInfoAction } from "../../store/api-actions";
 import Dialog from '@mui/material/Dialog';
-import { getAltDate, getAltDateFor, humanizeDate } from "../../utils/change-data-formats";
+import { getAltDateFor, humanizeDate } from "../../utils/change-data-formats";
 
 type PatienInfoProps={
     id: number;

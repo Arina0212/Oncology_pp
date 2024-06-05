@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
 import usePatientById from '../../components/hooks/get-patient-by-id';
-import { getPatiensAnalyses, getPatientAnalys } from '../../store/patiens-process/selectors';
+import { getPatientAnalys } from '../../store/patiens-process/selectors';
 import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { AppRoute } from '../../const';
 import { AnalysDataValue } from '../../types/analys-data';
@@ -12,7 +12,7 @@ import { humanizeDate } from '../../utils/change-data-formats';
 export default function AnalysisPage(){
   const urlParams = useParams();
   const dispatch = useAppDispatch();
-  const analysesData = useAppSelector(getPatiensAnalyses);
+  //const analysesData = useAppSelector(getPatiensAnalyses);
 
 
   useEffect(() => {

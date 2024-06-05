@@ -143,6 +143,7 @@ export default function EditAnalysisPage(){
       elementsID1 = elements[0].id;
       elementsID2 = elements[1].id;
       elementsID3 = elements[2].id;
+      console.log(elementsID3)
     }else if(elements.length === 2){
       elementsID1 = elements[0].id;
       elementsID2 = elements[1].id;

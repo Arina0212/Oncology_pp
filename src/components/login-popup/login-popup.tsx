@@ -9,8 +9,6 @@ import { useAppDispatch, useAppSelector } from '../hooks';
 
 export default function LoginPopup(){
   const error_api = useAppSelector(getError);
-
-
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const [error, setError] = useState('');
@@ -18,7 +16,7 @@ export default function LoginPopup(){
 
   const [isErrorEmail, setIsErrorEmail] = useState(false);
   const [isErrorPassword, setIsErrorPassword] = useState(false);
-
+  console.log(isErrorEmail, isErrorPassword)
   const dispatch = useAppDispatch();
 
   const containsAnyLetters = (password: string) => /[a-z]+/i.test(password);

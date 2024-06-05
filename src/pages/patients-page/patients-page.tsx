@@ -52,6 +52,7 @@ export default function PatientPage(){
     }else if(birth > today){
       setError('Дата рождения не может быть больше текущей даты');
     }else{
+        setError(' ')
       dispatch(UpdatePatientsAction({
         id: Number(urlParams.patid),
         first_name: first_name,
@@ -64,10 +65,11 @@ export default function PatientPage(){
         operation_comment: '',
         chemoterapy_comment: ''
       }));
+      handleClose();
+      dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
+      console.log(Number(urlParams.patid));
     }
-    handleClose();
-    dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
-    console.log(Number(urlParams.patid));
+
   };
 
   const FIO_sep = FIO.split(' ', 3);
@@ -85,7 +87,7 @@ export default function PatientPage(){
   };
   return(
     <div>
-      {patient_data !== undefined && !isPatientLoading ?
+      {!isPatientLoading ?
         <>
           <Header/>
           <section className="patient">
@@ -93,7 +95,7 @@ export default function PatientPage(){
               <h3 className="patient__left-info">Информациая о пациенте:</h3>
 
               <div className="patient__left-name">
-                <p>{patient_data.last_name} {patient_data.first_name} {patient_data.patronymic}</p>
+                <p>{patient_data?.last_name} {patient_data?.first_name} {patient_data?.patronymic}</p>
                 <div className="patient__left-name-img" onClick={handleClickOpen}>
                   <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 13.4952L1 19L6.50476 17L19 4.50476L15.4952 1L3 13.4952Z" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -103,13 +105,13 @@ export default function PatientPage(){
                 </div>
               </div>
               <div className="patient__left-date">
-                <p>Дата Рождения: {humanizeDate(patient_data.birth_date)}</p>
-                <p>Регион: {patient_data.region}</p>
+                <p>Дата Рождения: {humanizeDate(patient_data?.birth_date)}</p>
+                <p>Регион: {patient_data?.region}</p>
               </div>
 
               <div className="patient__left-add">
                 <h3 className="patient__left-add-text">Результаты анализов</h3>
-                <Link to={`${AppRoute.Patients}/${patient_data.id}/add-analysis`} className="patient__left-add-btn">Добавить анализ</Link>
+                <Link to={`${AppRoute.Patients}/${patient_data?.id}/add-analysis`} className="patient__left-add-btn">Добавить анализ</Link>
               </div>
               {(analysesData?.patient_tests !== undefined) ?
                 <div className="patient__left-table">
@@ -120,17 +122,17 @@ export default function PatientPage(){
                         <div key={analysname.id}>
                           {(analysname.name === 'hematological_research') || (analysname.name === 'hematological research') ?
                             <div>
-                              <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">ОАК</Link>
+                              <Link to={`${AppRoute.Patients}/${patient_data?.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">ОАК</Link>
                             </div>
                             :
                             <div>{(analysname.name === 'immune_status') ?
                               <div>
-                                <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">имунодифицит</Link>
+                                <Link to={`${AppRoute.Patients}/${patient_data?.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">имунодифицит</Link>
                               </div>
                               :
                               <div>{(analysname.name === 'cytokine_status') ?
                                 <div>
-                                  <Link to={`${AppRoute.Patients}/${patient_data.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">цитокоины</Link>
+                                  <Link to={`${AppRoute.Patients}/${patient_data?.id}/analysis/${analys.id}/${analysname.id}`} className="patient__left-table-item-links">цитокоины</Link>
                                 </div>
                                 :
                                 <div><p className="patient__left-table-item-date">{humanizeDate(analys.analysis_date)}</p></div>}
@@ -153,14 +155,14 @@ export default function PatientPage(){
             </div>
 
             <div className="patient__right">
-              <h3 className="patient__right-header">Диагноз: {patient_data.diagnosis}</h3>
-              <p className="patient__right-text">Комментарий о диагнозе: {patient_data.diagnosis_comment}</p>
+              <h3 className="patient__right-header">Диагноз: {patient_data?.diagnosis}</h3>
+              <p className="patient__right-text">Комментарий о диагнозе: {patient_data?.diagnosis_comment}</p>
 
               <h3 className="patient__right-header">Дата операции: 12.12.2023</h3>
-              <p className="patient__right-text">Комментарий об операции: {patient_data.operation_comment}</p>
+              <p className="patient__right-text">Комментарий об операции: {patient_data?.operation_comment}</p>
 
               <h3 className="patient__right-header">Химиотерапия: Да</h3>
-              <p className="patient__right-text">Комментарий о курсах химиотерапии: {patient_data.chemoterapy_comment}</p>
+              <p className="patient__right-text">Комментарий о курсах химиотерапии: {patient_data?.chemoterapy_comment}</p>
 
               <button className="patient__right-btn">Редактировать данные</button>
             </div>
@@ -195,7 +197,8 @@ export default function PatientPage(){
               <button type="submit" className="modal__content-submit">Изменить</button>
             </form>
           </Dialog>
-        </> : <LoadingPage />}
+        </>
+        : <LoadingPage />}
     </div>
   );
 }
