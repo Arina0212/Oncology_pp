@@ -3,4 +3,3 @@ export type SubjectData = {
     subject_name: string | undefined;
     subject_text: string | undefined;
   };
-  

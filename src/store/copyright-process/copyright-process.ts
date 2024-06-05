@@ -4,7 +4,7 @@ import { CopyrightProcess } from '../../types/state';
 import { fetchCopyrightAction } from '../api-actions';
 
 const initialState: CopyrightProcess = {
-    copyright_text: ' ',
+  copyrightText: ' ',
 };
 
 export const copyrightProcess = createSlice({
@@ -14,8 +14,8 @@ export const copyrightProcess = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchCopyrightAction.fulfilled, (state, action) => {
-        state.copyright_text = action.payload.copyright_text;
-      })
+        state.copyrightText = action.payload.copyright_text;
+      });
   }
 });
 

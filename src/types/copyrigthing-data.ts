@@ -1,3 +1,3 @@
 export type CopyrightData ={
-    copyright_text: string
+    copyright_text: string;
 }

@@ -13,6 +13,7 @@ export default function SignOutButton() {
         dispatch(logoutAction());
       }}
       className="header__enter"
-    >Выйти</Link>
+    >Выйти
+    </Link>
   );
 }

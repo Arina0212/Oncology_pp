@@ -7,10 +7,10 @@ type MainButtonProps = {
 
 export default function MainButton({authorizationStatus}: MainButtonProps) {
   const navigate = useNavigate();
-  console.log(authorizationStatus)
+  console.log(authorizationStatus);
   return(
     <button
-    className="main__btn"
+      className="main__btn"
       type="button"
       onClick={() => {
         if(authorizationStatus === AuthorizationStatus.Auth) {

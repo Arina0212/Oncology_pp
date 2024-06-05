@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
 import { UpdatePatientsAction, fetchFullPatientInfoAction } from "../../store/api-actions";
 import Dialog from '@mui/material/Dialog';
-import { humanizeDate } from "../../utils/change-data-formats";
+import { getAltDate, getAltDateFor, humanizeDate } from "../../utils/change-data-formats";
 
 type PatienInfoProps={
     id: number;
@@ -37,15 +37,18 @@ export default function PatientStroke({id, first_name_pat, last_name_pat, patron
     let [isUpdatePatient, setIsUpdatePatient] = useState(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
-    let dateTime = new Date().toLocaleDateString()
-    console.log(dateTime)
+    let dateTime = new Date()
+    console.log(getAltDateFor(dateTime), Number(humanizeDate(birth_date)) - Number(dateTime))
+    var today = new Date(getAltDateFor(dateTime))
+    var birth = new Date(birth_date)
+    console.log(birth > today)
     const handleSubmitUpdate = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
         if(authorizationStatus != AuthorizationStatus.Auth){
             navigate(`${AppRoute.Login}`);
         }else if(FIO_sep.length!=3){
             setError("Вы ввели неполные данные");
-        }else if(humanizeDate(birth_date) > dateTime){
+        }else if(birth > today){
             setError("Дата рождения не может быть больше текущей даты");
         }else{
             setError("")
@@ -67,12 +70,7 @@ export default function PatientStroke({id, first_name_pat, last_name_pat, patron
             console.log(id)
         }
     };
-    if(humanizeDate(birth_date) > dateTime){
-        console.log("Дата рождения не может быть больше текущей даты");}
-        else{
-            console.log("Дата рождения ")
-        }
-    console.log(humanizeDate(birth_date))
+    
     useEffect(() => {
         if(isUpdatePatient === true){
             dispatch(fetchFullPatientInfoAction({id: id}));

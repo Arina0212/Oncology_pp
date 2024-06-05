@@ -4,13 +4,13 @@ import { PatiensProcess } from '../../types/state';
 import { fetchAnalysAction, fetchAnalysComparisonAction, fetchAnalysisDateAction, fetchConclusionAction, fetchFullPatientInfoAction, fetchGraficAction, fetchPatiensInfoAction} from '../api-actions';
 
 const initialState: PatiensProcess = {
-    patients: [],
-    patient: undefined,
-    isPatientLoading: false,
-    analysis: undefined,
-    grafic: undefined,
-    comparison: undefined,
-    NewAnalysis: undefined,
+  patients: [],
+  patient: undefined,
+  isPatientLoading: false,
+  analysis: undefined,
+  grafic: undefined,
+  comparison: undefined,
+  NewAnalysis: undefined,
 };
 
 export const patientsProcess = createSlice({
@@ -49,10 +49,9 @@ export const patientsProcess = createSlice({
       .addCase(fetchConclusionAction.fulfilled, (state, action) => {
         state.conclusion = action.payload;
         //state.isPatientLoading = false;
-      })
-      
-      // .addCase(fetchAnalysisDateAction.pending, (state) => {
-      //   state.isAnalysesLoading = true;
-      // })
+      });
+    // .addCase(fetchAnalysisDateAction.pending, (state) => {
+    //   state.isAnalysesLoading = true;
+    // })
   }
 });

@@ -10,10 +10,6 @@ import { fetchCopyrightAction, fetchSubjectsAction } from './store/api-actions';
 store.dispatch(fetchSubjectsAction());
 store.dispatch(fetchCopyrightAction());
 
-
-
-
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -26,6 +22,6 @@ root.render(
         <App />
       </HistoryRouter>
     </Provider>
-    
+
   </React.StrictMode>
 );

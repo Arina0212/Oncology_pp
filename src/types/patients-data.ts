@@ -10,12 +10,10 @@ export type PatienSData = {
     chemoterapy_comment: string;
   };
 
-  export type PatientSearchData = {
+export type PatientSearchData = {
     first_name: string;
     last_name: string;
     patronymic: string;
     birth_date: string;
   };
 
-
-  

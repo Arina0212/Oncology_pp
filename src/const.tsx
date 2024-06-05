@@ -1,5 +1,3 @@
-import SearchPage from "./pages/search-page/search-page";
-
 export enum AppRoute {
   Main = '/',
   SignUp = '/signup',
@@ -14,7 +12,7 @@ export enum AppRoute {
   addAnalysis = '/add-analysis',
   Analys = '/analysis'
 }
-  
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -24,7 +22,7 @@ export const SingInErrorMessage = {
   Email: 'Введите верный email',
   Password: 'Пароль должен содежать хотя бы одину букву и одну цифру',
 };
-  
+
 export enum APIRoute {
   SignUp = 'signup/',
   Login = 'login/',

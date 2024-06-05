@@ -1,4 +1,3 @@
 export type ErrorsData = {
-    error: string;
-  };
-  
+  error: string;
+};

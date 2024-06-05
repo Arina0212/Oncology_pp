@@ -11,7 +11,6 @@ export default function useSubjectById() {
   useEffect(() => {
     if ((urlParams.id)) {
       dispatch(fetchSubjectTextAction({id: Number(urlParams.id)}));
-      console.log(Number(urlParams.id))
     }
   }, [dispatch, Number(urlParams.id)]);
   return useAppSelector(getCurrentSubject);

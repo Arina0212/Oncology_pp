@@ -4,7 +4,7 @@ import { AnalysComparisonData } from './analys-comparation';
 import { AnalysData } from './analys-data';
 import { AnalysisDateData } from './analysis-date';
 import { Conclusion } from './conclusion';
-import {  Grafics } from './grafic';
+import { Grafics } from './grafic';
 import { PostAnalyses } from './patient-analyses-post';
 import { PatienInfoData } from './patient-info';
 import { SubjectData } from './subject-data';
@@ -29,7 +29,7 @@ export type PatiensProcess = {
 };
 
 export type CopyrightProcess = {
-  copyright_text: string;
+  copyrightText: string;
 };
 
 export type ActiveSubjectProcess = {
@@ -37,8 +37,8 @@ export type ActiveSubjectProcess = {
 }
 
 export type SubjectsProcess = {
-  subject_name: SubjectsData[];
-  current_subject?: SubjectData;
+  subjectName: SubjectsData[];
+  currentSubject?: SubjectData;
 };
 
 export type State = ReturnType<typeof store.getState>;

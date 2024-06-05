@@ -14,13 +14,8 @@ import AddAnalysisPage from '../../pages/add-analysis-page/add-analysis-page';
 import AnalysisPage from '../../pages/analysis-page/analysis-page';
 import GraficPage from '../../pages/grafics-page/grafic-page';
 import EditAnalysisPage from '../../pages/edit-analyse-page/edit-analyse-page';
-import { useAppSelector } from '../hooks';
-import { getAuthorizationStatus } from '../../store/user-process/selectors';
-
 
 export default function App() {
-  const authorizationStatus = useAppSelector(getAuthorizationStatus);
-  console.log(authorizationStatus)
 
   return (
     <HelmetProvider>
@@ -48,7 +43,7 @@ export default function App() {
           path={AppRoute.Search}
           element={
             //<PrivateRoute authorizationStatus={authorizationStatus}>
-              <SearchPage />
+            <SearchPage />
             //</PrivateRoute>
           }
         />

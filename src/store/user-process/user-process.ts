@@ -23,7 +23,7 @@ export const userProcess = createSlice({
       // })
       .addCase(loginAction.fulfilled, (state, action) => {
         state.error = action.payload.error;
-        if(state.error === undefined ){
+        if(state.error === undefined){
           state.authorizationStatus = AuthorizationStatus.Auth;
         }else{
           state.authorizationStatus = AuthorizationStatus.NoAuth;
@@ -34,7 +34,7 @@ export const userProcess = createSlice({
       })
       .addCase(SignUpAction.fulfilled, (state, action) => {
         state.email = action.payload.email;
-        if(state.email === undefined ){
+        if(state.email === undefined){
           state.authorizationStatus = AuthorizationStatus.Auth;
         }else{
           state.authorizationStatus = AuthorizationStatus.NoAuth;

@@ -45,7 +45,7 @@ export const loginAction = createAsyncThunk<UserData, AuthData, {
     if(data.error === undefined){
       dispatch(redirectToRoute(AppRoute.Main));
     }else{
-      
+
     }
     return data;
   },
@@ -58,9 +58,10 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   extra: AxiosInstance;
 }>(
   'user/logout',
-  async (_arg, {extra: api}) => {
+  async (_arg, {dispatch, extra: api}) => {
     await api.post(APIRoute.Logout);
     dropToken();
+    dispatch(redirectToRoute(AppRoute.Main));
   },
 );
 
@@ -76,7 +77,7 @@ export const SignUpAction = createAsyncThunk<DoctorData, SignUpData, {
     if(data.email === undefined){
       dispatch(redirectToRoute(AppRoute.Main));
     }else{
-      
+
     }
     return data;
   },
@@ -126,10 +127,8 @@ export const CreatePatientsAction = createAsyncThunk<PatienSData, PatienSData, {
   'patient/CreatePatients',
   async ({first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment}, {dispatch, extra: api}) => {
     const {data} = await api.post<PatienSData>(APIRoute.Patiens, {first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment});
-    console.log(data)
     dispatch(fetchPatiensInfoAction());
-    dispatch(redirectToRoute(AppRoute.Search))
-
+    dispatch(redirectToRoute(AppRoute.Search));
     return data;
   },
 );
@@ -143,7 +142,6 @@ export const fetchPatiensInfoAction = createAsyncThunk<PatienInfoData[], undefin
   'data/fetchPatiensInfo',
   async (_arg, {extra: api}) => {
     const {data} = await api.get<PatienInfoData[]>(APIRoute.PatiensInfo);
-    console.log(data)
     return data;
   },
 );
@@ -158,10 +156,7 @@ export const UpdatePatientsAction = createAsyncThunk<PatienInfoData, PatienInfoD
   'patient/UpdatePatients',
   async ({id, first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment}, {dispatch, extra: api}) => {
     const {data} = await api.put<PatienInfoData>(`${APIRoute.Patient}${id}/`, {id, first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment});
-    console.log(data)
-    //dispatch(redirectToRoute(AppRoute.Search))
     dispatch(fetchPatiensInfoAction());
-
     return data;
   },
 );
@@ -187,8 +182,7 @@ export const fetchFullPatientInfoAction = createAsyncThunk<PatienInfoData, {id: 
   'data/fetchFullPatientInfo',
   async ({id}, {dispatch, extra: api}) => {
     const {data} = await api.get<PatienInfoData>(`${APIRoute.Patient}${id}/`);
-    dispatch(fetchAnalysisDateAction({id: Number(id)}))
-    console.log("полная инфа по id",data)
+    dispatch(fetchAnalysisDateAction({id: Number(id)}));
     return data;
   },
 );
@@ -201,7 +195,6 @@ export const fetchAnalysisDateAction = createAsyncThunk<AnalysisDateData, {id: n
   'data/fetchAnalysisDate',
   async ({id}, {extra: api}) => {
     const {data} = await api.get<AnalysisDateData>(`${APIRoute.AnalysisDate}${id}/`);
-    console.log("анализы по дате",data)
     return data;
   },
 );
@@ -226,7 +219,6 @@ export const fetchGraficAction = createAsyncThunk<Grafics, {id: number}, {
   'data/fetchGrafic',
   async ({id}, {extra: api}) => {
     const {data} = await api.get<Grafics>(`${APIRoute.Grafic}${id}/`);
-    console.log(data)
     return data;
   },
 );
@@ -239,7 +231,6 @@ export const fetchAnalysComparisonAction = createAsyncThunk<AnalysComparisonData
   'data/fetchAnalysComparison',
   async ({id}, {extra: api}) => {
     const {data} = await api.get<AnalysComparisonData>(`${APIRoute.Comparison}${id}/`);
-    console.log(data)
     return data;
   },
 );
@@ -252,9 +243,8 @@ export const CreatePatientAnalysesAction = createAsyncThunk<PostAnalyses | PostA
   'patient/CreatePatientsAnalyses',
   async ({analysis_date, test, patient_id}, {dispatch, extra: api}) => {
     const {data} = await api.post<PostAnalyses | PostAnalysesSecond | PostAnalysesThird | PostAnalysesTwo3 | PostAnalysesTwo2 | PostAnalysesTwo | PostAnalysesTree>(APIRoute.AddAnalysis, {analysis_date, test, patient_id});
-    console.log(data)
     dispatch(fetchPatiensInfoAction());
-    dispatch(redirectToRoute(`${AppRoute.Patients}/${patient_id}`))
+    dispatch(redirectToRoute(`${AppRoute.Patients}/${patient_id}`));
     return data;
   },
 );
@@ -267,8 +257,7 @@ export const EditPatientAnalysesAction = createAsyncThunk<EditAnalyses | EditAna
   'patient/EditPatientsAnalyses',
   async ({ pat_id, analys_id, id, analysis_date, test}, {dispatch, extra: api}) => {
     const {data} = await api.put<EditAnalyses | EditAnalysesSecond | EditAnalysesThird | EditAnalysesTwo3 | EditAnalysesTwo2 | EditAnalysesTwo | EditAnalysesTree>(`${APIRoute.AnalysEditData}${id}/`, {analysis_date, test});
-    console.log(data)
-    dispatch(redirectToRoute(`${AppRoute.Patients}/${pat_id}/analysis/${id}/${analys_id}`))
+    dispatch(redirectToRoute(`${AppRoute.Patients}/${pat_id}/analysis/${id}/${analys_id}`));
     return data;
   },
 );
@@ -281,7 +270,6 @@ export const fetchConclusionAction = createAsyncThunk<Conclusion , {id: number},
   'data/fetchConclusion',
   async ({id}, {extra: api}) => {
     const {data} = await api.get<Conclusion>(`${APIRoute.Conclusion}${id}/`);
-    console.log(data)
     return data;
   },
 );
@@ -295,9 +283,7 @@ export const UpdateConclusionAction = createAsyncThunk<Conclusion, ConclusionId,
   'patient/UpdateConclusion',
   async ({id, idgraf, conclusion, recommendations}, {dispatch, extra: api}) => {
     const {data} = await api.put<Conclusion>(`${APIRoute.Conclusion}${id}/`, {conclusion, recommendations});
-    console.log(data)
-    //dispatch(redirectToRoute(AppRoute.Search))
     dispatch(fetchGraficAction({id: idgraf}));
-     return data;
+    return data;
   },
 );

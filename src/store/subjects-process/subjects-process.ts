@@ -4,8 +4,8 @@ import { SubjectsProcess } from '../../types/state';
 import { fetchSubjectTextAction, fetchSubjectsAction } from '../api-actions';
 
 const initialState: SubjectsProcess = {
-    subject_name: [],
-    current_subject: undefined
+  subjectName: [],
+  currentSubject: undefined
 };
 
 export const subjectsProcess = createSlice({
@@ -15,10 +15,10 @@ export const subjectsProcess = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchSubjectsAction.fulfilled, (state, action) => {
-        state.subject_name = action.payload;
+        state.subjectName = action.payload;
       })
       .addCase(fetchSubjectTextAction.fulfilled, (state, action) => {
-        state.current_subject = action.payload;
-      })
+        state.currentSubject = action.payload;
+      });
   }
 });
