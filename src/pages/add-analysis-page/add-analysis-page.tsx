@@ -3,7 +3,7 @@ import Header from '../../components/header/header';
 import { useAppDispatch } from '../../components/hooks';
 import { CreatePatientAnalysesAction } from '../../store/api-actions';
 import { useParams } from 'react-router-dom';
-import { getAltDateFor, humanizeDate } from '../../utils/change-data-formats';
+import { getAltDateFor } from '../../utils/change-data-formats';
 
 export default function AddAnalysisPage(){
   const urlParams = useParams();

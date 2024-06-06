@@ -3,7 +3,7 @@ import Header from '../../components/header/header';
 import { FormEvent, useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import { useAppDispatch, useAppSelector } from '../../components/hooks';
-import { UpdatePatientsAction, fetchFullPatientInfoAction } from '../../store/api-actions';
+import { UpdatePatientsAction, UpdatePatientsRigthAction, fetchFullPatientInfoAction } from '../../store/api-actions';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import usePatientById from '../../components/hooks/get-patient-by-id';
@@ -26,13 +26,15 @@ export default function PatientPage(){
   const urlParams = useParams();
 
   const patient_data = usePatientById();
+  const patient = [patient_data?.last_name, patient_data?.first_name, patient_data?.patronymic].join(' ')
+  console.log(patient)
   console.log(patient_data);
   const [open, setOpen] = useState(false);
+  const [openRight, setOpenRight] = useState(false);
   const [error, setError] = useState('');
-  const [FIO, setFIO] = useState('');
+  const [FIO, setFIO] = useState(patient);
   const [birth_date, setDate] = useState('');
-  const [region, setRegion] = useState('');
-  const [diagnoses, setDiagnoses] = useState('');
+  const [region, setRegion] = useState(patient_data?.region);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isPatientLoading = useAppSelector(getPatientDataLoading);
   const dateTime = new Date();
@@ -41,7 +43,14 @@ export default function PatientPage(){
   const today = new Date(getAltDateFor(dateTime));
   const birth = new Date(birth_date);
   const analysesData = useAppSelector(getPatiensAnalyses);
-  // console.log("analysesData=",&& analysesData?.patient_tests.length != 0, analysesData?.patient_tests != undefined)
+  const [diagnoses, setDiagnoses] = useState(patient_data?.diagnosis);
+  const [diagnosis_comment, setDiagnosesComent] = useState(patient_data?.diagnosis_comment);
+  const [operation_comment, setOperationComent] = useState(patient_data?.operation_comment);
+  const [chemoterapy_comment, setChemoterapyComent] = useState(patient_data?.operation_comment);
+  const [operationData, setOperationData] = useState('');
+  const [isChemoterapy, setIsChemoterapy] = useState('');
+
+  
     
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -69,9 +78,28 @@ export default function PatientPage(){
       dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
       console.log(Number(urlParams.patid));
     }
-
   };
+const handleSubmitRirghtBlock = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    if(authorizationStatus !== AuthorizationStatus.Auth){
+      navigate(`${AppRoute.Login}`);
+    } else{
+        setError(' ')
+      dispatch(UpdatePatientsRigthAction({
+        id: Number(urlParams.patid),
+        diagnosis: diagnoses,
+        diagnosis_comment: diagnosis_comment,
+        operationData: operationData,
+        operation_comment: operation_comment,
+        isChemoterapy: isChemoterapy,
+        chemoterapy_comment: chemoterapy_comment,
 
+      }));
+      handleCloseRightBlock();
+      dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
+      console.log(Number(urlParams.patid));
+    }
+}
   const FIO_sep = FIO.split(' ', 3);
 
   const first_name: string = FIO_sep[1];
@@ -84,6 +112,13 @@ export default function PatientPage(){
 
   const handleClose = () => {
     setOpen(false);
+  };
+  const handleClickOpenRightBlock = () => {
+    setOpenRight(true);
+  };
+
+  const handleCloseRightBlock = () => {
+    setOpenRight(false);
   };
   return(
     <div>
@@ -164,7 +199,7 @@ export default function PatientPage(){
               <h3 className="patient__right-header">Химиотерапия: Да</h3>
               <p className="patient__right-text">Комментарий о курсах химиотерапии: {patient_data?.chemoterapy_comment}</p>
 
-              <button className="patient__right-btn">Редактировать данные</button>
+              <button className="patient__right-btn" onClick={handleClickOpenRightBlock}>Редактировать данные</button>
             </div>
           </section>
           <Dialog className="modal update" sx={style}
@@ -197,6 +232,58 @@ export default function PatientPage(){
               <button type="submit" className="modal__content-submit">Изменить</button>
             </form>
           </Dialog>
+          <Dialog className="modal modal_data" sx={style}
+            open={openRight}
+            onClose={handleCloseRightBlock}>
+            <form className="modal_data__content" onSubmit={handleSubmitRirghtBlock} action="#">
+                <button className="modal_data__content-close" id="closeDataBtn" onClick={handleCloseRightBlock}>
+                    <img src="./img/crossRed.svg" alt="закрыть"/>
+                </button>
+
+                <h2 className="modal_data__content-title">Данные</h2>
+
+                <div className="modal_data__content-block">
+                    <p className="modal_data__content-block-head">Диагноз</p>
+                    <input type="text" className="modal_data__content-block-input" placeholder="Диагноз" value={diagnoses} onChange={(evt) => setDiagnoses(evt.target.value)}/>
+                    <p className="modal_data__content-block-head">Комментарий о диагнозе</p>
+                    <div >
+                        <textarea className="modal_data__content-block-text" rows={4} cols={25} value={diagnosis_comment} onChange={(evt) => setDiagnosesComent(evt.target.value)}></textarea>
+                    </div>
+                </div>
+
+                <div className="modal_data__content-block">
+                    <p className="modal_data__content-block-head">Дата операции</p>
+                    <input type="date" className="modal_data__content-block-input_date" placeholder="Дата операции" value={operationData} onChange={(evt) => setOperationData(evt.target.value)} required/>
+                    <p className="modal_data__content-block-head">Комментарий об операции</p>
+                    <div >
+                        <textarea className="modal_data__content-block-text" rows={4} cols={25} value={operation_comment} onChange={(evt) => setOperationComent(evt.target.value)}></textarea>
+                    </div>
+                </div>
+
+                <div className="modal_data__content-block">
+                    <p className="modal_data__content-block-head">Химиотерапия</p>
+                    <div className="modal_data__content-block-radios">
+                        <input className="visually-hidden" type="radio" name="editDataCheckboxes" value={'Да'} onChange={(evt) => setIsChemoterapy(evt.target.value)} id="editDataCheckboxYes"/>
+                        <label htmlFor="editDataCheckboxYes">
+                            Да
+                            <span></span>
+                        </label>
+                        <input className="visually-hidden" type="radio" name="editDataCheckboxes" value={'Нет'} onChange={(evt) => setIsChemoterapy(evt.target.value)} id="editDataCheckboxNo"/>
+                        <label htmlFor="editDataCheckboxNo">
+                            Нет
+                            <span></span>
+                        </label>
+                    </div>
+                    <p className="modal_data__content-block-head">Комментарий о химиотерапии</p>
+                    <div >
+                        <textarea className="modal_data__content-block-text" rows={4} cols={25} value={chemoterapy_comment} onChange={(evt) => setChemoterapyComent(evt.target.value)}></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" className="modal_data__content-submit">Изменить</button>
+
+            </form>
+        </Dialog>
         </>
         : <LoadingPage />}
     </div>

@@ -12,7 +12,7 @@ import { CopyrightData } from '../types/copyrigthing-data';
 import { SubjectData } from '../types/subject-data';
 import { SubjectsData } from '../types/subjects-data';
 import { PatienSData, PatientSearchData } from '../types/patients-data';
-import { PatienInfoData } from '../types/patient-info';
+import { PatienInfoData, PatienInfoRightBlockData } from '../types/patient-info';
 import { AnalysisDateData } from '../types/analysis-date';
 import { AnalysData } from '../types/analys-data';
 import { Grafics } from '../types/grafic';
@@ -156,6 +156,19 @@ export const UpdatePatientsAction = createAsyncThunk<PatienInfoData, PatienInfoD
   'patient/UpdatePatients',
   async ({id, first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment}, {dispatch, extra: api}) => {
     const {data} = await api.put<PatienInfoData>(`${APIRoute.Patient}${id}/`, {id, first_name, last_name, patronymic, birth_date, region, diagnosis, diagnosis_comment, operation_comment, chemoterapy_comment});
+    dispatch(fetchPatiensInfoAction());
+    return data;
+  },
+);
+
+export const UpdatePatientsRigthAction = createAsyncThunk<PatienInfoRightBlockData, PatienInfoRightBlockData,{
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'patient/UpdatePatientsRight',
+  async ({id, diagnosis, diagnosis_comment, operationData, operation_comment, isChemoterapy, chemoterapy_comment}, {dispatch, extra: api}) => {
+    const {data} = await api.put<PatienInfoRightBlockData>(`${APIRoute.Patient}${id}/`, {id, diagnosis, diagnosis_comment, operationData, operation_comment, isChemoterapy, chemoterapy_comment});
     dispatch(fetchPatiensInfoAction());
     return data;
   },

@@ -1184,6 +1184,146 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li,
 .modal_edit__content-submit:hover {
   background-color: #C80000;
 }
+
+.modal_data {
+  width: 61.5789473684vw;
+  height: 33.2105263158vw;
+  box-shadow: 0 0 4.2105263158vw 0 rgba(0, 0, 0, 0.0784313725);
+}
+.modal_data__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: start;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: max-content;
+  gap: 2.6315789474vw 1.5789473684vw;
+  padding: 3.9473684211vw;
+}
+.modal_data__content-close {
+  position: absolute;
+  top: 1.5789473684vw;
+  right: 1.5789473684vw;
+  width: 0.7894736842vw;
+  height: 0.7894736842vw;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.modal_data__content-close img {
+  width: 100%;
+  height: 100%;
+}
+.modal_data__content-title {
+  grid-column: 1/4;
+  font-size: 2.1052631579vw;
+}
+.modal_data__content-block {
+  width: 100%;
+  height: 14.4210526316vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.0526315789vw;
+}
+.modal_data__content-block-head {
+  font-weight: 700;
+  font-size: 0.8421052632vw;
+}
+.modal_data__content-block-input {
+  width: 100%;
+  padding: 1vw 1.5789473684vw;
+  outline: none;
+  border-radius: 0.7894736842vw;
+  border: 0.1052631579vw solid rgba(0, 0, 0, 0.5019607843);
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+}
+.modal_data__content-block-input_date {
+  padding: 1.5vw;
+  width: 100%;
+  outline: none;
+  border-radius: 0.7894736842vw;
+  border: 0.1052631579vw solid rgba(0, 0, 0, 0.5019607843);
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+}
+.modal_data__content-block-input::placeholder {
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+}
+.modal_data__content-block-radios {
+  min-height: 3.0526315789vw;
+  display: flex;
+  align-items: center;
+  gap: 1.5789473684vw;
+}
+.modal_data__content-block-radios label {
+  display: flex;
+  align-items: center;
+  gap: 0.5263157895vw;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  cursor: pointer;
+  user-select: none;
+}
+.modal_data__content-block-radios label span {
+  display: block;
+  width: 0.7368421053vw;
+  height: 0.7368421053vw;
+  background: url("../img/radioUnchecked.svg") 0 0/100% 100% no-repeat;
+}
+.modal_data__content-block-radios input {
+  width: 0.8421052632vw;
+  height: 0.8421052632vw;
+  cursor: pointer;
+}
+.modal_data__content-block-radios input[type=radio]:checked + label {
+  color: #FF0000;
+}
+.modal_data__content-block-radios input[type=radio]:checked + label span {
+  display: block;
+  width: 0.7368421053vw;
+  height: 0.7368421053vw;
+  background: url("../img/radioChecked.svg") 0 0/100% 100% no-repeat;
+}
+.modal_data__content-block-text {
+  width: 16.8421052632vw;
+  height: 100%;
+  padding: 1vw 1.5789473684vw;
+  outline: none;
+  border-radius: 0.7894736842vw;
+  border: 0.1052631579vw solid rgba(0, 0, 0, 0.5019607843);
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.modal_data__content-block-text p {
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+}
+.modal_data__content-submit {
+  grid-column: 1/4;
+  width: 16.8421052632vw;
+  height: 3.0526315789vw;
+  font-weight: 600;
+  font-size: 0.8421052632vw;
+  color: #FFFFFF;
+  background-color: #FF0000;
+  outline: none;
+  border: none;
+  border-radius: 0.7894736842vw;
+  cursor: pointer;
+  transition: background-color ease-in-out 250ms;
+}
+.modal_data__content-submit:hover {
+  background-color: #C80000;
+}
+
+
 .MuiPaper-root{
   border-radius: 1vw !important;
 }
@@ -1197,7 +1337,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li,
 }
 .MuiDialog-paperWidthSm{
   top: 0 !important;
-  max-width: 45vw !important;
+  max-width: 61vw !important;
 }
 .MuiDialog-container{
   top: 0 !important;

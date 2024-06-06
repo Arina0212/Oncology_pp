@@ -12,7 +12,7 @@ type PatienInfoProps={
     first_name_pat: string;
     last_name_pat: string;
     patronomic_pat: string;
-    birth_date_pat: string;
+    birth_date_pat: string | undefined;
 }
 
 const style = {
@@ -27,9 +27,10 @@ const style = {
   };
 
 export default function PatientStroke({id, first_name_pat, last_name_pat, patronomic_pat, birth_date_pat}: PatienInfoProps){
+    const patient = [last_name_pat, first_name_pat, patronomic_pat].join(' ')
     const [openUp, setOpenUp] = useState(false);
     const [error, setError] = useState('');
-    const [FIO, setFIO] = useState('');
+    const [FIO, setFIO] = useState(patient);
     const [birth_date, setDate] = useState('');
     const [region, setRegion] = useState('');
     const [diagnoses, setDiagnoses] = useState('');
