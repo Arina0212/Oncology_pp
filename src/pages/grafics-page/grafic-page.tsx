@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { getComparison, getGrafic, getPatientAnalys } from '../../store/patiens-process/selectors';
 import { humanizeDate } from '../../utils/change-data-formats';
 import { useEffect } from 'react';
-import { fetchAnalysComparisonAction, fetchGraficAction } from '../../store/api-actions';
+import { fetchAnalysAction, fetchAnalysComparisonAction, fetchGraficAction } from '../../store/api-actions';
 import { GraficData } from '../../types/grafic';
 import { AppRoute } from '../../const';
 import { AnalysComparison } from '../../types/analys-comparation';
@@ -18,7 +18,6 @@ export default function GraficPage(){
 
 
   const urlParams = useParams();
-  const analysData = useAppSelector(getPatientAnalys);
   const patient_data = usePatientById();
   const dispatch = useAppDispatch();
   const comparison = useAppSelector(getComparison);
@@ -27,7 +26,9 @@ export default function GraficPage(){
   useEffect(()=> {
     dispatch(fetchGraficAction({id: Number(urlParams.analysisid)}));
     dispatch(fetchAnalysComparisonAction({id: Number(urlParams.analysid)}));
+    dispatch((fetchAnalysAction({id: Number(urlParams.analysid)})));
   },[dispatch]);
+  const analysData = useAppSelector(getPatientAnalys);
 
   const grafics = useAppSelector(getGrafic);
   console.log(grafics);
@@ -47,7 +48,7 @@ export default function GraficPage(){
         <p className="graphs__name">{patient_data?.last_name} {patient_data?.first_name} {patient_data?.patronymic}</p>
         <div className="graphs__info">
           <h3 className="graphs__info-diagnose">Диагноз: {patient_data?.diagnosis}</h3>
-          <p className="graphs__info-date">Дата исследования: {humanizeDate(analysData?.analysis_date)}</p>
+          <p className="graphs__info-date">Дата исследования: {humanizeDate(analysData.analysis_date)}</p>
           <Link to={`${AppRoute.Patients}/${Number(urlParams.patid)}/analysis/${Number(urlParams.analysisid)}/${Number(urlParams.analysid)}`} className="graphs__info-backbtn">К анализам</Link>
         </div>
         <div className="graphs__analysis">
@@ -66,7 +67,7 @@ export default function GraficPage(){
             </thead>
             <tbody>
               {comparison?.analysis.map((analys: AnalysComparison)=>(
-                <tr key={analys.name}>
+                <tr >
                   <td>{analys.name}</td>
                   {(analys.avg_prev_value === null) ?
                     <td>-</td>

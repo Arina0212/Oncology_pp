@@ -50,7 +50,7 @@ export default function AnalysisPage(){
                   : <div></div>}
                 </div>}
             </div>}
-          <p className="analysis__info-date">Дата исследования: {humanizeDate(analysData?.analysis_date)}</p>
+          <p className="analysis__info-date">Дата исследования: {humanizeDate(analysData.analysis_date)}</p>
           <Link to={`${AppRoute.Patients}/${patient_data?.id}/analysis/${Number(urlParams.analysisid)}/${Number(urlParams.analysid)}/grafics`} className="analysis__info-btn">Посмотреть графики</Link>
         </div>
 
@@ -70,7 +70,7 @@ export default function AnalysisPage(){
           </thead>
           <tbody>
             {analysData.analysis.map((analys: AnalysDataValue)=>(
-              <tr key={analys.name}>
+              <tr key={analys.value}>
                 <td>{analys.name}</td>
                 <td>{analys.value}</td>
                 <td>{analys.unit}</td>

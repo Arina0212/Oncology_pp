@@ -256,9 +256,9 @@ export default function GraficStroke({id, grafic, conclusion, recommendations, t
           <button type="submit" className="modal_edit__content-submit">Изменить</button>
         </form>
       </Dialog>
-      {(test_name?.includes('hematological')) ?
+      {(test_name?.includes('immune')) ?
         <div className="graphs__title">
-          <h3 className="graphs__title-head">B-клеточное звено</h3>
+          <h3 className="graphs__title-head">T-клеточное звено</h3>
           <div className="graphs__title-pic" onClick={handleClickOpenUpdateB}>
             <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 13.4952L1 19L6.50476 17L19 4.50476L15.4952 1L3 13.4952Z" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -270,9 +270,9 @@ export default function GraficStroke({id, grafic, conclusion, recommendations, t
         </div>
         :
         <div>
-          {(test_name?.includes('immune')) ?
+          {(test_name?.includes('hematological')) ?
             <div className="graphs__title">
-              <h3 className="graphs__title-head">T-клеточное звено</h3>
+              <h3 className="graphs__title-head">B-клеточное звено</h3>
               <div className="graphs__title-pic" onClick={handleClickOpenUpdateT}>
                 <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M3 13.4952L1 19L6.50476 17L19 4.50476L15.4952 1L3 13.4952Z" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
