@@ -15,8 +15,8 @@ export type PatienInfoData = {
     id: number;
     diagnosis: string | undefined;
     diagnosis_comment: string | undefined;
-    operationData: string | undefined;
+    diagnosis_date: string | undefined;
     operation_comment: string | undefined;
-    isChemoterapy: string | undefined;
+    chemoterapy: string | undefined;
     chemoterapy_comment: string | undefined;
   };

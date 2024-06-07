@@ -40,7 +40,8 @@ export enum APIRoute {
   Grafic = 'graphic/',
   Comparison = 'analysis-comparison/',
   Conclusion= 'conclusion/',
-  Search = 'search-patient/'
+  Search = 'search-patient/',
+  EditOperation = 'patient-operation-info/'
 }
 
 export enum NameSpace {

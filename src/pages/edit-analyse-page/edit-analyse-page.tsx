@@ -3,7 +3,7 @@ import Header from '../../components/header/header';
 import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { EditPatientAnalysesAction, fetchAnalysAction } from '../../store/api-actions';
 import { useParams } from 'react-router-dom';
-import { humanizeDate } from '../../utils/change-data-formats';
+import { getAltDateFor } from '../../utils/change-data-formats';
 import { getPatientAnalys } from '../../store/patiens-process/selectors';
 
 export default function EditAnalysisPage(){
@@ -106,10 +106,12 @@ export default function EditAnalysisPage(){
     showBtn1?.classList.add('add-analysis__show_hide');
 
   }
-  const dateTime = new Date().toLocaleDateString();
-  const [error, setError] = useState('');
-  const [date, setDate] = useState(analysData?.analysis_date);
 
+  const [error, setError] = useState('');
+  const [date, setDate] = useState(analysData.analysis_date);
+  const dateTime = new Date();
+  const today = new Date(getAltDateFor(dateTime));
+  const analysDate = new Date(date);
   let elementsID1: string, elementsID2: string, elementsID3 : string;
   let countCloseAnalyses: number;
 
@@ -150,7 +152,7 @@ export default function EditAnalysisPage(){
     }else{
       elementsID1 = elements[0].id;
     }
-    if(humanizeDate(date) > dateTime){
+    if(analysDate > today){
       setError('Дата анализа не может быть больше текущей даты');
     }else if(elements.length === 3 && elementsID1 === 'analyse2' && elementsID2 === 'analyse3'){
       dispatch(EditPatientAnalysesAction({

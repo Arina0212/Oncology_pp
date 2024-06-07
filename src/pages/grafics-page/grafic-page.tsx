@@ -9,7 +9,7 @@ import { fetchAnalysComparisonAction, fetchGraficAction } from '../../store/api-
 import { GraficData } from '../../types/grafic';
 import { AppRoute } from '../../const';
 import { AnalysComparison } from '../../types/analys-comparation';
-import GraficStroke from '../../components/subject-only-text/subject-only-text';
+import GraficStroke from '../../components/grafic-stroke/grafic-stroke';
 // import { PDFDownloadLink } from "@react-pdf/renderer";
 // import MyDocument from "../../components/subject-only-text/subject-only-text";
 

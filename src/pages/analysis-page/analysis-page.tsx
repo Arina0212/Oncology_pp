@@ -1,18 +1,20 @@
 import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
 import usePatientById from '../../components/hooks/get-patient-by-id';
-import { getPatientAnalys } from '../../store/patiens-process/selectors';
+import { getPatientAnalys, getPatientDataLoading } from '../../store/patiens-process/selectors';
 import { useAppDispatch, useAppSelector } from '../../components/hooks';
 import { AppRoute } from '../../const';
 import { AnalysDataValue } from '../../types/analys-data';
 import { useEffect } from 'react';
 import { fetchAnalysAction } from '../../store/api-actions';
 import { humanizeDate } from '../../utils/change-data-formats';
+import LoadingPage from '../loading-page/loading-page';
 
 export default function AnalysisPage(){
   const urlParams = useParams();
   const dispatch = useAppDispatch();
   //const analysesData = useAppSelector(getPatiensAnalyses);
+  const isPatientLoading = useAppSelector(getPatientDataLoading);
 
 
   useEffect(() => {
@@ -24,6 +26,8 @@ export default function AnalysisPage(){
   const analysData = useAppSelector(getPatientAnalys);
 
   return(
+    <div>
+    {!isPatientLoading && analysData.name!=='' ?
     <>
       <Header/>
       <section className="analysis">
@@ -35,13 +39,13 @@ export default function AnalysisPage(){
         <p className="analysis__name">{patient_data?.last_name} {patient_data?.first_name} {patient_data?.patronymic}</p>
 
         <div className="analysis__info">
-          {(analysData?.name === 'hematological_research') || (analysData?.name === 'hematological research') ?
+          {(analysData.name === 'hematological_research') || (analysData.name === 'hematological research') ?
             <h3 className="analysis__info-name">Гематологическое исследование</h3>
             :
             <div>
               {(analysData?.name === 'immune_status') ?
                 <h3 className="analysis__info-name">Имунный статус</h3>
-                : <div>{(analysData?.name === 'cytokine_status') ?
+                : <div>{(analysData.name === 'cytokine_status') ?
                   <h3 className="analysis__info-name">Цитокиновый статус</h3>
                   : <div></div>}
                 </div>}
@@ -65,7 +69,7 @@ export default function AnalysisPage(){
             </tr>
           </thead>
           <tbody>
-            {analysData?.analysis.map((analys: AnalysDataValue)=>(
+            {analysData.analysis.map((analys: AnalysDataValue)=>(
               <tr key={analys.name}>
                 <td>{analys.name}</td>
                 <td>{analys.value}</td>
@@ -77,5 +81,6 @@ export default function AnalysisPage(){
         </table>
       </section>
     </>
+    : <LoadingPage />}</div>
   );
 }

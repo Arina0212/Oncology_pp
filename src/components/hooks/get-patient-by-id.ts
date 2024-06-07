@@ -9,7 +9,7 @@ export default function usePatientById() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     if ((urlParams.patid)) {
-      dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
+      dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));      
     }
   }, [dispatch, Number(urlParams.patid)]);
   return useAppSelector(getCurrentPatient);

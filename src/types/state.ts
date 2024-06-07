@@ -6,7 +6,7 @@ import { AnalysisDateData } from './analysis-date';
 import { Conclusion } from './conclusion';
 import { Grafics } from './grafic';
 import { PostAnalyses } from './patient-analyses-post';
-import { PatienInfoData } from './patient-info';
+import { PatienInfoData, PatienInfoRightBlockData } from './patient-info';
 import { SubjectData } from './subject-data';
 import { SubjectsData } from './subjects-data';
 
@@ -21,11 +21,12 @@ export type PatiensProcess = {
   patient?: PatienInfoData;
   isPatientLoading: boolean;
   analysis?: AnalysisDateData;
-  analys?: AnalysData;
+  analys: AnalysData;
   grafic?: Grafics;
   comparison?: AnalysComparisonData;
   NewAnalysis?: PostAnalyses;
   conclusion?: Conclusion;
+  operationData?: PatienInfoRightBlockData;
 };
 
 export type CopyrightProcess = {

@@ -26,7 +26,7 @@ const style = {
 };
 
 
-// Create Document Component
+
 export default function GraficStroke({id, grafic, conclusion, recommendations, test_name}: GraficStrokeProps){
   const [openUpR, setOpenUpR] = useState(false);
   const [openUpB, setOpenUpB] = useState(false);

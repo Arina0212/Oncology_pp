@@ -1,125 +1,75 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
-import { FormEvent, useState } from 'react';
-import Dialog from '@mui/material/Dialog';
-import { useAppDispatch, useAppSelector } from '../../components/hooks';
-import { UpdatePatientsAction, UpdatePatientsRigthAction, fetchFullPatientInfoAction } from '../../store/api-actions';
-import { AppRoute, AuthorizationStatus } from '../../const';
-import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import {useAppSelector } from '../../components/hooks';
+import { AppRoute } from '../../const';
 import usePatientById from '../../components/hooks/get-patient-by-id';
 import LoadingPage from '../loading-page/loading-page';
 import { getPatiensAnalyses, getPatientDataLoading } from '../../store/patiens-process/selectors';
-import { getAltDateFor, humanizeDate } from '../../utils/change-data-formats';
+import { humanizeDate } from '../../utils/change-data-formats';
 import { AnalysDateData, AnalysNameDateData } from '../../types/analysis-date';
-
-const style = {
-  position: 'absolute' as const,
-  top: '0',
-  left: '0',
-  transform: 'translate(0%, 0%)',
-  translate: '0',
-  bgcolor: 'rgb(255 255 255 / 0%)',
-  boxshoutdown: '0 0 4.2105263158vw 0 rgba(0, 0, 0, 0.0784313725)',
-};
+import usePatientOparationDataById from '../../components/hooks/get-operation-data-by-id';
+import PatientOperationEdit from '../../components/patient-operation-edit/patient-operation-edit';
+import UpdatePatientInfo from '../../components/update-patient-info-popup/update-patient-info-popup';
 
 export default function PatientPage(){
+
+  //const dispatch = useAppDispatch();
   const urlParams = useParams();
 
-  const patient_data = usePatientById();
+  // useEffect(() => {
+  //   dispatch((fetchFullPatientInfoAction({id: Number(urlParams.patid)})));
+  // }, [dispatch]);
+
+  const patient_data = usePatientById();  
+  //const patient_data = useAppSelector(getCurrentPatient);
   const patient = [patient_data?.last_name, patient_data?.first_name, patient_data?.patronymic].join(' ')
   console.log(patient)
   console.log(patient_data);
-  const [open, setOpen] = useState(false);
-  const [openRight, setOpenRight] = useState(false);
-  const [error, setError] = useState('');
-  const [FIO, setFIO] = useState(patient);
-  const [birth_date, setDate] = useState('');
-  const [region, setRegion] = useState(patient_data?.region);
-  const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isPatientLoading = useAppSelector(getPatientDataLoading);
-  const dateTime = new Date();
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const today = new Date(getAltDateFor(dateTime));
-  const birth = new Date(birth_date);
   const analysesData = useAppSelector(getPatiensAnalyses);
-  const [diagnoses, setDiagnoses] = useState(patient_data?.diagnosis);
-  const [diagnosis_comment, setDiagnosesComent] = useState(patient_data?.diagnosis_comment);
-  const [operation_comment, setOperationComent] = useState(patient_data?.operation_comment);
-  const [chemoterapy_comment, setChemoterapyComent] = useState(patient_data?.operation_comment);
-  const [operationData, setOperationData] = useState('');
-  const [isChemoterapy, setIsChemoterapy] = useState('');
+  const operationDataInfo = usePatientOparationDataById();
+  // const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+  //   evt.preventDefault();
+  //   if(authorizationStatus !== AuthorizationStatus.Auth){
+  //     navigate(`${AppRoute.Login}`);
+  //   } else if(FIO_sep.length != 3){
+  //     setError('Вы ввели неполные данные');
+  //   }else if(birth > today){
+  //     setError('Дата рождения не может быть больше текущей даты');
+  //   }else{
+  //       setError(' ')
+  //     dispatch(UpdatePatientsAction({
+  //       id: Number(urlParams.patid),
+  //       first_name: first_name,
+  //       last_name: last_name,
+  //       patronymic: patronymic,
+  //       birth_date: birth_date,
+  //       region: region,
+  //       diagnosis: diagnoses,
+  //       diagnosis_comment: '',
+  //       operation_comment: '',
+  //       chemoterapy_comment: ''
+  //     }));
+  //     handleClose();
+  //     dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
+  //     console.log(Number(urlParams.patid));
+  //   }
+  // };
 
-  
-    
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    if(authorizationStatus !== AuthorizationStatus.Auth){
-      navigate(`${AppRoute.Login}`);
-    } else if(FIO_sep.length != 3){
-      setError('Вы ввели неполные данные');
-    }else if(birth > today){
-      setError('Дата рождения не может быть больше текущей даты');
-    }else{
-        setError(' ')
-      dispatch(UpdatePatientsAction({
-        id: Number(urlParams.patid),
-        first_name: first_name,
-        last_name: last_name,
-        patronymic: patronymic,
-        birth_date: birth_date,
-        region: region,
-        diagnosis: diagnoses,
-        diagnosis_comment: '',
-        operation_comment: '',
-        chemoterapy_comment: ''
-      }));
-      handleClose();
-      dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
-      console.log(Number(urlParams.patid));
-    }
-  };
-const handleSubmitRirghtBlock = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    if(authorizationStatus !== AuthorizationStatus.Auth){
-      navigate(`${AppRoute.Login}`);
-    } else{
-        setError(' ')
-      dispatch(UpdatePatientsRigthAction({
-        id: Number(urlParams.patid),
-        diagnosis: diagnoses,
-        diagnosis_comment: diagnosis_comment,
-        operationData: operationData,
-        operation_comment: operation_comment,
-        isChemoterapy: isChemoterapy,
-        chemoterapy_comment: chemoterapy_comment,
+  // const FIO_sep = FIO.split(' ', 3);
 
-      }));
-      handleCloseRightBlock();
-      dispatch(fetchFullPatientInfoAction({id: Number(urlParams.patid)}));
-      console.log(Number(urlParams.patid));
-    }
-}
-  const FIO_sep = FIO.split(' ', 3);
+  // const first_name: string = FIO_sep[1];
+  // const last_name: string = FIO_sep[0];
+  // const patronymic: string = FIO_sep[2];
 
-  const first_name: string = FIO_sep[1];
-  const last_name: string = FIO_sep[0];
-  const patronymic: string = FIO_sep[2];
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleClickOpenRightBlock = () => {
-    setOpenRight(true);
-  };
-
-  const handleCloseRightBlock = () => {
-    setOpenRight(false);
-  };
   return(
     <div>
       {!isPatientLoading ?
@@ -130,14 +80,17 @@ const handleSubmitRirghtBlock = (evt: FormEvent<HTMLFormElement>) => {
               <h3 className="patient__left-info">Информациая о пациенте:</h3>
 
               <div className="patient__left-name">
-                <p>{patient_data?.last_name} {patient_data?.first_name} {patient_data?.patronymic}</p>
-                <div className="patient__left-name-img" onClick={handleClickOpen}>
-                  <svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 13.4952L1 19L6.50476 17L19 4.50476L15.4952 1L3 13.4952Z" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12.7998 4L15.9998 7.2" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M3.7998 13L6.9998 16.2" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
+                <UpdatePatientInfo 
+                  id={ Number(urlParams.patid)} 
+                  first_name_edit={patient_data?.first_name} 
+                  last_name_edit={patient_data?.last_name} 
+                  patronymic_edit={patient_data?.patronymic} 
+                  birth_date_edit={patient_data?.birth_date} 
+                  region_edit={patient_data?.region} 
+                  diagnosis_edit={patient_data?.diagnosis} 
+                  diagnosis_comment_edit={patient_data?.diagnosis_comment} 
+                  operation_comment_edit={patient_data?.operation_comment} 
+                  chemoterapy_comment_edit={patient_data?.chemoterapy_comment}/>
               </div>
               <div className="patient__left-date">
                 <p>Дата Рождения: {humanizeDate(patient_data?.birth_date)}</p>
@@ -190,19 +143,17 @@ const handleSubmitRirghtBlock = (evt: FormEvent<HTMLFormElement>) => {
             </div>
 
             <div className="patient__right">
-              <h3 className="patient__right-header">Диагноз: {patient_data?.diagnosis}</h3>
-              <p className="patient__right-text">Комментарий о диагнозе: {patient_data?.diagnosis_comment}</p>
-
-              <h3 className="patient__right-header">Дата операции: 12.12.2023</h3>
-              <p className="patient__right-text">Комментарий об операции: {patient_data?.operation_comment}</p>
-
-              <h3 className="patient__right-header">Химиотерапия: Да</h3>
-              <p className="patient__right-text">Комментарий о курсах химиотерапии: {patient_data?.chemoterapy_comment}</p>
-
-              <button className="patient__right-btn" onClick={handleClickOpenRightBlock}>Редактировать данные</button>
+              <PatientOperationEdit 
+                id={Number(urlParams.patid)} 
+                diagnosis={operationDataInfo?.diagnosis} 
+                diagnosis_comment_edit={operationDataInfo?.diagnosis_comment} 
+                diagnosis_date={operationDataInfo?.diagnosis_date} 
+                operation_comment_edit={operationDataInfo?.operation_comment} 
+                chemoterapy={operationDataInfo?.chemoterapy} 
+                chemoterapy_comment_edit={operationDataInfo?.chemoterapy_comment}/>
             </div>
           </section>
-          <Dialog className="modal update" sx={style}
+          {/* <Dialog className="modal update" sx={style}
             open={open}
             onClose={handleClose}
           >
@@ -231,59 +182,7 @@ const handleSubmitRirghtBlock = (evt: FormEvent<HTMLFormElement>) => {
               </div>
               <button type="submit" className="modal__content-submit">Изменить</button>
             </form>
-          </Dialog>
-          <Dialog className="modal modal_data" sx={style}
-            open={openRight}
-            onClose={handleCloseRightBlock}>
-            <form className="modal_data__content" onSubmit={handleSubmitRirghtBlock} action="#">
-                <button className="modal_data__content-close" id="closeDataBtn" onClick={handleCloseRightBlock}>
-                    <img src="./img/crossRed.svg" alt="закрыть"/>
-                </button>
-
-                <h2 className="modal_data__content-title">Данные</h2>
-
-                <div className="modal_data__content-block">
-                    <p className="modal_data__content-block-head">Диагноз</p>
-                    <input type="text" className="modal_data__content-block-input" placeholder="Диагноз" value={diagnoses} onChange={(evt) => setDiagnoses(evt.target.value)}/>
-                    <p className="modal_data__content-block-head">Комментарий о диагнозе</p>
-                    <div >
-                        <textarea className="modal_data__content-block-text" rows={4} cols={25} value={diagnosis_comment} onChange={(evt) => setDiagnosesComent(evt.target.value)}></textarea>
-                    </div>
-                </div>
-
-                <div className="modal_data__content-block">
-                    <p className="modal_data__content-block-head">Дата операции</p>
-                    <input type="date" className="modal_data__content-block-input_date" placeholder="Дата операции" value={operationData} onChange={(evt) => setOperationData(evt.target.value)} required/>
-                    <p className="modal_data__content-block-head">Комментарий об операции</p>
-                    <div >
-                        <textarea className="modal_data__content-block-text" rows={4} cols={25} value={operation_comment} onChange={(evt) => setOperationComent(evt.target.value)}></textarea>
-                    </div>
-                </div>
-
-                <div className="modal_data__content-block">
-                    <p className="modal_data__content-block-head">Химиотерапия</p>
-                    <div className="modal_data__content-block-radios">
-                        <input className="visually-hidden" type="radio" name="editDataCheckboxes" value={'Да'} onChange={(evt) => setIsChemoterapy(evt.target.value)} id="editDataCheckboxYes"/>
-                        <label htmlFor="editDataCheckboxYes">
-                            Да
-                            <span></span>
-                        </label>
-                        <input className="visually-hidden" type="radio" name="editDataCheckboxes" value={'Нет'} onChange={(evt) => setIsChemoterapy(evt.target.value)} id="editDataCheckboxNo"/>
-                        <label htmlFor="editDataCheckboxNo">
-                            Нет
-                            <span></span>
-                        </label>
-                    </div>
-                    <p className="modal_data__content-block-head">Комментарий о химиотерапии</p>
-                    <div >
-                        <textarea className="modal_data__content-block-text" rows={4} cols={25} value={chemoterapy_comment} onChange={(evt) => setChemoterapyComent(evt.target.value)}></textarea>
-                    </div>
-                </div>
-
-                <button type="submit" className="modal_data__content-submit">Изменить</button>
-
-            </form>
-        </Dialog>
+          </Dialog> */}
         </>
         : <LoadingPage />}
     </div>

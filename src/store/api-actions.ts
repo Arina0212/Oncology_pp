@@ -167,12 +167,26 @@ export const UpdatePatientsRigthAction = createAsyncThunk<PatienInfoRightBlockDa
   extra: AxiosInstance;
 }>(
   'patient/UpdatePatientsRight',
-  async ({id, diagnosis, diagnosis_comment, operationData, operation_comment, isChemoterapy, chemoterapy_comment}, {dispatch, extra: api}) => {
-    const {data} = await api.put<PatienInfoRightBlockData>(`${APIRoute.Patient}${id}/`, {id, diagnosis, diagnosis_comment, operationData, operation_comment, isChemoterapy, chemoterapy_comment});
-    dispatch(fetchPatiensInfoAction());
+  async ({id, diagnosis, diagnosis_comment, diagnosis_date, operation_comment, chemoterapy, chemoterapy_comment}, {dispatch, extra: api}) => {
+    const {data} = await api.put<PatienInfoRightBlockData>(`${APIRoute.EditOperation}${id}/`, {id, diagnosis, diagnosis_comment, diagnosis_date, operation_comment, chemoterapy, chemoterapy_comment});
+    dispatch(fetchPatientsRigthAction({id: id}));
     return data;
   },
 );
+
+
+export const fetchPatientsRigthAction = createAsyncThunk<PatienInfoRightBlockData, {id: number},{
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'patient/fetchPatientsRight',
+  async ({id}, { extra: api}) => {
+    const {data} = await api.get<PatienInfoRightBlockData>(`${APIRoute.EditOperation}${id}/`);
+    return data;
+  },
+);
+
 
 export const fetchCurrentPatientAction = createAsyncThunk<PatientSearchData, PatientSearchData, {
   dispatch: AppDispatch;
@@ -195,7 +209,8 @@ export const fetchFullPatientInfoAction = createAsyncThunk<PatienInfoData, {id: 
   'data/fetchFullPatientInfo',
   async ({id}, {dispatch, extra: api}) => {
     const {data} = await api.get<PatienInfoData>(`${APIRoute.Patient}${id}/`);
-    dispatch(fetchAnalysisDateAction({id: Number(id)}));
+    dispatch(fetchAnalysisDateAction({id: id}));
+    dispatch(fetchPatientsRigthAction({id: id}));
     return data;
   },
 );
