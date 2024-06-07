@@ -17,3 +17,11 @@ export type PatientSearchData = {
     birth_date: string;
   };
 
+  export type PatientSearchDataGet = {
+    id: number;
+    first_name: string;
+    last_name: string;
+    patronymic: string;
+    birth_date: string;
+  };
+

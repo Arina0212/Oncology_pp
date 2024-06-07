@@ -7,6 +7,7 @@ import { Conclusion } from './conclusion';
 import { Grafics } from './grafic';
 import { PostAnalyses } from './patient-analyses-post';
 import { PatienInfoData, PatienInfoRightBlockData } from './patient-info';
+import { PatientSearchData } from './patients-data';
 import { SubjectData } from './subject-data';
 import { SubjectsData } from './subjects-data';
 
@@ -18,6 +19,7 @@ export type UserProcess = {
 
 export type PatiensProcess = {
   patients: PatienInfoData[];
+  searchPatient: PatienInfoData[];
   patient?: PatienInfoData;
   isPatientLoading: boolean;
   analysis?: AnalysisDateData;

@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
 import { PatiensProcess } from '../../types/state';
-import { fetchAnalysAction, fetchAnalysComparisonAction, fetchAnalysisDateAction, fetchConclusionAction, fetchFullPatientInfoAction, fetchGraficAction, fetchPatiensInfoAction, fetchPatientsRigthAction} from '../api-actions';
+import { fetchAnalysAction, fetchAnalysComparisonAction, fetchAnalysisDateAction, fetchConclusionAction, fetchCurrentPatientAction, fetchFullPatientInfoAction, fetchGraficAction, fetchPatiensInfoAction, fetchPatientsRigthAction} from '../api-actions';
 
 const initialState: PatiensProcess = {
   patients: [],
+  searchPatient: [],
   patient: undefined,
   isPatientLoading: false,
   analysis: undefined,
@@ -95,6 +96,9 @@ export const patientsProcess = createSlice({
       .addCase(fetchAnalysAction.fulfilled, (state, action) => {
         state.analys = action.payload;
         state.isPatientLoading = false;
+      })
+      .addCase(fetchCurrentPatientAction.fulfilled, (state, action) => {
+        state.searchPatient = action.payload;
       })
       .addCase(fetchAnalysAction.rejected, (state) => {
         state.isPatientLoading = true;

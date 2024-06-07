@@ -14,4 +14,3 @@ export default function usePatientOparationDataById() {
     }, [dispatch, Number(urlParams.patid)]);
     return useAppSelector(getOperationData);
   }
-  

@@ -5,10 +5,12 @@ import { AnalysisDateData } from '../../types/analysis-date';
 import { Conclusion } from '../../types/conclusion';
 import { Grafics } from '../../types/grafic';
 import { PatienInfoData, PatienInfoRightBlockData } from '../../types/patient-info';
+import { PatientSearchData } from '../../types/patients-data';
 import { State } from '../../types/state';
 
 export const getPatiens = (state: Pick<State, NameSpace.Patiens>): PatienInfoData[] => state[NameSpace.Patiens].patients;
 export const getCurrentPatient = (state: Pick<State, NameSpace.Patiens>): PatienInfoData | undefined => state[NameSpace.Patiens].patient;
+export const getSearchPatient = (state: Pick<State, NameSpace.Patiens>): PatienInfoData[]=> state[NameSpace.Patiens].searchPatient;
 export const getPatientDataLoading = (state: Pick<State, NameSpace.Patiens>): boolean => state[NameSpace.Patiens].isPatientLoading;
 export const getPatiensAnalyses = (state: Pick<State, NameSpace.Patiens>): AnalysisDateData | undefined => state[NameSpace.Patiens].analysis;
 export const getPatientAnalys = (state: Pick<State, NameSpace.Patiens>): AnalysData => state[NameSpace.Patiens].analys;

@@ -187,15 +187,15 @@ export const fetchPatientsRigthAction = createAsyncThunk<PatienInfoRightBlockDat
   },
 );
 
-
-export const fetchCurrentPatientAction = createAsyncThunk<PatientSearchData, PatientSearchData, {
+export const fetchCurrentPatientAction = createAsyncThunk<PatienInfoData[], PatientSearchData, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'data/fetchCurrentPatient',
-  async (_arg, {extra: api}) => {
-    const {data} = await api.get<PatientSearchData>(`${APIRoute.Search}`);
+  async ({first_name, last_name, patronymic, birth_date}, {extra: api}) => {
+    const {data} = await api.post<PatienInfoData[]>(APIRoute.Search,{first_name, last_name, patronymic, birth_date});
+    console.log(first_name, last_name, patronymic, birth_date)
     return data;
   },
 );
