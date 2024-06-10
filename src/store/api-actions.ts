@@ -12,7 +12,7 @@ import { CopyrightData } from '../types/copyrigthing-data';
 import { SubjectData } from '../types/subject-data';
 import { SubjectsData } from '../types/subjects-data';
 import { PatienSData, PatientSearchData } from '../types/patients-data';
-import { PatienInfoData, PatienInfoRightBlockData } from '../types/patient-info';
+import { PatienInfoData, PatienInfoDataError, PatienInfoRightBlockData } from '../types/patient-info';
 import { AnalysisDateData } from '../types/analysis-date';
 import { AnalysData } from '../types/analys-data';
 import { Grafics } from '../types/grafic';
@@ -134,14 +134,14 @@ export const CreatePatientsAction = createAsyncThunk<PatienSData, PatienSData, {
 );
 
 
-export const fetchPatiensInfoAction = createAsyncThunk<PatienInfoData[], undefined, {
+export const fetchPatiensInfoAction = createAsyncThunk<PatienInfoDataError[], undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'data/fetchPatiensInfo',
   async (_arg, {extra: api}) => {
-    const {data} = await api.get<PatienInfoData[]>(APIRoute.PatiensInfo);
+    const {data} = await api.get<PatienInfoDataError[]>(APIRoute.PatiensInfo);
     return data;
   },
 );
@@ -187,15 +187,16 @@ export const fetchPatientsRigthAction = createAsyncThunk<PatienInfoRightBlockDat
   },
 );
 
-export const fetchCurrentPatientAction = createAsyncThunk<PatienInfoData[], PatientSearchData, {
+export const fetchCurrentPatientAction = createAsyncThunk<PatienInfoDataError[], PatientSearchData, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'data/fetchCurrentPatient',
   async ({first_name, last_name, patronymic, birth_date}, {extra: api}) => {
-    const {data} = await api.post<PatienInfoData[]>(APIRoute.Search,{first_name, last_name, patronymic, birth_date});
+    const {data} = await api.post<PatienInfoDataError[]>(APIRoute.Search,{first_name, last_name, patronymic, birth_date});
     console.log(first_name, last_name, patronymic, birth_date)
+    console.log(data)
     return data;
   },
 );
@@ -259,6 +260,7 @@ export const fetchAnalysComparisonAction = createAsyncThunk<AnalysComparisonData
   'data/fetchAnalysComparison',
   async ({id}, {extra: api}) => {
     const {data} = await api.get<AnalysComparisonData>(`${APIRoute.Comparison}${id}/`);
+    console.log('вывод свравнения',data)
     return data;
   },
 );

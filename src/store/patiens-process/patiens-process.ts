@@ -8,7 +8,10 @@ const initialState: PatiensProcess = {
   searchPatient: [],
   patient: undefined,
   isPatientLoading: false,
+  isOperationLoading: false,
+  isAnalysisLoading: false,
   analysis: undefined,
+  //analys:undefined,
   analys:   {name: '',
   analysis_date: '',
   analysis: [
@@ -67,6 +70,7 @@ const initialState: PatiensProcess = {
   comparison: undefined,
   NewAnalysis: undefined,
   operationData: undefined,
+  error: '',
 };
 
 export const patientsProcess = createSlice({
@@ -88,20 +92,20 @@ export const patientsProcess = createSlice({
       })
       .addCase(fetchAnalysisDateAction.fulfilled, (state, action) => {
         state.analysis = action.payload;
-        state.isPatientLoading = false;
+        state.isAnalysisLoading = false;
       })
       .addCase(fetchAnalysisDateAction.pending, (state) => {
-        state.isPatientLoading = true;
+        state.isAnalysisLoading = true;
       })
       .addCase(fetchAnalysAction.fulfilled, (state, action) => {
         state.analys = action.payload;
-        state.isPatientLoading = false;
+        state.isAnalysisLoading = false;
       })
       .addCase(fetchCurrentPatientAction.fulfilled, (state, action) => {
         state.searchPatient = action.payload;
       })
       .addCase(fetchAnalysAction.rejected, (state) => {
-        state.isPatientLoading = true;
+        state.isAnalysisLoading = true;
       })
       .addCase(fetchGraficAction.fulfilled, (state, action) => {
         state.grafic = action.payload;
@@ -117,11 +121,14 @@ export const patientsProcess = createSlice({
       })
       .addCase(fetchPatientsRigthAction.fulfilled, (state, action) => {
         state.operationData = action.payload;
-        state.isPatientLoading = false;
+        state.isOperationLoading = false;
       })
       .addCase(fetchPatientsRigthAction.pending, (state) => {
-        state.isPatientLoading = true;
+        state.isOperationLoading = true;
       });
+      // .addCase(fetchPatientsRigthAction.rejected, (state) => {
+      //   state.isOperationLoading = true;
+      // });
     // .addCase(fetchAnalysisDateAction.pending, (state) => {
     //   state.isAnalysesLoading = true;
     // })

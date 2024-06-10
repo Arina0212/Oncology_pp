@@ -11,6 +11,20 @@ export type PatienInfoData = {
     chemoterapy_comment: string | undefined;
   };
 
+  export type PatienInfoDataError = {
+    id: number;
+    first_name: string;
+    last_name: string;
+    patronymic: string;
+    birth_date: string | undefined;
+    diagnosis: string | undefined;
+    region: string | undefined;
+    diagnosis_comment: string | undefined;
+    operation_comment: string | undefined;
+    chemoterapy_comment: string | undefined;
+    error: string;
+  };
+
   export type PatienInfoRightBlockData = {
     id: number;
     diagnosis: string | undefined;

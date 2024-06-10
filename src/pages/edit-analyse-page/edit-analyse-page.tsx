@@ -34,65 +34,65 @@ export default function EditAnalysisPage(){
   //   const [value6_3, setValue6_3] = useState('');
 
 
-  const [value1_1, setValue1_1] = useState((analysData?.name === 'immune_status') ?
+  const [value1_1, setValue1_1] = useState((analysData.name === 'immune_status') ?
     String(analysData.analysis[0].value)
     : '');
-  const [value2_1, setValue2_1] = useState((analysData?.name === 'immune_status') ?
+  const [value2_1, setValue2_1] = useState((analysData.name === 'immune_status') ?
     String(analysData?.analysis[1]?.value)
     : '');
-  const [value3_1, setValue3_1] = useState((analysData?.name === 'immune_status') ?
+  const [value3_1, setValue3_1] = useState((analysData.name === 'immune_status') ?
     String(analysData?.analysis[2]?.value)
     : '');
-  const [value4_1, setValue4_1] = useState((analysData?.name === 'immune_status') ?
+  const [value4_1, setValue4_1] = useState((analysData.name === 'immune_status') ?
     String(analysData.analysis[3]?.value)
     : '');
-  const [value1_2, setValue1_2] = useState((analysData?.name === 'hematological_research' || analysData?.name === 'hematological research') ?
+  const [value1_2, setValue1_2] = useState((analysData.name === 'hematological_research' || analysData.name === 'hematological research') ?
     String(analysData.analysis[0].value)
     : '');
-  const [value2_2, setValue2_2] = useState((analysData?.name === 'hematological_research' || analysData?.name === 'hematological research') ?
+  const [value2_2, setValue2_2] = useState((analysData.name === 'hematological_research' || analysData.name === 'hematological research') ?
     String(analysData.analysis[1]?.value)
     : '');
-  const [value3_2, setValue3_2] = useState((analysData?.name === 'hematological_research' || analysData?.name === 'hematological research') ?
+  const [value3_2, setValue3_2] = useState((analysData.name === 'hematological_research' || analysData.name === 'hematological research') ?
     String(analysData.analysis[2]?.value)
     : '');
-  const [value4_2, setValue4_2] = useState((analysData?.name === 'hematological_research' || analysData?.name === 'hematological research') ?
+  const [value4_2, setValue4_2] = useState((analysData.name === 'hematological_research' || analysData.name === 'hematological research') ?
     String(analysData.analysis[3]?.value)
     : '');
-  const [value5_2, setValue5_2] = useState((analysData?.name === 'hematological_research' || analysData?.name === 'hematological research') ?
+  const [value5_2, setValue5_2] = useState((analysData.name === 'hematological_research' || analysData.name === 'hematological research') ?
     String(analysData.analysis[4]?.value)
     : '');
-  const [value6_2, setValue6_2] = useState((analysData?.name === 'hematological_research' || analysData?.name === 'hematological research') ?
+  const [value6_2, setValue6_2] = useState((analysData.name === 'hematological_research' || analysData.name === 'hematological research') ?
     String(analysData.analysis[5]?.value)
     : '');
-  const [value7_2, setValue7_2] = useState((analysData?.name === 'hematological_research' || analysData?.name === 'hematological research') ?
+  const [value7_2, setValue7_2] = useState((analysData.name === 'hematological_research' || analysData.name === 'hematological research') ?
     String(analysData.analysis[6]?.value)
     : '');
-  const [value1_3, setValue1_3] = useState((analysData?.name === 'cytokine_status') ?
+  const [value1_3, setValue1_3] = useState((analysData.name === 'cytokine_status') ?
     String(analysData.analysis[0].value)
     : '');
-  const [value2_3, setValue2_3] = useState((analysData?.name === 'cytokine_status') ?
+  const [value2_3, setValue2_3] = useState((analysData.name === 'cytokine_status') ?
     String(analysData.analysis[1]?.value)
     : '');
-  const [value3_3, setValue3_3] = useState((analysData?.name === 'cytokine_status') ?
+  const [value3_3, setValue3_3] = useState((analysData.name === 'cytokine_status') ?
     String(analysData.analysis[2]?.value)
     : '');
-  const [value4_3, setValue4_3] = useState((analysData?.name === 'cytokine_status') ?
+  const [value4_3, setValue4_3] = useState((analysData.name === 'cytokine_status') ?
     String(analysData.analysis[3]?.value)
     : '');
-  const [value5_3, setValue5_3] = useState((analysData?.name === 'cytokine_status') ?
+  const [value5_3, setValue5_3] = useState((analysData.name === 'cytokine_status') ?
     String(analysData.analysis[4]?.value)
     : '');
-  const [value6_3, setValue6_3] = useState((analysData?.name === 'cytokine_status') ?
+  const [value6_3, setValue6_3] = useState((analysData.name === 'cytokine_status') ?
     String(analysData.analysis[5]?.value)
     : '');
 
-  if(analysData?.name === 'hematological_research' || analysData?.name === 'hematological research'){
+  if(analysData.name === 'hematological_research' || analysData.name === 'hematological research'){
     const anaylse2 = document.getElementById('analyse2');
     const showBtn2 = document.getElementById('showBtn2');
     anaylse2?.classList.remove('add-analysis__analyse_hide');
     showBtn2?.classList.add('add-analysis__show_hide');
 
-  }else if(analysData?.name === 'cytokine_status'){
+  }else if(analysData.name === 'cytokine_status'){
     const anaylse3 = document.getElementById('analyse3');
     const showBtn3 = document.getElementById('showBtn3');
     anaylse3?.classList.remove('add-analysis__analyse_hide');

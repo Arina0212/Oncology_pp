@@ -31,7 +31,6 @@ export default function GraficPage(){
   const analysData = useAppSelector(getPatientAnalys);
 
   const grafics = useAppSelector(getGrafic);
-  console.log(grafics);
   //const getconclusion = useAppSelector(getConclusion)
   const printContent = () => {
     window.print();

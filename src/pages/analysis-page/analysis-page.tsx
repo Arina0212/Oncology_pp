@@ -27,7 +27,7 @@ export default function AnalysisPage(){
 
   return(
     <div>
-    {!isPatientLoading && analysData.name!=='' ?
+    {!isPatientLoading && analysData?.name!=='' ?
     <>
       <Header/>
       <section className="analysis">
@@ -43,7 +43,7 @@ export default function AnalysisPage(){
             <h3 className="analysis__info-name">Гематологическое исследование</h3>
             :
             <div>
-              {(analysData?.name === 'immune_status') ?
+              {(analysData.name === 'immune_status') ?
                 <h3 className="analysis__info-name">Имунный статус</h3>
                 : <div>{(analysData.name === 'cytokine_status') ?
                   <h3 className="analysis__info-name">Цитокиновый статус</h3>

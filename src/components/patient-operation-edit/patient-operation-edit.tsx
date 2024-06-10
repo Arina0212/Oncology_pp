@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import { getAuthorizationStatus } from "../../store/user-process/selectors";
 import { useNavigate, useParams } from "react-router-dom";
 import { UpdatePatientsRigthAction, fetchPatientsRigthAction } from "../../store/api-actions";
+//import usePatientById from "../hooks/get-patient-by-id";
+
 const style = {
     position: 'absolute' as const,
     top: '0',
@@ -18,20 +20,23 @@ const style = {
 
 type PatientOperationEditProps={
     id: number;
-    diagnosis: string | undefined;
+    diagnosis_edit: string | undefined;
     diagnosis_comment_edit: string | undefined;
     diagnosis_date: string | undefined;
     operation_comment_edit: string | undefined;
     chemoterapy: string | undefined;
     chemoterapy_comment_edit: string | undefined;
 }
-export default function PatientOperationEdit({id, diagnosis, diagnosis_comment_edit, diagnosis_date, operation_comment_edit, chemoterapy, chemoterapy_comment_edit}: PatientOperationEditProps){
+export default function PatientOperationEdit({id, diagnosis_edit, diagnosis_comment_edit, diagnosis_date, operation_comment_edit, chemoterapy, chemoterapy_comment_edit}: PatientOperationEditProps){
     const authorizationStatus = useAppSelector(getAuthorizationStatus);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const urlParams = useParams();
+    //const operationDataInfo = usePatientOparationDataById();
+    //const patient_data = usePatientById();  
+    
     const [openRight, setOpenRight] = useState(false);
-    const [diagnoses, setDiagnoses] = useState(diagnosis);
+    const [diagnoses, setDiagnoses] = useState(diagnosis_edit);
     const [diagnosis_comment, setDiagnosesComent] = useState(diagnosis_comment_edit);
     const [operation_comment, setOperationComent] = useState(operation_comment_edit);
     const [chemoterapy_comment, setChemoterapyComent] = useState(chemoterapy_comment_edit);
@@ -50,7 +55,6 @@ export default function PatientOperationEdit({id, diagnosis, diagnosis_comment_e
             operation_comment: operation_comment,
             chemoterapy: isChemoterapy,
             chemoterapy_comment: chemoterapy_comment,
-    
           }));
           setDiagnoses('');
           setDiagnosesComent('');
@@ -71,17 +75,17 @@ export default function PatientOperationEdit({id, diagnosis, diagnosis_comment_e
       };
     return(
         <>
-        <h3 className="patient__right-header">Диагноз: {diagnosis}</h3>
-              <p className="patient__right-text">Комментарий о диагнозе: {diagnosis_comment}</p>
+        <h3 className="patient__right-header">Диагноз: {diagnosis_edit}</h3>
+              <p className="patient__right-text">Комментарий о диагнозе: {diagnosis_comment_edit}</p>
 
               <h3 className="patient__right-header">Дата операции: {(diagnosis_date!==null)?
               <span>{humanizeDate(diagnosis_date)}</span>
               :<span>-</span>
               }</h3>
-              <p className="patient__right-text">Комментарий об операции: {operation_comment}</p>
+              <p className="patient__right-text">Комментарий об операции: {operation_comment_edit}</p>
 
               <h3 className="patient__right-header">Химиотерапия: {chemoterapy}</h3>
-              <p className="patient__right-text">Комментарий о курсах химиотерапии: {chemoterapy_comment}</p>
+              <p className="patient__right-text">Комментарий о курсах химиотерапии: {chemoterapy_comment_edit}</p>
 
               <button className="patient__right-btn" onClick={handleClickOpenRightBlock}>Редактировать данные</button>
               <Dialog className="modal modal_data" sx={style}

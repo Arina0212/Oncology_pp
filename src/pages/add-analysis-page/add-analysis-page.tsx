@@ -116,8 +116,9 @@ export default function AddAnalysisPage(){
     }else{
       elementsID1 = elements[0].id;
     }
-    if(analysDate > today){
+    if(analysDate >= today){
       setError('Дата анализа не может быть больше текущей даты');
+      console.log(analysDate, today)
     }else if(elements.length === 3 && elementsID1 === 'analyse2' && elementsID2 === 'analyse3'){
       dispatch(CreatePatientAnalysesAction({
         analysis_date: date,

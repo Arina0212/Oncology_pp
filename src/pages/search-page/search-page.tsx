@@ -6,11 +6,12 @@ import Header from '../../components/header/header';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import { useNavigate } from 'react-router-dom';
-import { getPatiens, getSearchPatient } from '../../store/patiens-process/selectors';
-import { PatienInfoData } from '../../types/patient-info';
+import { getError, getPatiens, getSearchPatient } from '../../store/patiens-process/selectors';
+import { PatienInfoData, PatienInfoDataError } from '../../types/patient-info';
 import PatientStroke from '../../components/patient-stroke/patient-stroke';
 import { store } from '../../store';
 import { getAltDate, getAltDateFor } from '../../utils/change-data-formats';
+import { ErrorsData } from '../../types/errors-data';
 
 const style = {
   position: 'absolute' as const,
@@ -43,7 +44,7 @@ export default function SearchPage(){
   const today = new Date(getAltDateFor(dateTime));
   const birth = new Date(birth_date);
 
-  var patiens = useAppSelector(getPatiens);
+  var patiens ;
   useEffect(() => {
     dispatch(fetchPatiensInfoAction());
   }, [dispatch]);
@@ -87,7 +88,11 @@ export default function SearchPage(){
   const handleCloseRegist = () => {
     setOpen(false);
   };
+  let count: number;
+  count =0
+  //console.log('count до изменений',count)
   const handleSearch = (evt: FormEvent<HTMLFormElement>) =>{
+    setError('');
     evt.preventDefault();
     dispatch(fetchCurrentPatientAction({
       first_name: first_name_search,
@@ -95,9 +100,31 @@ export default function SearchPage(){
       patronymic: patronymic_search,
       birth_date: birth_date_search,
     }));
-    //patiens = useAppSelector(getSearchPatient);
+    //count = 0;
+    count = count + 1;
+    console.log('count после изменений',count)
   };
+  //patiens = useAppSelector(getSearchPatient);
+  var patientErrorPub;
+  if(useAppSelector(getSearchPatient).length === 0 && (count === 0 || count === undefined)){
+    patiens = useAppSelector(getPatiens);
+    console.log('в выводе всех',count)
+  }
+  else{
     patiens = useAppSelector(getSearchPatient);
+    patiens.map((patientError : ErrorsData)=> patientErrorPub = patientError.error )
+    if( patientErrorPub === 'Пациент с такими данными не найден'){
+      console.log('в выводе нужного',count,patientErrorPub)
+    }
+    console.log('в выводе нужного',count)
+  }
+  // if(useAppSelector(getSearchPatient).length === 0 && count !== 0){
+  //   setError('Пациент с такими данными не найден')
+  // }
+  
+  
+    
+
 
   return(
     <>
@@ -176,6 +203,11 @@ export default function SearchPage(){
         </form>
 
         <div className="search__table">
+          
+          {(patientErrorPub==='Пациент с такими данными не найден')?
+          <p className="error_message-patient ">{patientErrorPub}</p>
+          :
+          <div>
           <div className="search__table-titles">
             <p className="search__table-titles-title">Фамилия</p>
             <p className="search__table-titles-title">Имя</p>
@@ -183,9 +215,12 @@ export default function SearchPage(){
             <p className="search__table-titles-title">Дата Рождения</p>
             <p className="search__table-titles-title">Действия</p>
           </div>
-          {[...patiens].reverse().map((patien: PatienInfoData) => (
+          <div>{[...(patiens||[])].reverse().map((patien: PatienInfoDataError) => (
             <PatientStroke key={patien.id} id={patien.id} first_name_pat={patien.first_name} last_name_pat={patien.last_name} patronomic_pat={patien.patronymic} birth_date_pat={patien.birth_date}/>
-          ))}
+          ))}</div>
+          </div>
+          }
+          
         </div>
 
       </section>

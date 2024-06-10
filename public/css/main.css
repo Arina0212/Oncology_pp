@@ -52,6 +52,16 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li,
   color: #FF0000;
   transition: color ease-in-out 250ms;
 }
+
+.error_message-patient {
+  font-weight: 600;
+  font-size: 1.1vw;
+  color: #FF0000;
+  transition: color ease-in-out 250ms;
+  text-align: center;
+  padding-top: 1vw;
+}
+
 .visually-hidden {
   position: fixed;
   top: 0;
@@ -1109,7 +1119,7 @@ a, p, h1, h2, h3, h4, h5, h6, button, input, label, table, thead, tbody, ol, li,
   display: grid;
   align-items: start;
   justify-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 0.5fr);
   grid-auto-rows: max-content;
   gap: 2.6315789474vw 1.5789473684vw;
   padding: 3.9473684211vw;

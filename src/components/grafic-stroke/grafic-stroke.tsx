@@ -21,8 +21,8 @@ const style = {
   translate: '0',
   bgcolor: 'rgb(255 255 255 / 0%)',
   boxshoutdown: '0 0 4.2105263158vw 0 rgba(0, 0, 0, 0.0784313725)',
-  // height:'10%',
-  // width:'100%'
+  height:'10%',
+  width:'100%'
 };
 
 
@@ -39,11 +39,10 @@ export default function GraficStroke({id, grafic, conclusion, recommendations, t
   const dispatch = useAppDispatch();
   const urlParams = useParams();
 
-  const [idR, setIdR] = useState(id);
-  const [idB, setIdB] = useState(id);
-  const [idT, setIdT] = useState(id);
-  const [idC, setIdC] = useState(id);
-  console.log('id графиков',setIdB,setIdC, setIdR, setIdT);
+  const [idR] = useState(id);
+  const [idB] = useState(id);
+  const [idT] = useState(id);
+  const [idC] = useState(id);
 
   const handleClickOpenUpdateR = () => {
     setOpenUpR(true);

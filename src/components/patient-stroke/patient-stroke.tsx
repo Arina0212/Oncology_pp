@@ -39,10 +39,10 @@ export default function PatientStroke({id, first_name_pat, last_name_pat, patron
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
     let dateTime = new Date()
-    console.log(getAltDateFor(dateTime), Number(humanizeDate(birth_date)) - Number(dateTime))
+    //console.log(getAltDateFor(dateTime), Number(humanizeDate(birth_date)) - Number(dateTime))
     var today = new Date(getAltDateFor(dateTime))
     var birth = new Date(birth_date)
-    console.log(birth > today)
+    //console.log(birth > today)
     const handleSubmitUpdate = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
         if(authorizationStatus != AuthorizationStatus.Auth){
@@ -68,14 +68,14 @@ export default function PatientStroke({id, first_name_pat, last_name_pat, patron
             handleCloseUpdate();
             setIsUpdatePatient(true);
             dispatch(fetchFullPatientInfoAction({id: id}));
-            console.log(id)
+            //console.log(id)
         }
     };
     
     useEffect(() => {
         if(isUpdatePatient === true){
             dispatch(fetchFullPatientInfoAction({id: id}));
-            console.log(id)
+            //console.log(id)
         }
       }, [dispatch, id]);
     const FIO_sep = FIO.split(' ', 3);
