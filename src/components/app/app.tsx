@@ -7,7 +7,6 @@ import SignUpPopup from '../signup-popup/signup-popup';
 import { HelmetProvider } from 'react-helmet-async';
 import UsagePage from '../../pages/usage-page/usage-page';
 import CopyrightPage from '../../pages/copyright-page/copyright-page';
-//import PrivateRoute from '../private-route/private-route';
 import PatientsPage from '../../pages/patients-page/patients-page';
 import SearchPage from '../../pages/search-page/search-page';
 import AddAnalysisPage from '../../pages/add-analysis-page/add-analysis-page';
@@ -42,9 +41,7 @@ export default function App() {
         <Route
           path={AppRoute.Search}
           element={
-            //<PrivateRoute authorizationStatus={authorizationStatus}>
             <SearchPage />
-            //</PrivateRoute>
           }
         />
 
@@ -58,7 +55,6 @@ export default function App() {
                 <Route path=':analysid' >
                   <Route index element={<AnalysisPage/>}/>
                   <Route path='grafics' element={<GraficPage/>}>
-                    {/* <Route /> */}
                   </Route>
                   <Route path='edit-analysis' element={<EditAnalysisPage/>}>
                   </Route>

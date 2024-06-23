@@ -322,17 +322,11 @@ export default function GraficStroke({id, grafic, conclusion, recommendations, t
             <h4 className="graphs__result-info-head">Заключение по показателям B-клеточного звена:</h4>
             <ol className="graphs__result-info-list">
               <li>{conclusion}</li>
-              {/* <li>Мало (ОВИД 1, 2, 3) или много (лимфоцитоз с превышениемот нормы в 2 раза)</li>
-                            <li>Компенсируемый или нет</li>
-                            <li>Изменение динамики если есть</li> */}
             </ol>
 
             <h4 className="graphs__result-info-head">Рекомендации для B-клеточного звена:</h4>
             <ol className="graphs__result-info-list">
               <li>{recommendations}</li>
-              {/* <li>Мало (ОВИД 1, 2, 3) или много (лимфоцитоз с превышениемот нормы в 2 раза)</li>
-                            <li>Компенсируемый или нет</li>
-                            <li>Изменение динамики если есть</li> */}
             </ol>
 
             <p className="graphs__result-info-additional">*рекомендации по коррекции лечения требуют консультации с лечащим
@@ -344,17 +338,11 @@ export default function GraficStroke({id, grafic, conclusion, recommendations, t
               <ol className="graphs__result-info-list">
 
                 <li>{conclusion}</li>
-                {/* <li>Мало (ОВИД 1, 2, 3) или много (лимфоцитоз с превышениемот нормы в 2 раза)</li>
-                        <li>Компенсируемый или нет</li>
-                        <li>Изменение динамики если есть</li> */}
               </ol>
 
               <h4 className="graphs__result-info-head">Рекомендации для T-клеточного звена:</h4>
               <ol className="graphs__result-info-list">
                 <li>{recommendations}</li>
-                {/* <li>Мало (ОВИД 1, 2, 3) или много (лимфоцитоз с превышениемот нормы в 2 раза)</li>
-                        <li>Компенсируемый или нет</li>
-                        <li>Изменение динамики если есть</li> */}
               </ol>
 
               <p className="graphs__result-info-additional">*рекомендации по коррекции лечения требуют консультации с лечащим
@@ -367,17 +355,11 @@ export default function GraficStroke({id, grafic, conclusion, recommendations, t
                   <ol className="graphs__result-info-list">
 
                     <li>{conclusion}</li>
-                    {/* <li>Мало (ОВИД 1, 2, 3) или много (лимфоцитоз с превышениемот нормы в 2 раза)</li>
-                        <li>Компенсируемый или нет</li>
-                        <li>Изменение динамики если есть</li> */}
                   </ol>
 
                   <h4 className="graphs__result-info-head">Рекомендации для цитокиновых пар:</h4>
                   <ol className="graphs__result-info-list">
                     <li>{recommendations}</li>
-                    {/* <li>Мало (ОВИД 1, 2, 3) или много (лимфоцитоз с превышениемот нормы в 2 раза)</li>
-                        <li>Компенсируемый или нет</li>
-                        <li>Изменение динамики если есть</li> */}
                   </ol>
 
                   <p className="graphs__result-info-additional">*рекомендации по коррекции лечения требуют консультации с лечащим
@@ -389,17 +371,11 @@ export default function GraficStroke({id, grafic, conclusion, recommendations, t
                     <ol className="graphs__result-info-list">
 
                       <li>{conclusion}</li>
-                      {/* <li>Мало (ОВИД 1, 2, 3) или много (лимфоцитоз с превышениемот нормы в 2 раза)</li>
-                        <li>Компенсируемый или нет</li>
-                        <li>Изменение динамики если есть</li> */}
                     </ol>
 
                     <h4 className="graphs__result-info-head">Рекомендации для расчета типа регенерации:</h4>
                     <ol className="graphs__result-info-list">
                       <li>{recommendations}</li>
-                      {/* <li>Мало (ОВИД 1, 2, 3) или много (лимфоцитоз с превышениемот нормы в 2 раза)</li>
-                        <li>Компенсируемый или нет</li>
-                        <li>Изменение динамики если есть</li> */}
                     </ol>
 
                     <p className="graphs__result-info-additional">*рекомендации по коррекции лечения требуют консультации с лечащим
